@@ -11,13 +11,11 @@ from justopinion.download import CAPClient
 load_dotenv()
 
 
-class DownloadTests:
+class TestDownloads:
     @pytest.mark.vcr
     def test_download_file(self):
-        client = CAPClient(api_token=os.getenv("CAP_API_TOKEN"))
-        response = client.fetch_cite("1 Breese 34", full_case=True)
-        assert response.status_code == 200
-        decision = Decision(**response.json())
+        client = CAPClient(api_token=os.getenv("CAP_API_KEY"))
+        decision = client.read_cite("1 Breese 34", full_case=True)
         assert isinstance(decision, Decision)
         assert isinstance(decision.opinions[0], Opinion)
         assert isinstance(decision.opinions[0].author, str)

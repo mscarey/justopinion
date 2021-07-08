@@ -59,11 +59,11 @@ class CAPClient:
             api_dict["Authorization"] = f"Token {self.api_token}"
         return api_dict
 
-    def fetch_decision_list_by_cite(
+    def fetch_cite(
         self, cite: Union[str, CaseCitation, CAPCitation], full_case: bool = False
-    ) -> List[RawDecision]:
+    ) -> requests.models.Response:
         """
-        Get the "results" list for a queried citation from the CAP API.
+        Get the API list response for a queried citation from the CAP API.
         :param cite:
             a citation linked to an opinion in the
             `Caselaw Access Project database <https://case.law/api/>`_.
@@ -87,12 +87,11 @@ class CAPClient:
 
         if full_case:
             params["full_case"] = "true"
-        response = requests.get(self.endpoint, params=params, headers=headers).json()
-        return response["results"]
+        return requests.get(self.endpoint, params=params, headers=headers)
 
     def read_decision_list_by_cite(
         self, cite: Union[str, CaseCitation, CAPCitation], full_case: bool = False
-    ) -> Decision:
+    ) -> List[Decision]:
         """
         Download and deserialize the "results" list for a queried citation from the CAP API.
         :param cite:
@@ -109,31 +108,9 @@ class CAPClient:
         :returns:
             the first case in the "results" list for this queried citation.
         """
-        response = self.fetch_decision_list_by_cite(cite=cite, full_case=full_case)
-        schema = DecisionSchema(many=True)
-        return schema.load(response)
-
-    def fetch_cite(
-        self, cite: Union[str, CaseCitation, CAPCitation], full_case: bool = False
-    ) -> RawDecision:
-        """
-        Download a decision from Caselaw Access Project API.
-        :param cite:
-            a citation linked to an opinion in the
-            `Caselaw Access Project database <https://case.law/api/>`_.
-            Usually these will be in the traditional format
-            ``[Volume Number] [Reporter Name Abbreviation] [Page Number]``, e.g.
-            `750 F.3d 1339 <https://case.law/search/#/cases?page=1&cite=%22750%20F.3d%201339%22>`_
-            for Oracle America, Inc. v. Google Inc.
-        :param full_case:
-            whether to request the full text of the opinion from the
-            `Caselaw Access Project API <https://api.case.law/v1/cases/>`_.
-            If this is ``True``, the CAPClient must have the `api_token` attribute.
-        :returns:
-            the first case in the "results" list for this queried citation.
-        """
-        result_list = self.fetch_decision_list_by_cite(cite=cite, full_case=full_case)
-        return result_list[0]
+        response = self.fetch_cite(cite=cite, full_case=full_case)
+        results = response.json()["results"]
+        return [Decision(**result) for result in results]
 
     def read_cite(
         self, cite: Union[str, CaseCitation, CAPCitation], full_case: bool = False
@@ -155,8 +132,8 @@ class CAPClient:
             the first case in the "results" list for this queried citation.
         """
         response = self.fetch_cite(cite=cite, full_case=full_case)
-        schema = DecisionSchema()
-        return schema.load(response)
+        result = response.json()["results"][0]
+        return Decision(**result)
 
     def fetch_id(self, cap_id: int, full_case: bool = False) -> RawDecision:
         """
