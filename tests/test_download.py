@@ -53,6 +53,7 @@ class TestDownloads:
         assert isinstance(decision.opinions[0], Opinion)
         assert decision.opinions[0].author is None
         assert decision.opinions[0].position == "majority"
+        assert str(decision.majority) == "majority opinion"
 
     @pytest.mark.default_cassette("TestDownloads.test_read_decision.yaml")
     @pytest.mark.vcr
@@ -80,6 +81,7 @@ class TestDownloads:
         lotus = cases[0]
         lotus_opinion = lotus.majority
         assert lotus_opinion.__class__.__name__ == "Opinion"
+        assert str(lotus_opinion) == "majority opinion by STAHL, Circuit Judge."
 
     @pytest.mark.default_cassette("TestDownloads.test_full_case_by_cite.yaml")
     @pytest.mark.vcr
@@ -138,7 +140,7 @@ class TestDownloads:
 
 
 class TestDecisions:
-    client = CAPClient(api_token=os.getenv("CAP_API_KEY"))
+    client = CAPClient(api_token="Token " + (os.getenv("CAP_API_KEY") or ""))
 
     def test_normalize_case_cite(self):
         assert normalize_case_cite("3 US 100") == "3 U.S. 100"

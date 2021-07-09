@@ -5,7 +5,6 @@ import re
 from typing import List, Optional, Sequence
 
 
-from anchorpoint.textselectors import TextQuoteSelector
 from pydantic import BaseModel, HttpUrl
 
 
@@ -43,8 +42,10 @@ class CAPCitation(BaseModel):
 class Opinion(BaseModel):
     """
     A document that resolves legal issues in a case and posits legal holdings.
+
     Usually an opinion must have ``position="majority"``
     to create holdings binding on any courts.
+
     :param position:
         the opinion's attitude toward the court's disposition of the case.
         e.g. ``majority``, ``dissenting``, ``concurring``, ``concurring in the result``
@@ -57,24 +58,11 @@ class Opinion(BaseModel):
     author: Optional[str] = ""
     text: Optional[str] = ""
 
-    def select_text(self, selector: TextQuoteSelector) -> Optional[str]:
-        r"""
-        Get text using a :class:`.TextQuoteSelector`.
-        :param selector:
-            a selector referencing a text passage in this :class:`Opinion`.
-        :returns:
-            the text referenced by the selector, or ``None`` if the text
-            can't be found.
-        """
-        if re.search(selector.passage_regex(), self.text, re.IGNORECASE):
-            return selector.exact
-        raise ValueError(
-            f'Passage "{selector.exact}" from TextQuoteSelector '
-            f'not found in Opinion "{self}".'
-        )
-
     def __str__(self):
-        return f"{self.position} Opinion by {self.author}"
+        result = f"{self.position} opinion" if self.position else "opinion"
+        if self.author:
+            result += f" by {self.author}"
+        return result
 
 
 class CaseData(BaseModel):
