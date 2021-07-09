@@ -41,7 +41,7 @@ class CAPClient:
     def __init__(self, api_token: Optional[str] = ""):
 
         """Create download client with an API token and an API address."""
-        self.endpoint = f"https://api.case.law/v1/cases/"
+        self.endpoint = "https://api.case.law/v1/cases/"
         if api_token and api_token.startswith("Token "):
             api_token = api_token.split("Token ")[1]
         self.api_token = api_token or ""
@@ -157,8 +157,8 @@ class CAPClient:
         params = {}
         if full_case:
             params["full_case"] = "true"
-        response = requests.get(url, params=params, headers=headers).json()
-        if cap_id and response.get("detail") == "Not found.":
+        response = requests.get(url, params=params, headers=headers)
+        if cap_id and response.status_code == 404:
             raise CaseAccessProjectAPIError(f"API returned no cases with id {cap_id}")
         return response
 
@@ -180,7 +180,7 @@ class CAPClient:
         """
         result = self.fetch_id(cap_id=cap_id, full_case=full_case)
 
-        return Decision(**result)
+        return Decision(**result.json())
 
     def fetch(
         self, query: Union[int, str, CaseCitation, CAPCitation], full_case: bool = False

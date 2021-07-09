@@ -2,6 +2,7 @@ import datetime
 import os
 
 from dotenv import load_dotenv
+import eyecite
 import pytest
 
 from justopinion.decisions import CAPCitation, Decision, Opinion
@@ -16,15 +17,22 @@ class TestDownloads:
 
     @pytest.mark.vcr
     def test_download_case_by_id(self):
-        case = self.client.fetch(4066790)
+        case = self.client.fetch(4066790).json()
         assert case["name_abbreviation"] == "Oracle America, Inc. v. Google Inc."
         assert case["id"] == 4066790
 
     @pytest.mark.default_cassette("TestDownloads.test_download_case_by_id.yaml")
     @pytest.mark.vcr
+    def test_read_case_by_id(self):
+        case = self.client.read_id(4066790)
+        assert case.name_abbreviation == "Oracle America, Inc. v. Google Inc."
+        assert case.id == 4066790
+
+    @pytest.mark.default_cassette("TestDownloads.test_download_case_by_id.yaml")
+    @pytest.mark.vcr
     def test_download_case_by_string_id(self):
         case = self.client.fetch("4066790")
-        assert case["name_abbreviation"] == "Oracle America, Inc. v. Google Inc."
+        assert case.json()["name_abbreviation"] == "Oracle America, Inc. v. Google Inc."
 
     @pytest.mark.vcr
     def test_full_case_by_cite(self):
@@ -103,3 +111,14 @@ class TestDownloads:
         assert case.name_abbreviation == "Kimbrough v. United States"
         cited_case = self.client.read_cite(cite=case.cites_to[0])
         assert cited_case.name_abbreviation == "United States v. Castillo"
+
+    @pytest.mark.vcr
+    def test_read_case_list_from_eyecite_case_citation(self):
+        case_citation = eyecite.get_citations("9 F. Cas. 50")[0]
+        cases_again = self.client.read_decision_list_by_cite(cite=case_citation)
+        assert cases_again[0].name_abbreviation == "Fikes v. Bentley"
+
+    @pytest.mark.vcr
+    def test_fail_to_read_id_cite(self):
+        with pytest.raises(ValueError, match="was type IdCitation, not CaseCitation"):
+            self.client.read_decision_list_by_cite(cite="id. at 37")
