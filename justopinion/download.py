@@ -182,11 +182,11 @@ class CAPClient:
 
     def fetch(
         self, query: Union[int, str, CaseCitation, CAPCitation], full_case: bool = False
-    ) -> RawDecision:
+    ) -> requests.models.Response:
         """Query by CAP id or citation, and download Decision from CAP API."""
         if isinstance(query, int) or (isinstance(query, str) and query.isdigit()):
             return self.fetch_id(int(query), full_case=full_case)
-        return self.fetch_cite(query)
+        return self.fetch_cite(query, full_case=full_case)
 
     def read(
         self, query: Union[int, str, CaseCitation, CAPCitation], full_case: bool = False

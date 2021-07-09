@@ -27,6 +27,11 @@ class TestDownloads:
         assert case["name_abbreviation"] == "Oracle America, Inc. v. Google Inc."
 
     @pytest.mark.vcr
+    def test_full_case_by_cite(self):
+        case = self.client.fetch("49 F.3d 807", full_case=True)
+        assert case.json()["results"][0]["decision_date"] == "1995-03-09"
+
+    @pytest.mark.vcr
     def test_read_decision(self):
         decision = self.client.read_cite("1 Breese 34", full_case=True)
         assert isinstance(decision, Decision)
@@ -42,3 +47,13 @@ class TestDownloads:
         result = response.json().get("results")[0]
         assert result["id"] == 435800
         assert result["casebody"]["data"]["head_matter"].startswith("John")
+
+    @pytest.mark.default_cassette("TestDownloads.test_full_case_by_cite.yaml")
+    @pytest.mark.vcr
+    def test_download_and_make_opinion(self):
+        cases = self.client.read_decision_list_by_cite(
+            cite="49 F.3d 807", full_case=True
+        )
+        lotus = cases[0]
+        lotus_opinion = lotus.majority
+        assert lotus_opinion.__class__.__name__ == "Opinion"
