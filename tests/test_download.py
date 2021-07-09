@@ -63,6 +63,14 @@ class TestDownloads:
         assert result["id"] == 435800
         assert result["casebody"]["data"]["head_matter"].startswith("John")
 
+    @pytest.mark.vcr
+    def test_fetch_full_decision_by_id(self):
+        response = self.client.fetch_id(435800, full_case=True)
+        assert response.status_code == 200
+        result = response.json()
+        assert result["id"] == 435800
+        assert result["casebody"]["data"]["head_matter"].startswith("John")
+
     @pytest.mark.default_cassette("TestDownloads.test_full_case_by_cite.yaml")
     @pytest.mark.vcr
     def test_download_and_make_opinion(self):

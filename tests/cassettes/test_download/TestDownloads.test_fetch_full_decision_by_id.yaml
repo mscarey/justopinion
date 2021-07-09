@@ -1,0 +1,98 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.25.1
+    method: GET
+    uri: https://api.case.law/v1/cases/435800/?full_case=true
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAC/7VX247jNhL9FcLAArtYtS3LN7XzNHvNBJvMIJlkHjaBQYuUxW6JVEjKHmcwwP7G
+        /t5+yZ4iJdnuzqSf8tBuiSwWq06dOqQ+TpSYbJeLVZ6myaSz9WQ7qbxv3XY2462aFtzJac1Ps+N8
+        Rs9uFm1nk2SieSNh/pWpNHtXGau90YxrwYyvpHUJe9W2sq659ng+Ttk/pbEHyb5rVC3PwTAs/Yvl
+        wlX8NNhL6XrnO77fW3lU3CujsdO4CZxFLzAUslAO8zvBPYUzz7P0bp7RjCkepd/prtlLixkMlco6
+        v2v5gSwXS4zU/MlAoXzYz022//448eeWZrRplMbwUUaLsBEiR6ySYdmnZDQ1ZakKxetrw9d1PQ1m
+        PyWTo6k7wu3jC2hHOzdbZOlyma42+f18neaEe5y55DXH2J7bwoiQxI09IptY2RrryfSlPQdLN1tl
+        Yauyq+tdX2ckobRRjn0brKhIxB1YYo/CdNa/vEEwczNV17PP1JigwpSruwPeYNhvk2822Ui5MZTv
+        utbKRrK/hu0Rx0NnlROqiN4+hqXZfb9VbfThavXkJcJfOxuDvonsVKHEtXJeYh9vO3kd4pQCIg64
+        nTeBTQMhVoERCcvywDgQ92DsGTNjAbbOE52vizdAQxHulCB+LhfrPFv/RLQqrdFearG7TYl2vORE
+        Kcxni2Uo7bCgFeVvLsL80PRDA/4hS49T/MQmTPA0xx/Fh3+L5TAQ+yMM4eeP1Jl/msIddm+p5vKE
+        HBA717w+OxQEBSu4FWi1WnngkaWoeVFxuwNxNPiV5ZtlMjEFDehSCakLAJpOV+sFfKKLLdeP5MZy
+        +M6nWZYvVvebdJmv0+ViIe/SHHbSFlJ7hE5Ll5v5Yrm832TzdIPf+yWKBjnKVmsgspxnfJWv8/Q+
+        5Zt8L1bLbL/AX5aJewHlWWXlKl1nay6wIN+vlymfr3gm13xTbPKSCuhUU3FXUdm3spyvhVgtBC/4
+        WuQ5MchYMWS3SjefekXqWpIzkGoCDOZ36eouu3+XzrfL1XaeTlMkNV/9OU23adozYm/EmRIn3nSO
+        dOiRJJB7TqMPnThIF9FuufUqvPwe0j2dYAvTKn2RUPkBuU3exDFmSoY9YsdOsblkQRTYozYnR7Pa
+        sNacpGVKB0suoL1oMcu9sQnbn9lRWd/JwRPaznlGfJDWSqSgWaUasqspMm9YbXh01RiN8PeShEDp
+        A83RsAzNxr5gqmR4FUY6pnxCz7zwjnVt8InoTppZ6fDq1F4RR5MAhkUfATba18m6ZLXi+1reuo+5
+        aoONTtyxhotg8B6zjCMgGV2VxmIR9/DJndFJ8OA65ZmrTFcLVvGjRApSI+WmoQYQhBSFR9ITvXD2
+        YBTFRCDRVGHubnB0IQjVtNagHbDIEe5WHSpPS3jQvACelYU5ShtL0RBRB+Apl4TJD0H++mo1U/Ze
+        eUTqmZCQLdoSQHN9jtRiP3dIOPiOmSK2g4VXMYDgR0ZwnKS2cWGECIxkffKj/qp/7OelmP6of4AU
+        sHcGDLT/+89/HVWeopQfZNFRtgkjcWDLPE3YCWFI1Jdha7RwzUGaJGKOHOTPXV/WcTVqRaQhvAPJ
+        BcHSYkxBQEEHMCUSx3VlSTS4UK1HqicYUVFhawFu9CWrUC1H1MDzKdTXSdmQJe8Ao1W/APVA4IQh
+        kguOSh/hNeBw0wdhXyDySt82DmWLgl1R8zqDSHHunATdr0NLWKdr6dADgU2ulXS3YYWyRdcgK9AP
+        4f8NLY5ZCMUrq00NOCWRGifcgn0daZwtc4oKIXkfWo/wftbe2FRciPisddGS5kTsAE40KGSJzoNK
+        Mc8fydURz1RoQIICz9mXsq8iilZFBMa2bGuO9FVZEvmfiAz1EMxIR+AntkqDElpKHgQKJahiJ982
+        +2066C1kz+v6HMrXI4szHaCjdOFGyeiAQ8NJO2Vvg70b6zL21UChhoBJyG/FW1TH7B9k4X8LTTxq
+        V5BARQhEN6hW8AVESVSQ6ChsSIZ6U/kv2B59rAK9oPqWWoDuDEAEPR68RaFwfTsRwSBbqj6zcMgi
+        OxFKdlusggfxCgUAKV5rkMS6qicN0Yik8q00bQ1BuL4tJUM5KhkogKxRDUIIVw12osbmbWsIPnGL
+        BbCSvKiuKxYFqNf4voni+Tdlr0t4CylHKvZVILk0TlHOF8yvEgvMJBSe1mXUfZocPEnrn0hEkD8d
+        kgyuSkhagI/7GP5eUvN8JgHw7CqJJLyfLocGv7QVnQ6UEwoRKzj66uV+jCvqCa4S/edNwx+gSp6+
+        vKJCTbYaHwl0BeUeOMO6v2cUBsdx0X9K0cdXJbnYoYvibfb3uHtAYN6+/furf7F/fPvma/b9N6/f
+        fEP8KnEniNeFk3nGClKYz0p2cnUfePkacEHz6tzEwj0vHpPh/MZBsseB15NqcEdHdzwBEfBVqpcs
+        Rx1DdMqOSval/EU+Kl6Fi0TyTMqenEB4ey/BBUgcjj60Kh19VHqOw6uh6V5nrxLANw6I5y/dHnh8
+        lUPgN8WP5Y4r0d9phkLd1BiNfg5Jn1QJdGsKKowNYZ0qE/uYKIpsg9LE3J7fB8N9Uv9qglFDYklD
+        z6PMcLc/39y4kOavgh30f2jbC/LxRAhrnyGNs0/3bT9gFO542HEUCDecEsPF6/qa1t/LkxHw4R7k
+        cK5zAiPGdaBeHu5DY99e9kDmVDxg4GT0ldyed440UnJcZPCF+unT/wFQ+I2zAxIAAA==
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Origin:
+      - '*'
+      Allow:
+      - GET, HEAD, OPTIONS
+      CF-Cache-Status:
+      - MISS
+      CF-RAY:
+      - 66c37156adc20bf7-DFW
+      Cache-Control:
+      - s-maxage=0, max-age=0
+      Connection:
+      - keep-alive
+      Content-Disposition:
+      - attachment; filename="CAP_2021-07-09 17:58:50.891534.json"
+      Content-Encoding:
+      - gzip
+      Content-Length:
+      - '2044'
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 09 Jul 2021 17:58:50 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Referrer-Policy:
+      - same-origin
+      Server:
+      - cloudflare
+      Strict-Transport-Security:
+      - max-age=15768000
+      Vary:
+      - Accept, Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+    status:
+      code: 200
+      message: OK
+version: 1
