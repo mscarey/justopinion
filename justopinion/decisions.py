@@ -186,7 +186,7 @@ class Decision(BaseModel):
     def __str__(self):
         citation = self.citations[0].cite if self.citations else ""
         name = self.name_abbreviation or self.name
-        return f"{name}, {citation} ({self.date})"
+        return f"{name}, {citation} ({self.decision_date})"
 
     @property
     def opinions(self):

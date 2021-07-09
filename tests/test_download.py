@@ -5,7 +5,11 @@ import eyecite
 import pytest
 
 from justopinion.decisions import CAPCitation, Decision, Opinion
-from justopinion.download import CAPClient, CaseAccessProjectAPIError
+from justopinion.download import (
+    CAPClient,
+    CaseAccessProjectAPIError,
+    normalize_case_cite,
+)
 
 
 load_dotenv()
@@ -26,6 +30,8 @@ class TestDownloads:
         case = self.client.read_id(4066790)
         assert case.name_abbreviation == "Oracle America, Inc. v. Google Inc."
         assert case.id == 4066790
+        name = "Oracle America, Inc. v. Google Inc., 750 F.3d 1339 (2014-05-09)"
+        assert str(case) == name
 
     @pytest.mark.default_cassette("TestDownloads.test_download_case_by_id.yaml")
     @pytest.mark.vcr
@@ -121,3 +127,17 @@ class TestDownloads:
     def test_fail_to_read_id_cite(self):
         with pytest.raises(ValueError, match="was type IdCitation, not CaseCitation"):
             self.client.read_decision_list_by_cite(cite="id. at 37")
+
+
+class TestDecisions:
+    client = CAPClient(api_token=os.getenv("CAP_API_KEY"))
+
+    def test_normalize_case_cite(self):
+        assert normalize_case_cite("3 US 100") == "3 U.S. 100"
+
+    @pytest.mark.default_cassette("TestDownloads.test_download_case_by_id.yaml")
+    @pytest.mark.vcr
+    def test_no_majority_without_full_case(self):
+        case = self.client.read_id(4066790)
+        assert case.name_abbreviation == "Oracle America, Inc. v. Google Inc."
+        assert case.majority is None
