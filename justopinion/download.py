@@ -38,7 +38,7 @@ def normalize_case_cite(cite: Union[str, CaseCitation, CAPCitation]) -> str:
 class CAPClient:
     """Downloads Decisions from Case Access Project API."""
 
-    def __init__(self, api_token: str = ""):
+    def __init__(self, api_token: Optional[str] = ""):
 
         """Create download client with an API token and an API address."""
         self.endpoint = f"https://api.case.law/v1/cases/"

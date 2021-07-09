@@ -6,8 +6,6 @@ interactions:
       - '*/*'
       Accept-Encoding:
       - gzip, deflate
-      Authorization:
-      - Token b057331ed6545438462130cdb9809be37b2fcc6f
       Connection:
       - keep-alive
       User-Agent:
@@ -64,15 +62,15 @@ interactions:
       Allow:
       - GET, HEAD, OPTIONS
       CF-Cache-Status:
-      - MISS
+      - EXPIRED
       CF-RAY:
-      - 66b7182bc9e60bac-DFW
+      - 66bfb2d48e1a2fc1-DFW
       Cache-Control:
       - s-maxage=0, max-age=0
       Connection:
       - keep-alive
       Content-Disposition:
-      - attachment; filename="CAP_2021-07-08 06:00:49.508397.json"
+      - attachment; filename="CAP_2021-07-09 07:04:30.420306.json"
       Content-Encoding:
       - gzip
       Content-Length:
@@ -80,7 +78,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 08 Jul 2021 06:00:49 GMT
+      - Fri, 09 Jul 2021 07:04:30 GMT
       Expect-CT:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Referrer-Policy:
