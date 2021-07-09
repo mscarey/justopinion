@@ -2,12 +2,11 @@ from __future__ import annotations
 
 import datetime
 import re
-from typing import Iterable, Iterator, List
-from typing import Optional, Sequence, Union
+from typing import List, Optional, Sequence
 
 
 from anchorpoint.textselectors import TextQuoteSelector
-from pydantic import BaseModel, validator, HttpUrl
+from pydantic import BaseModel, HttpUrl
 
 
 class ReporterVolume(BaseModel):
@@ -71,7 +70,7 @@ class Opinion(BaseModel):
             return selector.exact
         raise ValueError(
             f'Passage "{selector.exact}" from TextQuoteSelector '
-            + f'not found in Opinion "{self}".'
+            f'not found in Opinion "{self}".'
         )
 
     def __str__(self):
