@@ -135,7 +135,9 @@ class CAPClient:
         result = response.json()["results"][0]
         return Decision(**result)
 
-    def fetch_id(self, cap_id: int, full_case: bool = False) -> RawDecision:
+    def fetch_id(
+        self, cap_id: int, full_case: bool = False
+    ) -> requests.models.Response:
         """
         Download a decision from Caselaw Access Project API.
         :param cap_id:
@@ -176,9 +178,9 @@ class CAPClient:
             a Decision created from the first case in the "results" list for
             this queried citation.
         """
-        response = self.fetch_id(cap_id=cap_id, full_case=full_case)
-        schema = DecisionSchema()
-        return schema.load(response)
+        result = self.fetch_id(cap_id=cap_id, full_case=full_case)
+
+        return Decision(**result)
 
     def fetch(
         self, query: Union[int, str, CaseCitation, CAPCitation], full_case: bool = False
@@ -194,4 +196,4 @@ class CAPClient:
         """Query by CAP id or citation, download, and load Decision from CAP API."""
         if isinstance(query, int) or (isinstance(query, str) and query.isdigit()):
             return self.read_id(int(query), full_case=full_case)
-        return self.read_cite(query)
+        return self.read_cite(query, full_case=full_case)
