@@ -12,7 +12,7 @@ from justopinion.decisions import CAPCitation, Decision
 
 
 class CaseAccessProjectAPIError(Exception):
-    """Error for invalid API query."""
+    """Error for failed attempts to use the Case Access Project API."""
 
     pass
 
