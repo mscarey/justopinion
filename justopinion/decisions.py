@@ -43,10 +43,10 @@ class Opinion(BaseModel):
     """
     A document that resolves legal issues in a case and posits legal holdings.
 
-    Usually an opinion must have ``position="majority"``
+    Usually an opinion must have ``type="majority"``
     to create holdings binding on any courts.
 
-    :param position:
+    :param type:
         the opinion's attitude toward the court's disposition of the case.
         e.g. ``majority``, ``dissenting``, ``concurring``, ``concurring in the result``
     :param author:
@@ -54,12 +54,12 @@ class Opinion(BaseModel):
     :param text:
     """
 
-    position: str = "majority"
+    type: str = "majority"
     author: Optional[str] = ""
     text: Optional[str] = ""
 
     def __str__(self):
-        result = f"{self.position} opinion" if self.position else "opinion"
+        result = f"{self.type} opinion" if self.type else "opinion"
         if self.author:
             result += f" by {self.author}"
         return result
@@ -202,6 +202,6 @@ class Decision(BaseModel):
     @property
     def majority(self) -> Optional[Opinion]:
         for opinion in self.opinions:
-            if opinion.position == "majority":
+            if opinion.type == "majority":
                 return opinion
         return None

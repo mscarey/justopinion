@@ -52,7 +52,7 @@ class TestDownloads:
         assert isinstance(decision, Decision)
         assert isinstance(decision.opinions[0], Opinion)
         assert decision.opinions[0].author is None
-        assert decision.opinions[0].position == "majority"
+        assert decision.opinions[0].type == "majority"
         assert str(decision.majority) == "majority opinion"
 
     @pytest.mark.default_cassette("TestDownloads.test_read_decision.yaml")
