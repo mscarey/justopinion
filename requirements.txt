@@ -1,5 +1,5 @@
-git+git://github.com/mscarey/anchorpoint.git@72e31542315fa3581c87df449a812fc65afbbb03#egg=anchorpoint
-eyecite
+anchorpoint>=0.5.1
+eyecite>=2.2.0
 requests
 pydantic
 python-dotenv

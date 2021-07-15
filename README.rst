@@ -2,7 +2,7 @@ JustOpinion
 ===========
 
 .. image:: https://coveralls.io/repos/github/mscarey/justopinion/badge.svg?branch=master
-:target: https://coveralls.io/github/mscarey/justopinion?branch=master
+    :target: https://coveralls.io/github/mscarey/justopinion?branch=master
 
 
 A download client for legal opinions.
