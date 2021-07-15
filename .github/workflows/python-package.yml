@@ -34,4 +34,5 @@ jobs:
         if: matrix.python-version == 3.9
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CAP_API_KEY: ${{ secrets.CAP_API_KEY }}
         run: coveralls
