@@ -109,8 +109,36 @@ class CAPClient:
             the first case in the "results" list for this queried citation.
         """
         response = self.fetch_cite(cite=cite, full_case=full_case)
+        return self.read_decisions_from_response(response)
+
+    def read_decisions_from_response(
+        self, response: requests.models.Response
+    ) -> List[Decision]:
+        """
+        Deserialize a list of cases from the "results" list of a response from the CAP API.
+
+        :param response:
+            a response from the CAP API
+
+        :returns:
+            all decisions in the "results" list for the response
+        """
         results = response.json()["results"]
         return [Decision(**result) for result in results]
+
+    def read_decision_from_response(
+        self, response: requests.models.Response
+    ) -> Decision:
+        """
+        Deserialize a single case from the "results" list of a response from the CAP API.
+
+        :param response:
+            a response from the CAP API
+
+        :returns:
+            the first decision in the "results" list for the response
+        """
+        return Decision(**response.json()["results"][0])
 
     def read_cite(
         self, cite: Union[str, CaseCitation, CAPCitation], full_case: bool = False
@@ -132,8 +160,7 @@ class CAPClient:
             the first case in the "results" list for this queried citation.
         """
         response = self.fetch_cite(cite=cite, full_case=full_case)
-        result = response.json()["results"][0]
-        return Decision(**result)
+        return self.read_decision_from_response(response=response)
 
     def fetch_id(
         self, cap_id: int, full_case: bool = False
