@@ -1,0 +1,11 @@
+black
+flake8
+mypy
+pytest
+pytest-cov
+pytest-recording
+python-dotenv
+types-requests
+Sphinx
+sphinx-autodoc-typehints
+coveralls
