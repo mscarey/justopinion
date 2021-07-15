@@ -2,3 +2,4 @@ git+git://github.com/mscarey/anchorpoint.git@72e31542315fa3581c87df449a812fc65af
 eyecite
 requests
 pydantic
+python-dotenv
