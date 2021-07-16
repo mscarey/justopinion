@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import eyecite
 import pytest
 
-from justopinion.decisions import CAPCitation, Decision, Opinion
+from justopinion.decisions import CAPCitation, CAPDecision, CAPOpinion
 from justopinion.download import (
     CAPClient,
     CaseAccessProjectAPIError,
@@ -49,8 +49,8 @@ class TestDownloads:
     @pytest.mark.vcr
     def test_read_decision(self):
         decision = self.client.read_cite("1 Breese 34", full_case=True)
-        assert isinstance(decision, Decision)
-        assert isinstance(decision.opinions[0], Opinion)
+        assert isinstance(decision, CAPDecision)
+        assert isinstance(decision.opinions[0], CAPOpinion)
         assert decision.opinions[0].author is None
         assert decision.opinions[0].type == "majority"
         assert str(decision.majority) == "majority opinion"
@@ -80,7 +80,7 @@ class TestDownloads:
         )
         lotus = cases[0]
         lotus_opinion = lotus.majority
-        assert lotus_opinion.__class__.__name__ == "Opinion"
+        assert lotus_opinion.__class__.__name__ == "CAPOpinion"
         assert str(lotus_opinion) == "majority opinion by STAHL, Circuit Judge."
 
     @pytest.mark.default_cassette("TestDownloads.test_full_case_by_cite.yaml")

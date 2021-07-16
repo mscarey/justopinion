@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import datetime
-import re
 from typing import List, Optional, Sequence
 
 
@@ -39,7 +38,7 @@ class CAPCitation(BaseModel):
     type: Optional[str] = None
 
 
-class Opinion(BaseModel):
+class CAPOpinion(BaseModel):
     """
     A document that resolves legal issues in a case and posits legal holdings.
 
@@ -74,7 +73,7 @@ class CaseData(BaseModel):
     corrections: Optional[str] = None
     parties: List[str] = []
     attorneys: List[str] = []
-    opinions: List[Opinion] = []
+    opinions: List[CAPOpinion] = []
     judges: List[str] = []
 
 
@@ -105,7 +104,7 @@ class DecisionAnalysis(BaseModel):
     simhash: str
 
 
-class Decision(BaseModel):
+class CAPDecision(BaseModel):
     r"""
     A court decision to resolve a step in litigation.
 
