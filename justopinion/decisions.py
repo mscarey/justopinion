@@ -70,7 +70,7 @@ class CAPOpinion(BaseModel):
     def remove_author_name_punctuation(cls, v):
         result = v or ""
         result = result.replace("Judge.", "Judge").replace("Justice.", "Justice")
-        return result.strip(", -")
+        return result.strip(", -:")
 
 
 class CaseData(BaseModel):
