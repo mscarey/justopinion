@@ -51,7 +51,7 @@ class TestDownloads:
         decision = self.client.read_cite("1 Breese 34", full_case=True)
         assert isinstance(decision, CAPDecision)
         assert isinstance(decision.opinions[0], CAPOpinion)
-        assert decision.opinions[0].author is None
+        assert decision.opinions[0].author == ""
         assert decision.opinions[0].type == "majority"
         assert str(decision.majority) == "majority opinion"
 
@@ -81,7 +81,18 @@ class TestDownloads:
         lotus = cases[0]
         lotus_opinion = lotus.majority
         assert lotus_opinion.__class__.__name__ == "CAPOpinion"
-        assert str(lotus_opinion) == "majority opinion by STAHL, Circuit Judge."
+        assert str(lotus_opinion) == "majority opinion by STAHL, Circuit Judge"
+
+    @pytest.mark.default_cassette("TestDownloads.test_full_case_by_cite.yaml")
+    @pytest.mark.vcr
+    def test_repr(self):
+        cases = self.client.read_decision_list_by_cite(
+            cite="49 F.3d 807", full_case=True
+        )
+        lotus = cases[0]
+        lotus_opinion = lotus.majority
+        expected = 'CAPOpinion(type="majority", author="STAHL, Circuit Judge")'
+        assert repr(lotus_opinion) == expected
 
     @pytest.mark.default_cassette("TestDownloads.test_full_case_by_cite.yaml")
     @pytest.mark.vcr

@@ -54,14 +54,23 @@ class CAPOpinion(BaseModel):
     """
 
     type: str = "majority"
-    author: Optional[str] = ""
-    text: Optional[str] = ""
+    author: str = ""
+    text: str = ""
+
+    def __repr__(self) -> str:
+        return f'{self.__class__.__name__}(type="{self.type}", author="{self.author}")'
 
     def __str__(self):
         result = f"{self.type} opinion" if self.type else "opinion"
         if self.author:
             result += f" by {self.author}"
         return result
+
+    @validator("author", pre=True)
+    def remove_author_name_punctuation(cls, v):
+        result = v or ""
+        result = result.replace("Judge.", "Judge").replace("Justice.", "Justice")
+        return result.strip(", -")
 
 
 class CaseData(BaseModel):
