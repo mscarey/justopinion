@@ -70,7 +70,7 @@ class CAPOpinion(BaseModel):
     def remove_author_name_punctuation(cls, v):
         result = v or ""
         result = result.replace("Judge.", "Judge").replace("Justice.", "Justice")
-        return result.strip(", -:")
+        return result.strip(", -:;")
 
 
 class CaseData(BaseModel):
@@ -208,7 +208,7 @@ class CAPDecision(BaseModel):
         return self.casebody.data.opinions if self.casebody else []
 
     @property
-    def majority(self) -> Optional[Opinion]:
+    def majority(self) -> Optional[CAPOpinion]:
         for opinion in self.opinions:
             if opinion.type == "majority":
                 return opinion

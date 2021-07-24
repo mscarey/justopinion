@@ -138,7 +138,10 @@ class CAPClient:
         :returns:
             the first decision in the "results" list for the response
         """
-        return CAPDecision(**response.json()["results"][0])
+        decision = response.json()
+        if "results" in decision:
+            return CAPDecision(**decision["results"][0])
+        return CAPDecision(**decision)
 
     def read_cite(
         self, cite: Union[str, CaseCitation, CAPCitation], full_case: bool = False
