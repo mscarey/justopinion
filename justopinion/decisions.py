@@ -1,9 +1,10 @@
 from __future__ import annotations
 
 import datetime
-from typing import List, Optional, Sequence
+from typing import List, Optional, Sequence, Union
 
-
+from anchorpoint import TextPositionSelector, TextQuoteSelector, TextPositionSet
+from anchorpoint.schemas import TextPositionSetFactory
 from pydantic import BaseModel, HttpUrl, validator
 
 
@@ -71,6 +72,34 @@ class CAPOpinion(BaseModel):
         result = v or ""
         result = result.replace("Judge.", "Judge").replace("Justice.", "Justice")
         return result.strip(", -:;")
+
+    def locate_text(
+        self,
+        selection: Union[
+            bool,
+            str,
+            TextPositionSelector,
+            TextQuoteSelector,
+            Sequence[Union[str, TextQuoteSelector, TextPositionSelector]],
+        ],
+    ) -> TextPositionSet:
+        """Get set of position selectors for text in Opinion."""
+        factory = TextPositionSetFactory(self.text)
+        return factory.from_selection(selection)
+
+    def select_text(self, selector: TextQuoteSelector) -> Optional[str]:
+        r"""
+        Get text using a :class:`.TextQuoteSelector`.
+
+        :param selector:
+            a selector referencing a text passage in the :class:`Opinion`.
+
+        :returns:
+            the text referenced by the selector, or ``None`` if the text
+            can't be found.
+        """
+        text_locations = self.locate_text(selector)
+        return text_locations.as_text_sequence(self.text)
 
 
 class CaseData(BaseModel):

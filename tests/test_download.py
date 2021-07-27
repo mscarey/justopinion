@@ -157,6 +157,25 @@ class TestDownloads:
             self.client.read_decision_list_by_cite(cite="id. at 37")
 
 
+class TestTextSelection:
+    client = CAPClient(api_token=os.getenv("CAP_API_KEY"))
+
+    @pytest.mark.default_cassette("TestDownloads.test_full_case_by_cite.yaml")
+    @pytest.mark.vcr
+    def test_locate_opinion_text(self):
+        lotus = self.client.read("49 F.3d 807", full_case=True)
+        opinion = lotus.opinions[0]
+        assert opinion.locate_text("method of operation").ranges()[0].start == 12821
+
+    @pytest.mark.default_cassette("TestDownloads.test_full_case_by_cite.yaml")
+    @pytest.mark.vcr
+    def test_select_opinion_text(self):
+        lotus = self.client.read("49 F.3d 807", full_case=True)
+        opinion = lotus.opinions[0]
+        passage = str(opinion.select_text([(12821, 12840), (12851, 12863)]))
+        assert passage == "…method of operation…or procedure…"
+
+
 class TestDecisions:
     client = CAPClient(api_token="Token " + (os.getenv("CAP_API_KEY") or ""))
 

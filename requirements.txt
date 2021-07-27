@@ -1,5 +1,6 @@
 anchorpoint>=0.5.1
 eyecite>=2.2.0
+marshmallow>=3.13.0
 requests
 pydantic
 python-dotenv
