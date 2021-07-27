@@ -1,4 +1,4 @@
-anchorpoint>=0.5.1
+git+git://github.com/mscarey/anchorpoint.git@824da6bc1b256bdeb02fc51e435e3fdeecf09062#egg=anchorpoint
 eyecite>=2.2.0
 marshmallow>=3.13.0
 requests
