@@ -1,4 +1,6 @@
 *__pycache__*
+*.egg-info*
+*__ipynb_checkpoints__*
 .coverage
 .DS_Store
 .env
@@ -6,5 +8,9 @@
 .mypy_cache
 .pytest_cache
 .vscode
+docs/_build
+docs/_static
+docs/_templates
 poetry.lock
 venv
+venvjust

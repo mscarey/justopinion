@@ -4,7 +4,8 @@ from dotenv import load_dotenv
 import eyecite
 import pytest
 
-from justopinion.decisions import CAPCitation, CAPDecision, CAPOpinion
+from justopinion.citations import CAPCitation
+from justopinion.decisions import Decision, Opinion
 from justopinion.download import (
     CAPClient,
     CaseAccessProjectAPIError,
@@ -49,8 +50,8 @@ class TestDownloads:
     @pytest.mark.vcr
     def test_read_decision(self):
         decision = self.client.read_cite("1 Breese 34", full_case=True)
-        assert isinstance(decision, CAPDecision)
-        assert isinstance(decision.opinions[0], CAPOpinion)
+        assert isinstance(decision, Decision)
+        assert isinstance(decision.opinions[0], Opinion)
         assert decision.opinions[0].author == ""
         assert decision.opinions[0].type == "majority"
         assert str(decision.majority) == "majority opinion"
@@ -77,7 +78,7 @@ class TestDownloads:
     def test_fetch_one_decision_and_read(self):
         response = self.client.fetch_id(435800, full_case=True)
         decision = self.client.read_decision_from_response(response)
-        assert isinstance(decision, CAPDecision)
+        assert isinstance(decision, Decision)
 
     @pytest.mark.default_cassette("TestDownloads.test_full_case_by_cite.yaml")
     @pytest.mark.vcr
@@ -87,7 +88,7 @@ class TestDownloads:
         )
         lotus = cases[0]
         lotus_opinion = lotus.majority
-        assert lotus_opinion.__class__.__name__ == "CAPOpinion"
+        assert lotus_opinion.__class__.__name__ == "Opinion"
         assert str(lotus_opinion) == "majority opinion by STAHL, Circuit Judge"
 
     @pytest.mark.default_cassette("TestDownloads.test_full_case_by_cite.yaml")
@@ -98,7 +99,7 @@ class TestDownloads:
         )
         lotus = cases[0]
         lotus_opinion = lotus.majority
-        expected = 'CAPOpinion(type="majority", author="STAHL, Circuit Judge")'
+        expected = 'Opinion(type="majority", author="STAHL, Circuit Judge")'
         assert repr(lotus_opinion) == expected
 
     @pytest.mark.default_cassette("TestDownloads.test_full_case_by_cite.yaml")
