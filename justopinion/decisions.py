@@ -7,14 +7,42 @@ from anchorpoint import TextPositionSelector, TextQuoteSelector, TextPositionSet
 from anchorpoint.schemas import TextPositionSetFactory
 from pydantic import BaseModel, HttpUrl, validator
 
+from justopinion.citations import CAPCitation
+
 
 class ReporterVolume(BaseModel):
+    """
+    A group of decisions corresponding to a bound print volume.
+
+    :param id:
+        The unique identifier for this volume.
+    :param url:
+        The URL of this volume in the Case Access Project API.
+    :param full_name:
+        The name of this volume.
+    """
+
+    id: int
     url: HttpUrl
     full_name: str
-    id: int
 
 
 class Court(BaseModel):
+    """
+    A court that issues legal decisions.
+
+    :param id:
+        The unique identifier for this court.
+    :param name:
+        The name of this court.
+    :param url:
+        The URL of this court in the Case Access Project API.
+    :param slug:
+        The URL-safe name of this court.
+    :param name_abbreviation:
+        The abbreviation of this court's name.
+    """
+
     id: int
     name: str
     url: HttpUrl
@@ -23,6 +51,24 @@ class Court(BaseModel):
 
 
 class Jurisdiction(BaseModel):
+    """
+    A government or other entity that is responsible for a legal system.
+
+    :param id:
+        The unique identifier for this jurisdiction.
+    :param name:
+        The name of this jurisdiction.
+    :param url:
+        The URL of this jurisdiction in the Case Access Project API.
+    :param slug:
+        The URL-safe name of this jurisdiction.
+    :param whitelisted:
+        Whether the jurisdiction's cases are accessible without restriction
+        in the Case Access Project API.
+    :param name_abbreviation:
+        The abbreviation of this jurisdiction.
+    """
+
     id: int
     name: str
     url: HttpUrl
@@ -31,15 +77,7 @@ class Jurisdiction(BaseModel):
     name_abbreviation: str = ""
 
 
-class CAPCitation(BaseModel):
-    cite: str
-    reporter: Optional[str] = None
-    category: Optional[str] = None
-    case_ids: List[int] = []
-    type: Optional[str] = None
-
-
-class CAPOpinion(BaseModel):
+class Opinion(BaseModel):
     """
     A document that resolves legal issues in a case and posits legal holdings.
 
@@ -111,7 +149,7 @@ class CaseData(BaseModel):
     corrections: Optional[str] = None
     parties: List[str] = []
     attorneys: List[str] = []
-    opinions: List[CAPOpinion] = []
+    opinions: List[Opinion] = []
     judges: List[str] = []
 
 
@@ -142,7 +180,7 @@ class DecisionAnalysis(BaseModel):
     simhash: str
 
 
-class CAPDecision(BaseModel):
+class Decision(BaseModel):
     r"""
     A court decision to resolve a step in litigation.
 
@@ -191,7 +229,7 @@ class CAPDecision(BaseModel):
     :param juridiction:
         the jurisdiction of the case
     :param cites_to:
-        :class:`~justopinion.decisions.CAPCitation`\s to other Decisions
+        :class:`~justopinion.citations.CAPCitation`\s to other Decisions
     :param id:
         unique ID from CAP API
     :param last_updated:
@@ -237,7 +275,7 @@ class CAPDecision(BaseModel):
         return self.casebody.data.opinions if self.casebody else []
 
     @property
-    def majority(self) -> Optional[CAPOpinion]:
+    def majority(self) -> Optional[Opinion]:
         for opinion in self.opinions:
             if opinion.type == "majority":
                 return opinion

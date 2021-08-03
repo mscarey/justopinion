@@ -4,35 +4,16 @@ from __future__ import annotations
 
 from typing import Dict, List, Optional, Union
 
-import eyecite
-from eyecite.models import CaseCitation
 import requests
 
-from justopinion.decisions import CAPCitation, CAPDecision
+from justopinion.citations import CaseCitation, normalize_case_cite
+from justopinion.decisions import CAPCitation, Decision
 
 
 class CaseAccessProjectAPIError(Exception):
     """Error for failed attempts to use the Case Access Project API."""
 
     pass
-
-
-def normalize_case_cite(cite: Union[str, CaseCitation, CAPCitation]) -> str:
-    """Get just the text that identifies a citation."""
-    if isinstance(cite, CAPCitation):
-        return cite.cite
-    if isinstance(cite, str):
-        possible_cites = list(eyecite.get_citations(cite))
-        bad_cites = []
-        for possible in possible_cites:
-            if isinstance(possible, CaseCitation):
-                return possible.corrected_citation()
-            bad_cites.append(possible)
-        error_msg = f"Could not locate a CaseCitation in the text {cite}."
-        for bad_cite in bad_cites:
-            error_msg += f" {str(bad_cite)} was type {bad_cite.__class__.__name__}, not CaseCitation."
-        raise ValueError(error_msg)
-    return cite.corrected_citation()
 
 
 class CAPClient:
@@ -64,6 +45,7 @@ class CAPClient:
     ) -> requests.models.Response:
         """
         Get the API list response for a queried citation from the CAP API.
+
         :param cite:
             a citation linked to an opinion in the
             `Caselaw Access Project database <https://case.law/api/>`_.
@@ -91,9 +73,10 @@ class CAPClient:
 
     def read_decision_list_by_cite(
         self, cite: Union[str, CaseCitation, CAPCitation], full_case: bool = False
-    ) -> List[CAPDecision]:
+    ) -> List[Decision]:
         """
         Download and deserialize the "results" list for a queried citation from the CAP API.
+
         :param cite:
             a citation linked to an opinion in the
             `Caselaw Access Project database <https://case.law/api/>`_.
@@ -113,7 +96,7 @@ class CAPClient:
 
     def read_decisions_from_response(
         self, response: requests.models.Response
-    ) -> List[CAPDecision]:
+    ) -> List[Decision]:
         """
         Deserialize a list of cases from the "results" list of a response from the CAP API.
 
@@ -124,11 +107,11 @@ class CAPClient:
             all decisions in the "results" list for the response
         """
         results = response.json()["results"]
-        return [CAPDecision(**result) for result in results]
+        return [Decision(**result) for result in results]
 
     def read_decision_from_response(
         self, response: requests.models.Response
-    ) -> CAPDecision:
+    ) -> Decision:
         """
         Deserialize a single case from the "results" list of a response from the CAP API.
 
@@ -140,14 +123,15 @@ class CAPClient:
         """
         decision = response.json()
         if "results" in decision:
-            return CAPDecision(**decision["results"][0])
-        return CAPDecision(**decision)
+            return Decision(**decision["results"][0])
+        return Decision(**decision)
 
     def read_cite(
         self, cite: Union[str, CaseCitation, CAPCitation], full_case: bool = False
-    ) -> CAPDecision:
+    ) -> Decision:
         """
         Download and deserialize a Decision from Caselaw Access Project API.
+
         :param cite:
             a citation linked to an opinion in the
             `Caselaw Access Project database <https://case.law/api/>`_.
@@ -170,6 +154,7 @@ class CAPClient:
     ) -> requests.models.Response:
         """
         Download a decision from Caselaw Access Project API.
+
         :param cap_id:
             an identifier for an opinion in the
             `Caselaw Access Project database <https://case.law/api/>`_,
@@ -192,9 +177,10 @@ class CAPClient:
             raise CaseAccessProjectAPIError(f"API returned no cases with id {cap_id}")
         return response
 
-    def read_id(self, cap_id: int, full_case: bool = False) -> CAPDecision:
+    def read_id(self, cap_id: int, full_case: bool = False) -> Decision:
         """
         Download a decision from Caselaw Access Project API.
+
         :param cap_id:
             an identifier for an opinion in the
             `Caselaw Access Project database <https://case.law/api/>`_,
@@ -210,7 +196,7 @@ class CAPClient:
         """
         result = self.fetch_id(cap_id=cap_id, full_case=full_case)
 
-        return CAPDecision(**result.json())
+        return Decision(**result.json())
 
     def fetch(
         self, query: Union[int, str, CaseCitation, CAPCitation], full_case: bool = False
@@ -222,7 +208,7 @@ class CAPClient:
 
     def read(
         self, query: Union[int, str, CaseCitation, CAPCitation], full_case: bool = False
-    ) -> CAPDecision:
+    ) -> Decision:
         """Query by CAP id or citation, download, and load Decision from CAP API."""
         if isinstance(query, int) or (isinstance(query, str) and query.isdigit()):
             return self.read_id(int(query), full_case=full_case)
