@@ -1,6 +1,9 @@
 Justopinion
 ===========
 
+A Python library for downloading and researching legal opinions
+using the `Case Access Project API`_.
+
 .. image:: https://img.shields.io/badge/open-ethical-%234baaaa
     :target: https://ethicalsource.dev/licenses/
     :alt: An Ethical Open Source Project
@@ -12,10 +15,6 @@ Justopinion
 .. image:: https://github.com/mscarey/justopinion/actions/workflows/python-package.yml/badge.svg
     :target: https://github.com/mscarey/justopinion/actions
     :alt: GitHub Actions Workflow
-
-
-Justopinion is a Python library for downloading and researching legal opinions
-using the `Case Access Project API`_.
 
     >>> from justopinion import CAPClient
     >>> client = CAPClient(api_token="your-secret-api-token")

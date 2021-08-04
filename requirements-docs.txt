@@ -1,3 +1,9 @@
+anchorpoint>=0.5.2
+eyecite>=2.2.0
+marshmallow>=3.13.0
+requests
+pydantic
+python-dotenv
 Sphinx
 sphinx-autodoc-typehints
 sphinx-rtd-theme
