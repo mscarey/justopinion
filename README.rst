@@ -1,8 +1,17 @@
 Justopinion
 ===========
 
+.. image:: https://img.shields.io/badge/open-ethical-%234baaaa
+    :target: https://ethicalsource.dev/licenses/
+    :alt: An Ethical Open Source Project
+
 .. image:: https://coveralls.io/repos/github/mscarey/justopinion/badge.svg?branch=master
     :target: https://coveralls.io/github/mscarey/justopinion?branch=master
+    :alt: Test Coverage Percentage
+
+.. image:: https://github.com/mscarey/justopinion/actions/workflows/python-package.yml/badge.svg
+    :target: https://github.com/mscarey/justopinion/actions
+    :alt: GitHub Actions Workflow
 
 
 Justopinion is a Python library for downloading and researching legal opinions
