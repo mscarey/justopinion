@@ -1,6 +1,6 @@
 Changelog
 =========
-0.2.0 (2021-08-03)
+0.2.0 (2021-08-04)
 ------------------
 * add validator for opinion author
 * read_decision_from_response works with single result

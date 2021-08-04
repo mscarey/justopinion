@@ -23,6 +23,8 @@ using the `Case Access Project API`_.
 Examples
 --------
 
+In this example, Justopinion is used to download the decision with the citation `1 Breese 34`.
+
     >>> from justopinion import CAPClient
     >>> client = CAPClient(api_token="your-secret-api-token")
     >>> thornton = client.read_cite("1 Breese 34", full_case=True)
