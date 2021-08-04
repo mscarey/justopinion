@@ -7,3 +7,4 @@ pytest-recording
 python-dotenv
 types-requests
 coveralls
+-e .

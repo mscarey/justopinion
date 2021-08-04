@@ -21,10 +21,10 @@ so you can install it from the command line with pip:
 Justopinion runs on Python versions 3.8 and up.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: User Guides
 
-   guides/downloading.rst
+   guides/getting_started.rst
 
 .. toctree::
    :maxdepth: 2

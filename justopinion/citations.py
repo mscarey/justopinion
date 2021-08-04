@@ -29,6 +29,9 @@ class CAPCitation(BaseModel):
     case_ids: List[int] = []
     type: Optional[str] = None
 
+    def __str__(self) -> str:
+        return f"Citation to {self.cite}"
+
 
 def normalize_case_cite(cite: Union[str, CaseCitation, CAPCitation]) -> str:
     """Get just the text that identifies a citation."""

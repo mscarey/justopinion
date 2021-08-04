@@ -189,3 +189,27 @@ class TestDecisions:
         case = self.client.read_id(4066790)
         assert case.name_abbreviation == "Oracle America, Inc. v. Google Inc."
         assert case.majority is None
+
+    @pytest.mark.vcr
+    def test_download_case_from_cap_citation(self):
+        cite = CAPCitation(
+            cite="15 Ill., 284",
+            reporter="Ill.",
+            category="reporters:state",
+            case_ids=[436826],
+        )
+        case = self.client.read_cite(cite=cite, full_case=True)
+        assert case.citations[0].cite == "15 Ill. 284"
+        assert str(case.citations[0]) == "Citation to 15 Ill. 284"
+        assert str(case.cites_to[0]) == "Citation to 20 Pick. 535"
+
+    @pytest.mark.vcr(
+        "TestDownloads.test_read_decision.yaml",
+        "TestDecisions.test_download_case_from_cap_citation",
+    )
+    def test_read_cited_decision(self):
+        decision = self.client.read_cite("1 Breese 34", full_case=True)
+        assert len(decision.cites_to) == 1
+        assert decision.cites_to[0].cite == "15 Ill., 284"
+        cited = self.client.read_cite(decision.cites_to[0], full_case=True)
+        assert cited.citations[0].cite == "15 Ill. 284"

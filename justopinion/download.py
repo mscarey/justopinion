@@ -1,4 +1,4 @@
-"""Downloading data that can be converted to Opinion and Decision objects."""
+"""Download client for data that can be converted to :class:`~justopinion.decisions.Decision` and :class:`~justopinion.decisions.Opinion` objects."""
 
 from __future__ import annotations
 
@@ -10,14 +10,8 @@ from justopinion.citations import CaseCitation, normalize_case_cite
 from justopinion.decisions import CAPCitation, Decision
 
 
-class CaseAccessProjectAPIError(Exception):
-    """Error for failed attempts to use the Case Access Project API."""
-
-    pass
-
-
 class CAPClient:
-    """Downloads Decisions from Case Access Project API."""
+    """Downloads judicial decisions from Case Access Project API."""
 
     def __init__(self, api_token: Optional[str] = ""):
 
@@ -26,6 +20,22 @@ class CAPClient:
         if api_token and api_token.startswith("Token "):
             api_token = api_token.split("Token ")[1]
         self.api_token = api_token or ""
+
+    def fetch(
+        self, query: Union[int, str, CaseCitation, CAPCitation], full_case: bool = False
+    ) -> requests.models.Response:
+        """Query by CAP id or citation, and download Decision from CAP API."""
+        if isinstance(query, int) or (isinstance(query, str) and query.isdigit()):
+            return self.fetch_id(int(query), full_case=full_case)
+        return self.fetch_cite(query, full_case=full_case)
+
+    def read(
+        self, query: Union[int, str, CaseCitation, CAPCitation], full_case: bool = False
+    ) -> Decision:
+        """Query by CAP id or citation, download, and load Decision from CAP API."""
+        if isinstance(query, int) or (isinstance(query, str) and query.isdigit()):
+            return self.read_id(int(query), full_case=full_case)
+        return self.read_cite(query, full_case=full_case)
 
     def get_api_headers(self, full_case: bool = False) -> Dict[str, str]:
         """Get API headers based on whether the full case text is requested."""
@@ -198,18 +208,8 @@ class CAPClient:
 
         return Decision(**result.json())
 
-    def fetch(
-        self, query: Union[int, str, CaseCitation, CAPCitation], full_case: bool = False
-    ) -> requests.models.Response:
-        """Query by CAP id or citation, and download Decision from CAP API."""
-        if isinstance(query, int) or (isinstance(query, str) and query.isdigit()):
-            return self.fetch_id(int(query), full_case=full_case)
-        return self.fetch_cite(query, full_case=full_case)
 
-    def read(
-        self, query: Union[int, str, CaseCitation, CAPCitation], full_case: bool = False
-    ) -> Decision:
-        """Query by CAP id or citation, download, and load Decision from CAP API."""
-        if isinstance(query, int) or (isinstance(query, str) and query.isdigit()):
-            return self.read_id(int(query), full_case=full_case)
-        return self.read_cite(query, full_case=full_case)
+class CaseAccessProjectAPIError(Exception):
+    """Error for failed attempts to use the Case Access Project API."""
+
+    pass
