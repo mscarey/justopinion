@@ -7,6 +7,7 @@ Changelog
 * add locate_text and select_text methods
 * bump anchorpoint version
 * change class names from CAPOpinion and CAPDecision to Opinion and Decision
+* make separate citations module
 
 0.1.1 (2021-07-16)
 ------------------
