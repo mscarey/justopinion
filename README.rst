@@ -16,6 +16,13 @@ using the `Case Access Project API`_.
     :target: https://github.com/mscarey/justopinion/actions
     :alt: GitHub Actions Workflow
 
+.. image:: https://readthedocs.org/projects/justopinion/badge/?version=latest
+    :target: https://nettlesome.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
+
+Examples
+--------
+
     >>> from justopinion import CAPClient
     >>> client = CAPClient(api_token="your-secret-api-token")
     >>> thornton = client.read_cite("1 Breese 34", full_case=True)
