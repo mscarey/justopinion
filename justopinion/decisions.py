@@ -164,8 +164,8 @@ class PageRank(BaseModel):
 
 class CaseBody(BaseModel):
 
-    status: str
     data: CaseData
+    status: str = ""
 
 
 class DecisionAnalysis(BaseModel):
