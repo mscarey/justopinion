@@ -180,6 +180,12 @@ class DecisionAnalysis(BaseModel):
     simhash: str
 
 
+class DecisionError(Exception):
+    """Error for failed attempts to assign Opinions to Decisions."""
+
+    pass
+
+
 class Decision(BaseModel):
     r"""
     A court decision to resolve a step in litigation.
@@ -280,3 +286,31 @@ class Decision(BaseModel):
             if opinion.type == "majority":
                 return opinion
         return None
+
+    def find_matching_opinion(
+        self,
+        opinion_type: str = "",
+        opinion_author: str = "",
+    ) -> Optional[Opinion]:
+        """Get Opinion matching the given attributes."""
+        if not opinion_type and not opinion_author:
+            if len(self.opinions) >= 1:
+                return self.opinions[0]
+            return None
+        for opinion in self.opinions:
+            if ((opinion_type == opinion.type) or not opinion_type) and (
+                (opinion_author == opinion.author) or not opinion_author
+            ):
+                return opinion
+        return None
+
+    def add_opinion(self, opinion: Opinion) -> None:
+        existing = self.find_matching_opinion(
+            opinion_type=opinion.type, opinion_author=opinion.author
+        )
+        if existing:
+            raise DecisionError(
+                f"Decision {self} already has an Opinion with type {existing.type} and author {existing.author}."
+            )
+        self.casebody = self.casebody or CaseBody(data=CaseData())
+        self.casebody.data.opinions.append(opinion)

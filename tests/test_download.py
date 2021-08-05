@@ -1,3 +1,4 @@
+import datetime
 import os
 
 from dotenv import load_dotenv
@@ -5,7 +6,7 @@ import eyecite
 import pytest
 
 from justopinion.citations import CAPCitation
-from justopinion.decisions import Decision, Opinion
+from justopinion.decisions import Decision, Opinion, DecisionError
 from justopinion.download import (
     CAPClient,
     CaseAccessProjectAPIError,
@@ -213,3 +214,38 @@ class TestDecisions:
         assert decision.cites_to[0].cite == "15 Ill., 284"
         cited = self.client.read_cite(decision.cites_to[0], full_case=True)
         assert cited.citations[0].cite == "15 Ill. 284"
+
+    @pytest.mark.default_cassette("TestDownloads.test_read_decision.yaml")
+    @pytest.mark.vcr
+    def test_error_add_opinion_without_specifying_author(self):
+        decision = self.client.read_cite("1 Breese 34", full_case=True)
+        new_opinion = Opinion(author="")
+        with pytest.raises(DecisionError):
+            decision.add_opinion(new_opinion)
+
+    @pytest.mark.default_cassette("TestDownloads.test_read_decision.yaml")
+    @pytest.mark.vcr
+    def test_error_add_opinion_to_blank_decision(self):
+        decision = Decision(decision_date=datetime.date(2019, 1, 1))
+        new_opinion = Opinion(author="", type="")
+        assert len(decision.opinions) == 0
+        decision.add_opinion(new_opinion)
+        assert len(decision.opinions) == 1
+
+    @pytest.mark.default_cassette("TestDownloads.test_read_decision.yaml")
+    @pytest.mark.vcr
+    def test_error_add_opinion_with_empty_string_type(self):
+        decision = self.client.read_cite("1 Breese 34", full_case=True)
+        new_opinion = Opinion(author="", type="")
+        with pytest.raises(DecisionError):
+            decision.add_opinion(new_opinion)
+
+    @pytest.mark.default_cassette("TestDownloads.test_read_decision.yaml")
+    @pytest.mark.vcr
+    def test_error_add_same_opinion_twice(self):
+        decision = self.client.read_cite("1 Breese 34", full_case=True)
+        new_opinion = Opinion(author="Scalia", type="dissent")
+        another_opinion = Opinion(author="Scalia", type="dissent")
+        decision.add_opinion(new_opinion)
+        with pytest.raises(DecisionError):
+            decision.add_opinion(another_opinion)
