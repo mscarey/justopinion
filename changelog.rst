@@ -1,5 +1,9 @@
 Changelog
 =========
+dev
+------------------
+* add exception for wrong API key
+
 0.2.1 (2021-08-09)
 ------------------
 * add default value for CaseBody.status

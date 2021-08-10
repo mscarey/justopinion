@@ -129,6 +129,12 @@ class TestDownloads:
             bad_client.fetch_cite(cite="49 F.3d 807", full_case=True)
 
     @pytest.mark.vcr
+    def test_error_full_case_download_with_wrong_api_key(self):
+        bad_client = CAPClient(api_token="aaaaa")
+        with pytest.raises(CaseAccessProjectAPIError):
+            bad_client.fetch_cite(cite="49 F.3d 807", full_case=True)
+
+    @pytest.mark.vcr
     def test_read_case_from_citation(self):
         citation = CAPCitation(
             cite="460 F. 3d 337",

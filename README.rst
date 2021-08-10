@@ -25,8 +25,9 @@ Examples
 
 In this example, Justopinion is used to download the decision with the citation `1 Breese 34`.
 
+    >>> import os
     >>> from justopinion import CAPClient
-    >>> client = CAPClient(api_token="your-secret-api-token")
+    >>> client = CAPClient(api_token=os.getenv("YOUR_SECRET_API_TOKEN"))
     >>> thornton = client.read_cite("1 Breese 34", full_case=True)
     >>> thornton.casebody.data.parties[0]
     'John Thornton and others, Appellants, v. George Smiley and John Bradshaw, Appellees.'

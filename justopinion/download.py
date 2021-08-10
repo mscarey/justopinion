@@ -20,6 +20,11 @@ class CAPClient:
         if api_token and api_token.startswith("Token "):
             api_token = api_token.split("Token ")[1]
         self.api_token = api_token or ""
+        self.api_alert = (
+            "To fetch full opinion text using the full_case parameter, "
+            "set the CAPClient's 'api_key' attribute to "
+            "your API key for the Case Access Project. See https://api.case.law/"
+        )
 
     def fetch(
         self, query: Union[int, str, CaseCitation, CAPCitation], full_case: bool = False
@@ -42,11 +47,7 @@ class CAPClient:
         api_dict = {}
         if full_case:
             if not self.api_token:
-                raise CaseAccessProjectAPIError(
-                    "To fetch full opinion text using the full_case parameter, "
-                    "set the CAPClient's 'api_key' attribute to "
-                    "your API key for the Case Access Project. See https://api.case.law/"
-                )
+                raise CaseAccessProjectAPIError(self.api_alert)
             api_dict["Authorization"] = f"Token {self.api_token}"
         return api_dict
 
@@ -79,7 +80,11 @@ class CAPClient:
 
         if full_case:
             params["full_case"] = "true"
-        return requests.get(self.endpoint, params=params, headers=headers)
+        response = requests.get(self.endpoint, params=params, headers=headers)
+        if response.status_code == 401:
+            detail = response.json()["detail"]
+            raise CaseAccessProjectAPIError(f"{detail} {self.api_alert}")
+        return response
 
     def read_decision_list_by_cite(
         self, cite: Union[str, CaseCitation, CAPCitation], full_case: bool = False
