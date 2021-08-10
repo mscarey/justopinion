@@ -1,5 +1,11 @@
 Changelog
 =========
+0.2.1 (2021-08-09)
+------------------
+* add default value for CaseBody.status
+* add Decision.find_matching_opinion
+* fix links in setup.cfg
+
 0.2.0 (2021-08-04)
 ------------------
 * add validator for opinion author
