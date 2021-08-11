@@ -1,5 +1,9 @@
 Changelog
 =========
+0.2.3 (2021-08-11)
+------------------
+* add install_requires to setup.cfg
+
 0.2.2 (2021-08-10)
 ------------------
 * add exception for wrong API key
