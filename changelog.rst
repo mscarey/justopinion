@@ -1,8 +1,9 @@
 Changelog
 =========
-dev
+0.2.2 (2021-08-10)
 ------------------
 * add exception for wrong API key
+* change package detection in setup.cfg
 
 0.2.1 (2021-08-09)
 ------------------
