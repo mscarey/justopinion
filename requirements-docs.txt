@@ -1,4 +1,4 @@
-anchorpoint>=0.5.2
+anchorpoint>=0.5.3
 eyecite>=2.2.0
 requests
 pydantic

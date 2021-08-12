@@ -1,5 +1,11 @@
 Changelog
 =========
+
+0.2.4 (2021-08-12)
+------------------
+* switch from setup.cfg to setup.py
+* bump anchorpoint version to 0.5.3
+
 0.2.3 (2021-08-11)
 ------------------
 * add install_requires to setup.cfg
