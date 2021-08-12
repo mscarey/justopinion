@@ -2,7 +2,7 @@ Justopinion
 ===========
 
 A Python library for downloading and researching legal opinions
-using the `Case Access Project API`_.
+using the `Caselaw Access Project API`_.
 
 .. image:: https://img.shields.io/badge/open-ethical-%234baaaa
     :target: https://ethicalsource.dev/licenses/
@@ -51,4 +51,4 @@ And you can use Justopinion to follow citations in an opinion and download the c
     >>> str(cited)
     'Marsh v. People, 15 Ill. 284 (1853-12-01)'
 
-.. _Case Access Project API: https://api.case.law/v1/
+.. _Caselaw Access Project API: https://api.case.law/v1/
