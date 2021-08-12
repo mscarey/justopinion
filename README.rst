@@ -17,7 +17,7 @@ using the `Case Access Project API`_.
     :alt: GitHub Actions Workflow
 
 .. image:: https://readthedocs.org/projects/justopinion/badge/?version=latest
-    :target: https://nettlesome.readthedocs.io/en/latest/?badge=latest
+    :target: https://justopinion.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
 Examples
