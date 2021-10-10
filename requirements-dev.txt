@@ -1,6 +1,7 @@
 black
 flake8
 mypy
+pydocstyle
 pytest
 pytest-cov
 pytest-recording

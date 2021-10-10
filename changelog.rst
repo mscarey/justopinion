@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.2.5 (2021-10-09)
+------------------
+* bump anchorpoint version to 0.7.0
+* add python-ranges as dependency
+
 0.2.4 (2021-08-12)
 ------------------
 * switch from setup.cfg to setup.py

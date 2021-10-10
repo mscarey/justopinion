@@ -1,10 +1,12 @@
+"""Data models for published judicial decisions."""
+
 from __future__ import annotations
 
 import datetime
 from typing import List, Optional, Sequence, Union
 
 from anchorpoint import TextPositionSelector, TextQuoteSelector, TextPositionSet
-from anchorpoint.schemas import TextPositionSetFactory
+from anchorpoint.textselectors import TextPositionSetFactory
 from pydantic import BaseModel, HttpUrl, validator
 
 from justopinion.citations import CAPCitation
@@ -106,7 +108,8 @@ class Opinion(BaseModel):
         return result
 
     @validator("author", pre=True)
-    def remove_author_name_punctuation(cls, v):
+    def remove_author_name_punctuation(cls, v: str) -> str:
+        """Normalize Opinion author names by removing punctuation."""
         result = v or ""
         result = result.replace("Judge.", "Judge").replace("Justice.", "Justice")
         return result.strip(", -:;")
@@ -141,9 +144,7 @@ class Opinion(BaseModel):
 
 
 class CaseData(BaseModel):
-    """
-    The content of a Decision, including Opinions.
-    """
+    """The content of a Decision, including Opinions."""
 
     head_matter: Optional[str] = None
     corrections: Optional[str] = None
@@ -154,15 +155,14 @@ class CaseData(BaseModel):
 
 
 class PageRank(BaseModel):
-    """
-    The rank of the Decision in the collection of documents.
-    """
+    """The rank of the Decision in the collection of documents."""
 
     percentile: float
     raw: float
 
 
 class CaseBody(BaseModel):
+    """Data about an Opinion in the form used by the Caselaw Access Project API."""
 
     data: CaseData
     status: str = ""
@@ -278,10 +278,12 @@ class Decision(BaseModel):
 
     @property
     def opinions(self):
+        """Get all Opinions published with this Decision."""
         return self.casebody.data.opinions if self.casebody else []
 
     @property
     def majority(self) -> Optional[Opinion]:
+        """Get a majority opinion, if any."""
         for opinion in self.opinions:
             if opinion.type == "majority":
                 return opinion
@@ -305,6 +307,7 @@ class Decision(BaseModel):
         return None
 
     def add_opinion(self, opinion: Opinion) -> None:
+        """Add an Opinion to self's CaseBody if the Opinion doesn't already exist."""
         existing = self.find_matching_opinion(
             opinion_type=opinion.type, opinion_author=opinion.author
         )

@@ -1,3 +1,5 @@
+"""Citations used for cross-referencing caselaw."""
+
 from typing import List, Optional, Union
 
 from eyecite import get_citations

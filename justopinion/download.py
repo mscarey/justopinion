@@ -14,7 +14,6 @@ class CAPClient:
     """Downloads judicial decisions from Case Access Project API."""
 
     def __init__(self, api_token: Optional[str] = ""):
-
         """Create download client with an API token and an API address."""
         self.endpoint = "https://api.case.law/v1/cases/"
         if api_token and api_token.startswith("Token "):
