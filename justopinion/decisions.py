@@ -270,14 +270,14 @@ class Decision(BaseModel):
         return f"{name}, {citation} ({self.decision_date})"
 
     @validator("decision_date", pre=True)
-    def decision_date_must_include_day(cls, v):
+    def decision_date_must_include_day(cls, v) -> Union[datetime.date, str]:
         """Add a day of "01" if a string format is missing it."""
         if isinstance(v, str) and len(v) == 7:
             return v + "-01"
         return v
 
     @property
-    def opinions(self):
+    def opinions(self) -> List[Opinion]:
         """Get all Opinions published with this Decision."""
         return self.casebody.data.opinions if self.casebody else []
 

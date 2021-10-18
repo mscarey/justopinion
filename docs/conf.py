@@ -39,6 +39,7 @@ extensions = [
     "sphinx_rtd_theme",
 ]
 
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
 
@@ -65,6 +66,7 @@ intersphinx_mapping = {
     "anchorpoint": ("https://anchorpoint.readthedocs.io/en/latest/", None),
     "legislice": ("https://legislice.readthedocs.io/en/latest/", None),
     "authorityspoke": ("https://authorityspoke.readthedocs.io/en/latest/", None),
+    "requests": ("https://requests.readthedocs.io/en/latest/", None),
 }
 
 autodoc_member_order = "bysource"
