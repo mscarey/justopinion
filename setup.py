@@ -21,6 +21,12 @@ setuptools.setup(
         "Natural Language :: English",
     ],
     packages=setuptools.find_packages(exclude=["tests"]),
-    install_requires=["requests", "anchorpoint>=0.7.0", "eyecite>=2.3.0", "pydantic"],
+    install_requires=[
+        "requests",
+        "anchorpoint>=0.7.0",
+        "eyecite>=2.3.0",
+        "pydantic",
+        "python-ranges~=0.2.1",
+    ],
     python_requires=">=3.8",
 )

@@ -20,6 +20,10 @@ using the `Caselaw Access Project API`_.
     :target: https://justopinion.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
+.. image:: https://img.shields.io/pypi/pyversions/justopinion
+    :target: https://pypi.org/project/legislice/
+    :alt: PyPI - Python Version
+
 Examples
 --------
 
