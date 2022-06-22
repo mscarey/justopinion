@@ -5,7 +5,7 @@ with open("README.rst", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="justopinion",
-    version="0.2.5",
+    version="0.3.0",
     author="Matt Carey",
     author_email="matt@authorityspoke.com",
     description="Download client for legal opinions",
@@ -16,6 +16,7 @@ setuptools.setup(
     classifiers=[
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Operating System :: OS Independent",
         "License :: Free To Use But Restricted",
         "Natural Language :: English",
@@ -24,7 +25,7 @@ setuptools.setup(
     install_requires=[
         "requests",
         "anchorpoint>=0.7.0",
-        "eyecite>=2.3.0",
+        "eyecite==2.3.3.1",
         "pydantic",
         "python-ranges~=0.2.1",
     ],

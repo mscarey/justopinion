@@ -1,5 +1,5 @@
 anchorpoint~=0.7.0
-git+https://github.com/mscarey/eyecite.git@main#egg=eyecite
+git+https://github.com/mscarey/eyecite.git@v2.3.3.1#egg=eyecite
 requests
 pydantic
 python-dotenv
