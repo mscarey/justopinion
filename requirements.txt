@@ -1,6 +1,6 @@
-anchorpoint~=0.7.0
-git+https://github.com/mscarey/eyecite.git@v2.3.3.1#egg=eyecite
+git+https://github.com/mscarey/anchorpoint.git@v0.8.1#egg=anchorpoint
+eyecite~=2.5.2
 requests
-pydantic
+pydantic>=2.4.2
 python-dotenv
-python-ranges~=0.2.1
+python-ranges~=1.2.2
