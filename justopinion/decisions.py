@@ -7,7 +7,7 @@ from typing import List, Optional, Sequence, Union
 
 from anchorpoint import TextPositionSelector, TextQuoteSelector, TextPositionSet
 from anchorpoint.textselectors import TextPositionSetFactory
-from pydantic import BaseModel, HttpUrl, validator
+from pydantic import BaseModel, HttpUrl, field_validator
 
 from justopinion.citations import CAPCitation
 
@@ -107,8 +107,8 @@ class Opinion(BaseModel):
             result += f" by {self.author}"
         return result
 
-    @validator("author", pre=True)
-    def remove_author_name_punctuation(cls, v: str) -> str:
+    @field_validator("author", mode="before")
+    def remove_author_name_punctuation(cls, v: str | None) -> str:
         """Normalize Opinion author names by removing punctuation."""
         result = v or ""
         result = result.replace("Judge.", "Judge").replace("Justice.", "Justice")
@@ -269,8 +269,8 @@ class Decision(BaseModel):
         name = self.name_abbreviation or self.name
         return f"{name}, {citation} ({self.decision_date})"
 
-    @validator("decision_date", pre=True)
-    def decision_date_must_include_day(cls, v) -> Union[datetime.date, str]:
+    @field_validator("decision_date", mode="before")
+    def decision_date_must_include_day(cls, v: datetime.date | str) -> datetime.date | str:
         """Add a day of "01" if a string format is missing it."""
         if isinstance(v, str) and len(v) == 7:
             return v + "-01"
