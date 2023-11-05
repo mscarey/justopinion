@@ -9,7 +9,7 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - python-requests/2.26.0
+      - python-requests/2.31.0
     method: GET
     uri: https://api.case.law/v1/cases/?cite=49+F.3d+807&full_case=true
   response:
@@ -25,7 +25,7 @@ interactions:
       CF-Cache-Status:
       - MISS
       CF-RAY:
-      - 67ccfb6cb95b0b7e-DFW
+      - 82134e113b343ace-DFW
       Cache-Control:
       - s-maxage=0, max-age=0
       Connection:
@@ -35,9 +35,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Tue, 10 Aug 2021 23:25:13 GMT
-      Expect-CT:
-      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      - Sun, 05 Nov 2023 07:15:20 GMT
       Referrer-Policy:
       - same-origin
       Server:

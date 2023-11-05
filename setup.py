@@ -23,11 +23,11 @@ setuptools.setup(
     ],
     packages=setuptools.find_packages(exclude=["tests"]),
     install_requires=[
-        "requests",
-        "anchorpoint>=0.7.0",
-        "eyecite==2.3.3.1",
-        "pydantic",
-        "python-ranges~=0.2.1",
+        "requests~=2.31.0",
+        "anchorpoint>=0.8.1",
+        "eyecite~=2.5.2",
+        "pydantic>=2.4.2",
+        "python-ranges>=1.2.2",
     ],
-    python_requires=">=3.8",
+    python_requires=">=3.10",
 )

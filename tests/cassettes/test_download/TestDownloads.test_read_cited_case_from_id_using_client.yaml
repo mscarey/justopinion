@@ -9,47 +9,101 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - python-requests/2.25.1
+      - python-requests/2.31.0
     method: GET
-    uri: https://api.case.law/v1/cases/3675682/
+    uri: https://api.case.law/v1/cases/?cite=460+F.+3d+337
   response:
     body:
-      string: !!binary |
-        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
-        MxxR/TeMx74o+h/ueWBGZBoAAA==
+      string: "{\"count\":1,\"next\":null,\"previous\":null,\"results\":[{\"id\":3674823,\"url\":\"https://api.case.law/v1/cases/3674823/\",\"name\":\"UNITED
+        STATES of America, Appellant, v. Juan CASTILLO, Defendant-Appellee\",\"name_abbreviation\":\"United
+        States v. Castillo\",\"decision_date\":\"2006-08-16\",\"docket_number\":\"Docket
+        No. 05-3454-CR\",\"first_page\":\"337\",\"last_page\":\"361\",\"citations\":[{\"type\":\"official\",\"cite\":\"460
+        F.3d 337\"}],\"volume\":{\"url\":\"https://api.case.law/v1/volumes/32044088363262/\",\"volume_number\":\"460\",\"barcode\":\"32044088363262\"},\"reporter\":{\"url\":\"https://api.case.law/v1/reporters/933/\",\"full_name\":\"Federal
+        Reporter 3d Series\",\"id\":933},\"court\":{\"url\":\"https://api.case.law/v1/courts/2d-cir-2/\",\"name_abbreviation\":\"2d
+        Cir.\",\"slug\":\"2d-cir-2\",\"id\":8778,\"name\":\"United States Court of
+        Appeals for the Second Circuit\"},\"jurisdiction\":{\"id\":39,\"name_long\":\"United
+        States\",\"url\":\"https://api.case.law/v1/jurisdictions/us/\",\"slug\":\"us\",\"whitelisted\":false,\"name\":\"U.S.\"},\"cites_to\":[{\"cite\":\"113
+        F.3d 313\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[336495],\"pin_cites\":[{\"page\":\"324-25\"}],\"opinion_id\":0},{\"cite\":\"18
+        U.S.C. \xA7 930\",\"category\":\"laws:leg_statute\",\"reporter\":\"U.S.C.\",\"opinion_id\":0},{\"cite\":\"49
+        U.S.C. \xA7 46505\",\"category\":\"laws:leg_statute\",\"reporter\":\"U.S.C.\",\"opinion_id\":0},{\"cite\":\"924
+        F.2d 454\",\"category\":\"reporters:federal\",\"reporter\":\"F.2d\",\"case_ids\":[10542967],\"pin_cites\":[{\"page\":\"460\"}],\"opinion_id\":0},{\"cite\":\"440
+        F.3d 711\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[81762],\"pin_cites\":[{\"page\":\"720\"}],\"opinion_id\":0},{\"cite\":\"452
+        F.3d 127\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[6047197],\"pin_cites\":[{\"page\":\"133\"}],\"opinion_id\":0},{\"cite\":\"2006
+        U.S.App. LEXIS 19789\",\"category\":\"reporters:specialty_lexis\",\"reporter\":\"U.S.
+        App. LEXIS\",\"weight\":3,\"year\":2006,\"pin_cites\":[{\"page\":\"*9\"},{\"parenthetical\":\"describing
+        such individualized judgment as part of \\\"the historic role of sentencing
+        judges\\\"\"},{\"page\":\"*7\"}],\"opinion_id\":0},{\"cite\":\"2006 WL 2167171\",\"category\":\"reporters:specialty_west\",\"reporter\":\"WL\",\"weight\":2,\"year\":2006,\"pin_cites\":[{\"page\":\"*3\"},{\"page\":\"*2\"}],\"opinion_id\":0},{\"cite\":\"460
+        F.3d 191\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[3674743],\"year\":2006,\"pin_cites\":[{\"page\":\"195\"}],\"opinion_id\":0},{\"cite\":\"92
+        L.Ed. 823\",\"category\":\"reporters:federal\",\"reporter\":\"L. Ed.\",\"year\":1948,\"opinion_id\":0},{\"cite\":\"333
+        U.S. 483\",\"category\":\"reporters:federal\",\"reporter\":\"U.S.\",\"case_ids\":[6158328],\"weight\":2,\"year\":1948,\"pin_cites\":[{\"page\":\"486\"}],\"opinion_id\":0},{\"cite\":\"457
+        F.3d 233\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[3790897],\"pin_cites\":[{\"page\":\"237-38\"}],\"opinion_id\":0},{\"cite\":\"436
+        F.3d 111\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[939840],\"weight\":2,\"pin_cites\":[{\"page\":\"116\"}],\"opinion_id\":0},{\"cite\":\"409
+        F.3d 114\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[8952920],\"weight\":2,\"pin_cites\":[{\"page\":\"117\"}],\"opinion_id\":0},{\"cite\":\"456
+        F.3d 1353\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[3352320],\"weight\":3,\"pin_cites\":[{\"page\":\"1369\"},{\"page\":\"1366-67\"}],\"opinion_id\":0},{\"cite\":\"440
+        F.3d 625\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[81985],\"weight\":4,\"pin_cites\":[{\"page\":\"633\"},{\"page\":\"633\"},{\"page\":\"633-34\"}],\"opinion_id\":0},{\"cite\":\"433
+        F.3d 53\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[881177],\"weight\":5,\"pin_cites\":[{\"page\":\"61-62\"},{\"page\":\"64\",\"parenthetical\":\"\\\"Although
+        the district court's approach does ameliorate the disparity in sentences for
+        crack and powdered cocaine offenses ... Congress intended that particular
+        disparity to exist, and federal courts are not free to second-guess that type
+        of decision.\\\"\"},{\"page\":\"63\"},{\"page\":\"64-65\"}],\"opinion_id\":0},{\"cite\":\"429
+        F.3d 793\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[1554093],\"pin_cites\":[{\"page\":\"802-03\"}],\"opinion_id\":0},{\"cite\":\"431
+        F.3d 993\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[1618039],\"opinion_id\":0},{\"cite\":\"425
+        F.3d 335\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[1550536],\"opinion_id\":0},{\"cite\":\"365
+        F.Supp.2d 1052\",\"category\":\"reporters:federal\",\"reporter\":\"F. Supp.
+        2d\",\"case_ids\":[9011985],\"weight\":3,\"pin_cites\":[{\"page\":\"1060-61\"}],\"opinion_id\":0},{\"cite\":\"412
+        F.Supp.2d 87\",\"category\":\"reporters:federal\",\"reporter\":\"F. Supp.
+        2d\",\"case_ids\":[1001951],\"weight\":2,\"pin_cites\":[{\"page\":\"95-96\"}],\"opinion_id\":0},{\"cite\":\"373
+        F.Supp.2d 878\",\"category\":\"reporters:federal\",\"reporter\":\"F. Supp.
+        2d\",\"case_ids\":[8953953],\"pin_cites\":[{\"page\":\"887\"}],\"opinion_id\":0},{\"cite\":\"389
+        F.Supp.2d 278\",\"category\":\"reporters:federal\",\"reporter\":\"F. Supp.
+        2d\",\"case_ids\":[8916130],\"weight\":2,\"pin_cites\":[{\"page\":\"307-08\"},{\"page\":\"290-96\"}],\"opinion_id\":0},{\"cite\":\"2005
+        U.S. Dist. LEXIS 23184\",\"category\":\"reporters:specialty_lexis\",\"reporter\":\"U.S.
+        Dist. LEXIS\",\"weight\":3,\"year\":2005,\"pin_cites\":[{\"page\":\"*24-25\",\"parenthetical\":\"applying
+        10:1 ratio\"},{\"page\":\"*27\"}],\"opinion_id\":0},{\"cite\":\"2005 WL 2542916\",\"category\":\"reporters:specialty_west\",\"reporter\":\"WL\",\"weight\":2,\"year\":2005,\"pin_cites\":[{\"page\":\"*5-7\",\"parenthetical\":\"applying
+        10:1 ratio\"},{\"page\":\"*9\"}],\"opinion_id\":0},{\"cite\":\"397 F.3d 103\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[9034392],\"weight\":9,\"pin_cites\":[{\"page\":\"114\"},{\"page\":\"114-15\"},{\"page\":\"114\"},{\"page\":\"111-15\",\"parenthetical\":\"describing
+        process of post-Booker sentencing\"},{\"page\":\"113-14\"}],\"opinion_id\":0},{\"cite\":\"60
+        F.3d 1065\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[12046994],\"pin_cites\":[{\"page\":\"1071\"}],\"opinion_id\":0},{\"cite\":\"90
+        F.3d 302\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[9044541],\"pin_cites\":[{\"page\":\"306\"}],\"opinion_id\":0},{\"cite\":\"81
+        F.3d 9\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[7649704],\"pin_cites\":[{\"page\":\"11\"}],\"opinion_id\":0},{\"cite\":\"103
+        F.3d 67\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[984],\"pin_cites\":[{\"page\":\"71\"}],\"opinion_id\":0},{\"cite\":\"122
+        F.3d 324\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[302424],\"pin_cites\":[{\"page\":\"329-30\"}],\"opinion_id\":0},{\"cite\":\"985
+        F.2d 65\",\"category\":\"reporters:federal\",\"reporter\":\"F.2d\",\"case_ids\":[10508649],\"pin_cites\":[{\"page\":\"70\"}],\"opinion_id\":0},{\"cite\":\"143
+        L.Ed.2d 1021\",\"category\":\"reporters:federal\",\"reporter\":\"L. Ed. 2d\",\"year\":1999,\"pin_cites\":[{\"parenthetical\":\"rejecting
+        defendant's argument that the policy positions of the Sentencing Commission
+        and then-Attorney General Janet Reno in support of eliminating or reducing
+        the ratio should trigger intermediate scrutiny\"}],\"opinion_id\":0},{\"cite\":\"119
+        S.Ct. 1794\",\"category\":\"reporters:federal\",\"reporter\":\"S. Ct.\",\"year\":1999,\"pin_cites\":[{\"parenthetical\":\"rejecting
+        defendant's argument that the policy positions of the Sentencing Commission
+        and then-Attorney General Janet Reno in support of eliminating or reducing
+        the ratio should trigger intermediate scrutiny\"}],\"opinion_id\":0},{\"cite\":\"526
+        U.S. 1138\",\"category\":\"reporters:federal\",\"reporter\":\"U.S.\",\"case_ids\":[11204737,11203905,11203682,11204225,11203755,11204587,11204333,11204814,11205007,11204432,11203983,11204950,11204663,11204504,11204122,11203831],\"year\":1999,\"pin_cites\":[{\"parenthetical\":\"rejecting
+        defendant's argument that the policy positions of the Sentencing Commission
+        and then-Attorney General Janet Reno in support of eliminating or reducing
+        the ratio should trigger intermediate scrutiny\"}],\"opinion_id\":0},{\"cite\":\"166
+        F.3d 428\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[1397182],\"opinion_id\":0},{\"cite\":\"54
+        F.3d 92\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[7408658],\"pin_cites\":[{\"page\":\"99\"}],\"opinion_id\":0},{\"cite\":\"19
+        F.3d 93\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[10502515],\"pin_cites\":[{\"page\":\"97\"}],\"opinion_id\":0},{\"cite\":\"1995
+        WL 634347\",\"category\":\"reporters:specialty_west\",\"reporter\":\"WL\",\"year\":1995,\"opinion_id\":0},{\"cite\":\"109
+        Stat. 334\",\"category\":\"laws:leg_session\",\"reporter\":\"Stat.\",\"year\":1995,\"opinion_id\":0},{\"cite\":\"28
+        U.S.C. \xA7 994\",\"category\":\"laws:leg_statute\",\"reporter\":\"U.S.C.\",\"weight\":3,\"pin_cites\":[{\"page\":\"(p)\"},{\"page\":\"(p)\",\"parenthetical\":\"granting
+        authority to Commission to set sentencing policy only to the extent that Congress
+        accepts the Commission's proposals\"},{\"page\":\"349-355\"}],\"opinion_id\":0},{\"cite\":\"60
+        Fed. Reg. 25074\",\"category\":\"reporters:federal\",\"reporter\":\"Fed. Reg.\",\"weight\":2,\"year\":1995,\"pin_cites\":[{\"page\":\"25075-76\"},{\"page\":\"25076-77\"}],\"opinion_id\":0},{\"cite\":\"239
+        F.3d 143\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[11075590],\"pin_cites\":[{\"page\":\"148\"}],\"opinion_id\":0},{\"cite\":\"108
+        Stat. 1796\",\"category\":\"laws:leg_session\",\"reporter\":\"Stat.\",\"weight\":5,\"opinion_id\":0},{\"cite\":\"21
+        U.S.C. \xA7 844\",\"category\":\"laws:leg_statute\",\"reporter\":\"U.S.C.\",\"weight\":2,\"opinion_id\":0},{\"cite\":\"21
+        U.S.C. \xA7 841\",\"category\":\"laws:leg_statute\",\"reporter\":\"U.S.C.\",\"weight\":3,\"pin_cites\":[{\"page\":\"(b)\"},{\"page\":\"(b)(l)(A)(ii)\"}],\"opinion_id\":0},{\"cite\":\"100
+        Stat. 3207\",\"category\":\"laws:leg_session\",\"reporter\":\"Stat.\",\"year\":1986,\"pin_cites\":[{\"parenthetical\":\"\\\"1986
+        Act\\\"\"}],\"opinion_id\":0},{\"cite\":\"359 F.Supp.2d 771\",\"category\":\"reporters:federal\",\"reporter\":\"F.
+        Supp. 2d\",\"case_ids\":[9179993],\"weight\":4,\"pin_cites\":[{\"page\":\"777\"},{\"page\":\"778\",\"parenthetical\":\"collecting
+        cases\"}],\"opinion_id\":0},{\"cite\":\"2005 U.S. Dist. LEXIS 9780\",\"category\":\"reporters:specialty_lexis\",\"reporter\":\"U.S.
+        Dist. LEXIS\",\"weight\":19,\"pin_cites\":[{\"page\":\"*10-11\"},{\"page\":\"*
+        1\"},{\"page\":\"*4-6\"},{\"page\":\"*6-7\"},{\"page\":\"* 12\"},{\"page\":\"*12-13\"},{\"page\":\"*13\"},{\"page\":\"*
+        14\"},{\"page\":\"*15\"}],\"opinion_id\":0},{\"cite\":\"2005 WL 1214280\",\"category\":\"reporters:specialty_west\",\"reporter\":\"WL\",\"weight\":10,\"pin_cites\":[{\"page\":\"*4-5\"},{\"page\":\"*1\"},{\"page\":\"*1-3\"},{\"page\":\"*2-4\"},{\"page\":\"*5\"},{\"page\":\"*5\"},{\"page\":\"*5-6\"},{\"page\":\"*6\"}],\"opinion_id\":0},{\"cite\":\"543
+        U.S. 220\",\"category\":\"reporters:federal\",\"reporter\":\"U.S.\",\"case_ids\":[5925862],\"weight\":24,\"year\":2005,\"pin_cites\":[{\"page\":\"227\"},{\"page\":\"228\"},{\"page\":\"228-29\"},{\"page\":\"229\"},{\"page\":\"244\"},{\"page\":\"245\"},{\"page\":\"264-65\"},{\"page\":\"263\"},{\"page\":\"253-54,
+        263-65\"}],\"opinion_id\":0},{\"cite\":\"932 F.2d 1029\",\"category\":\"reporters:federal\",\"reporter\":\"F.2d\",\"case_ids\":[10544201],\"pin_cites\":[{\"page\":\"1034\"}],\"opinion_id\":0},{\"cite\":\"18
+        U.S.C. \xA7 3553\",\"category\":\"laws:leg_statute\",\"reporter\":\"U.S.C.\",\"weight\":8,\"pin_cites\":[{\"page\":\"(f)\"},{\"page\":\"(a)(6)\"},{\"page\":\"(a)\"},{\"page\":\"(f)\"},{\"page\":\"(a)\"},{\"page\":\"111-114\"},{\"page\":\"(f)\",\"parenthetical\":\"emphasis
+        added\"},{\"page\":\"(a)\"}],\"opinion_id\":0}],\"frontend_url\":\"https://cite.case.law/f3d/460/337/\",\"frontend_pdf_url\":\"https://cite.case.law/pdf/3674823/United%20States%20v.%20Castillo,%20460%20F.3d%20337%20(2006).pdf\",\"preview\":[],\"analysis\":{\"word_count\":12755,\"random_bucket\":39732,\"sha256\":\"8a4ae127442a8b0b29126cdfdbc99f8b06db1d24be9dab92ad51f598d956987d\",\"ocr_confidence\":0.674,\"char_count\":80257,\"random_id\":1847696180,\"pagerank\":{\"percentile\":0.9751705601369037,\"raw\":8.277131496669219e-07},\"cardinality\":2238,\"simhash\":\"1:fa5acdf64ac90774\"},\"last_updated\":\"2023-07-14T17:15:48.269830+00:00\",\"provenance\":{\"date_added\":\"2019-08-29\",\"batch\":\"2018\",\"source\":\"Harvard\"}}]}"
     headers:
       Accept-Ranges:
       - bytes
@@ -57,30 +111,28 @@ interactions:
       - Authorization
       Access-Control-Allow-Origin:
       - '*'
-      Age:
-      - '696'
       Allow:
       - GET, HEAD, OPTIONS
       CF-Cache-Status:
-      - HIT
+      - MISS
       CF-RAY:
-      - 66c02164ba9f0bef-DFW
+      - 82134e12dc8d3458-DFW
       Cache-Control:
       - s-maxage=86400, max-age=3600
       Connection:
       - keep-alive
       Content-Disposition:
-      - attachment; filename="CAP_2021-07-09 08:08:22.000423.json"
+      - attachment; filename="CAP_2023-11-05 07:15:20.272651.json"
       Content-Encoding:
       - gzip
       Content-Length:
-      - '1957'
+      - '2824'
       Content-Type:
       - application/json
       Date:
-      - Fri, 09 Jul 2021 08:19:58 GMT
-      Expect-CT:
-      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      - Sun, 05 Nov 2023 07:15:20 GMT
+      Last-Modified:
+      - Sun, 05 Nov 2023 07:15:20 GMT
       Referrer-Policy:
       - same-origin
       Server:
@@ -106,60 +158,63 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - python-requests/2.25.1
+      - python-requests/2.31.0
     method: GET
-    uri: https://api.case.law/v1/cases/?cite=460+F.+3d+337
+    uri: https://api.case.law/v1/cases/3675682/
   response:
     body:
-      string: !!binary |
-        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
+      string: "{\"id\":3675682,\"url\":\"https://api.case.law/v1/cases/3675682/\",\"name\":\"KIMBROUGH
+        v. UNITED STATES\",\"name_abbreviation\":\"Kimbrough v. United States\",\"decision_date\":\"2007-12-10\",\"docket_number\":\"No.
+        06-6330\",\"first_page\":\"85\",\"last_page\":\"116\",\"citations\":[{\"type\":\"official\",\"cite\":\"552
+        U.S. 85\"},{\"type\":\"parallel\",\"cite\":\"169 L. Ed. 2d 481\"},{\"type\":\"parallel\",\"cite\":\"128
+        S. Ct. 558\"},{\"type\":\"vendor\",\"cite\":\"2007 U.S. LEXIS 13082\"},{\"type\":\"vendor\",\"cite\":\"SCDB
+        2007-007\"}],\"volume\":{\"url\":\"https://api.case.law/v1/volumes/32044107974768/\",\"volume_number\":\"552\",\"barcode\":\"32044107974768\"},\"reporter\":{\"url\":\"https://api.case.law/v1/reporters/983/\",\"full_name\":\"United
+        States Reports\",\"id\":983},\"court\":{\"url\":\"https://api.case.law/v1/courts/us/\",\"name_abbreviation\":\"U.S.\",\"slug\":\"us\",\"id\":9009,\"name\":\"Supreme
+        Court of the United States\"},\"jurisdiction\":{\"id\":39,\"name_long\":\"United
+        States\",\"url\":\"https://api.case.law/v1/jurisdictions/us/\",\"slug\":\"us\",\"whitelisted\":false,\"name\":\"U.S.\"},\"cites_to\":[{\"cite\":\"18
+        U. S. C. \xA7 3742\",\"category\":\"laws:leg_statute\",\"reporter\":\"U.S.C.\",\"pin_cites\":[{\"page\":\"(e)\"}],\"opinion_id\":0},{\"cite\":\"18
+        U. S. C. \xA7 3551\",\"category\":\"laws:leg_statute\",\"reporter\":\"U.S.C.\",\"pin_cites\":[{\"page\":\"et
+        seq.\"}],\"opinion_id\":0},{\"cite\":\"98 Stat. 1987\",\"category\":\"laws:leg_session\",\"reporter\":\"Stat.\",\"opinion_id\":0},{\"cite\":\"433
+        F. 3d 53\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[881177],\"year\":2006,\"pin_cites\":[{\"page\":\"62-63\",\"parenthetical\":\"same\"}],\"opinion_id\":0},{\"cite\":\"450
+        F. 3d 270\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[3088142],\"year\":2006,\"pin_cites\":[{\"page\":\"275-276\",\"parenthetical\":\"same\"}],\"opinion_id\":0},{\"cite\":\"456
+        F. 3d 1353\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[3352320],\"year\":2006,\"pin_cites\":[{\"page\":\"1369\",\"parenthetical\":\"same\"}],\"opinion_id\":0},{\"cite\":\"460
+        F. 3d 337\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[3674823],\"year\":2006,\"pin_cites\":[{\"page\":\"361\",\"parenthetical\":\"same\"}],\"opinion_id\":0},{\"cite\":\"474
+        F. 3d 515\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[5712168],\"year\":2007,\"pin_cites\":[{\"page\":\"522\",\"parenthetical\":\"same\"}],\"opinion_id\":0},{\"cite\":\"18
+        U. S. C. \xA7 924\",\"category\":\"laws:leg_statute\",\"reporter\":\"U.S.C.\",\"pin_cites\":[{\"page\":\"(c)(l)(A)(i)\"}],\"opinion_id\":0},{\"cite\":\"502
+        F. 3d 1154\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[5526369],\"weight\":2,\"year\":2007,\"pin_cites\":[{\"page\":\"1171\",\"parenthetical\":\"McConnell,
+        J., concurring\"},{\"page\":\"1171\",\"parenthetical\":\"McConnell, J., concurring\"}],\"opinion_id\":0},{\"cite\":\"461
+        U. S. 574\",\"category\":\"reporters:federal\",\"reporter\":\"U.S.\",\"case_ids\":[11299017],\"year\":1983,\"pin_cites\":[{\"page\":\"600\"}],\"opinion_id\":0},{\"cite\":\"500
+        U. S. 453\",\"category\":\"reporters:federal\",\"reporter\":\"U.S.\",\"case_ids\":[6226195],\"year\":1991,\"pin_cites\":[{\"page\":\"468\"}],\"opinion_id\":0},{\"cite\":\"516
+        U. S. 284\",\"category\":\"reporters:federal\",\"reporter\":\"U.S.\",\"case_ids\":[327837],\"weight\":7,\"year\":1996,\"pin_cites\":[{\"page\":\"287\"},{\"page\":\"293-295\"},{\"page\":\"295\"},{\"page\":\"294\",\"parenthetical\":\"noting
+        with apparent approval the Commission's position that \\\"the Guidelines calculation
+        is independent of the statutory calculation\\\"\"}],\"opinion_id\":0},{\"cite\":\"543
+        U. S. 335\",\"category\":\"reporters:federal\",\"reporter\":\"U.S.\",\"case_ids\":[5884234],\"year\":2005,\"pin_cites\":[{\"page\":\"341\",\"parenthetical\":\"\\\"We
+        do not lightly assume that Congress has omitted from its adopted text requirements
+        that it nonetheless intends to apply . . . .\\\"\"}],\"opinion_id\":0},{\"cite\":\"72
+        Fed. Reg. 28571\",\"category\":\"reporters:federal\",\"reporter\":\"Fed. Reg.\",\"weight\":4,\"year\":2007,\"opinion_id\":0},{\"cite\":\"109
+        Stat. 334\",\"category\":\"laws:leg_session\",\"reporter\":\"Stat.\",\"weight\":4,\"pin_cites\":[{\"page\":\"335\"},{\"page\":\"335\"}],\"opinion_id\":0},{\"cite\":\"28
+        U. S. C. \xA7 994\",\"category\":\"laws:leg_statute\",\"reporter\":\"U.S.C.\",\"weight\":3,\"pin_cites\":[{\"page\":\"(p)\"},{\"page\":\"(h)\"},{\"page\":\"(p)\"}],\"opinion_id\":0},{\"cite\":\"60
+        Fed. Reg. 25075\",\"category\":\"reporters:federal\",\"reporter\":\"Fed. Reg.\",\"year\":1995,\"opinion_id\":0},{\"cite\":\"551
+        U. S. 338\",\"category\":\"reporters:federal\",\"reporter\":\"U.S.\",\"case_ids\":[3573000],\"weight\":6,\"year\":2007,\"pin_cites\":[{\"page\":\"349\"},{\"page\":\"351\"},{\"page\":\"347-350\"},{\"page\":\"350\"},{\"page\":\"357-358\"},{\"page\":\"358-360\"}],\"opinion_id\":0},{\"cite\":\"100
+        Stat. 3207\",\"category\":\"laws:leg_session\",\"reporter\":\"Stat.\",\"opinion_id\":0},{\"cite\":\"551
+        U. S. 1113\",\"category\":\"reporters:federal\",\"reporter\":\"U.S.\",\"year\":2007,\"opinion_id\":0},{\"cite\":\"440
+        F. 3d 625\",\"category\":\"reporters:federal\",\"reporter\":\"F.3d\",\"case_ids\":[81985],\"weight\":2,\"year\":2006,\"pin_cites\":[{\"page\":\"633-634\"},{\"page\":\"633-634\",\"parenthetical\":\"same\"}],\"opinion_id\":0},{\"cite\":\"174
+        Fed. Appx. 798\",\"category\":\"reporters:federal\",\"reporter\":\"Fed. Appx.\",\"weight\":2,\"year\":2006,\"pin_cites\":[{\"page\":\"799\",\"parenthetical\":\"per
+        curiam\"}],\"opinion_id\":0},{\"cite\":\"21 U. S. C. \xA7 841\",\"category\":\"laws:leg_statute\",\"reporter\":\"U.S.C.\",\"weight\":6,\"pin_cites\":[{\"page\":\"(b)(l)(B)(i)\"},{\"page\":\"(b)(l)(B)(ii)\"},{\"page\":\"(b)(l)(A)(v)\"},{\"page\":\"(b)(l)(A)(v)\"},{\"page\":\"(b)(l)(A)(iii)\"}],\"opinion_id\":0},{\"cite\":\"18
+        U. S. C. \xA7 3553\",\"category\":\"laws:leg_statute\",\"reporter\":\"U.S.C.\",\"weight\":13,\"pin_cites\":[{\"page\":\"(a)\"},{\"page\":\"(a)\"},{\"page\":\"(a)\"},{\"page\":\"72-73\"},{\"page\":\"72\"},{\"page\":\"(b)(1)\"},{\"page\":\"(a)\"},{\"page\":\"(a)(6)\",\"parenthetical\":\"sentencing
+        courts shall consider \\\"the need to avoid unwarranted sentence disparities\\\"\"},{\"page\":\"40\"},{\"page\":\"(a)(6)\"}],\"opinion_id\":0},{\"cite\":\"543
+        U. S. 220\",\"category\":\"reporters:federal\",\"reporter\":\"U.S.\",\"case_ids\":[5925862],\"weight\":9,\"year\":2005,\"pin_cites\":[{\"page\":\"244\"},{\"page\":\"245\"},{\"page\":\"226-227\"},{\"page\":\"245\"},{\"page\":\"245-246\"},{\"page\":\"245\"},{\"page\":\"245\"}],\"opinion_id\":0},{\"cite\":\"549
+        U. S. 270\",\"category\":\"reporters:federal\",\"reporter\":\"U.S.\",\"case_ids\":[3553669],\"year\":2007,\"pin_cites\":[{\"page\":\"286-287\"}],\"opinion_id\":1},{\"cite\":\"551
+        U. S. 338\",\"category\":\"reporters:federal\",\"reporter\":\"U.S.\",\"case_ids\":[3573000],\"year\":2007,\"pin_cites\":[{\"page\":\"351\"}],\"opinion_id\":1},{\"cite\":\"18
+        U. S. C. \xA7 3553\",\"category\":\"laws:leg_statute\",\"reporter\":\"U.S.C.\",\"pin_cites\":[{\"page\":\"(a)\"}],\"opinion_id\":1},{\"cite\":\"543
+        U. S. 220\",\"category\":\"reporters:federal\",\"reporter\":\"U.S.\",\"case_ids\":[5925862],\"year\":2005,\"pin_cites\":[{\"page\":\"245-246,
+        259, 264\"}],\"opinion_id\":1},{\"cite\":\"530 U. S. 428\",\"category\":\"reporters:federal\",\"reporter\":\"U.S.\",\"case_ids\":[9413869],\"year\":2000,\"pin_cites\":[{\"page\":\"465\",\"parenthetical\":\"Scalia,
+        J., dissenting\"}],\"opinion_id\":2},{\"cite\":\"542 U. S. 296\",\"category\":\"reporters:federal\",\"reporter\":\"U.S.\",\"case_ids\":[5868041],\"year\":2004,\"pin_cites\":[{\"page\":\"303\"}],\"opinion_id\":2},{\"cite\":\"551
+        U. S. 338\",\"category\":\"reporters:federal\",\"reporter\":\"U.S.\",\"case_ids\":[3573000],\"year\":2007,\"opinion_id\":2},{\"cite\":\"18
+        U. S. C. \xA7 3553\",\"category\":\"laws:leg_statute\",\"reporter\":\"U.S.C.\",\"weight\":2,\"pin_cites\":[{\"page\":\"(b)\"},{\"page\":\"(b)\"}],\"opinion_id\":2},{\"cite\":\"543
+        U. S. 220\",\"category\":\"reporters:federal\",\"reporter\":\"U.S.\",\"case_ids\":[5925862],\"weight\":7,\"year\":2005,\"pin_cites\":[{\"page\":\"258-265\"},{\"page\":\"232\"},{\"page\":\"323-325\",\"parenthetical\":\"Thomas,
+        J., dissenting in part\"},{\"page\":\"322-323\"},{\"page\":\"324-326\"},{\"page\":\"268\"},{\"page\":\"313\"}],\"opinion_id\":2},{\"cite\":\"543
+        U. S. 220\",\"category\":\"reporters:federal\",\"reporter\":\"U.S.\",\"case_ids\":[5925862],\"year\":2005,\"pin_cites\":[{\"page\":\"258-265\"}],\"opinion_id\":3}],\"frontend_url\":\"https://cite.case.law/us/552/85/\",\"frontend_pdf_url\":\"https://cite.case.law/pdf/3675682/Kimbrough%20v.%20United%20States,%20552%20U.S.%2085,%20169%20L.%20Ed.%202d%20481,%20128%20S.%20Ct.%20558%20(2007).pdf\",\"preview\":[],\"analysis\":{\"cardinality\":1752,\"char_count\":52807,\"ocr_confidence\":0.718,\"pagerank\":{\"raw\":4.7691576646519896e-05,\"percentile\":0.9999596501572099},\"sha256\":\"b868265777865d38f5b136bec4576aa1d8bdc0a1006fcc3d1c66cebb567f0fea\",\"simhash\":\"1:6d6aa9e547946609\",\"word_count\":8394,\"random_id\":144926348.0,\"random_bucket\":26252},\"last_updated\":\"2023-07-14T18:17:50.939651+00:00\",\"provenance\":{\"date_added\":\"2019-08-29\",\"source\":\"Harvard\",\"batch\":\"2018\"}}"
     headers:
       Accept-Ranges:
       - bytes
@@ -167,36 +222,92 @@ interactions:
       - Authorization
       Access-Control-Allow-Origin:
       - '*'
-      Age:
-      - '0'
       Allow:
       - GET, HEAD, OPTIONS
       CF-Cache-Status:
-      - HIT
+      - MISS
       CF-RAY:
-      - 66c021658cbe0bdd-DFW
+      - 821355269d5e467e-DFW
       Cache-Control:
       - s-maxage=86400, max-age=3600
       Connection:
       - keep-alive
       Content-Disposition:
-      - attachment; filename="CAP_2021-07-09 08:19:58.631234.json"
+      - attachment; filename="CAP_2023-11-05 07:20:10.159743.json"
       Content-Encoding:
       - gzip
       Content-Length:
-      - '2717'
+      - '2085'
       Content-Type:
       - application/json
       Date:
-      - Fri, 09 Jul 2021 08:19:58 GMT
-      Expect-CT:
-      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      - Sun, 05 Nov 2023 07:20:10 GMT
+      Last-Modified:
+      - Sun, 05 Nov 2023 07:20:10 GMT
       Referrer-Policy:
       - same-origin
       Server:
       - cloudflare
       Strict-Transport-Security:
       - max-age=15768000
+      Vary:
+      - Accept, Cookie, Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://api.case.law/v1/cases/?cite=18+U.+S.+C.+%C2%A7+3742
+  response:
+    body:
+      string: '{"count":0,"next":null,"previous":null,"results":[]}'
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Origin:
+      - '*'
+      Allow:
+      - GET, HEAD, OPTIONS
+      CF-Cache-Status:
+      - MISS
+      CF-RAY:
+      - 82135528eb963473-DFW
+      Cache-Control:
+      - s-maxage=86400, max-age=3600
+      Connection:
+      - keep-alive
+      Content-Disposition:
+      - attachment; filename="CAP_2023-11-05 07:20:10.502576.json"
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 05 Nov 2023 07:20:10 GMT
+      Last-Modified:
+      - Sun, 05 Nov 2023 07:20:10 GMT
+      Referrer-Policy:
+      - same-origin
+      Server:
+      - cloudflare
+      Strict-Transport-Security:
+      - max-age=15768000
+      Transfer-Encoding:
+      - chunked
       Vary:
       - Accept, Cookie, Accept-Encoding
       X-Content-Type-Options:
