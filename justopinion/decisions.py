@@ -6,7 +6,7 @@ import datetime
 from typing import List, Optional, Sequence, Union
 
 from anchorpoint import TextPositionSelector, TextQuoteSelector, TextPositionSet
-from anchorpoint.textselectors import TextPositionSetFactory
+from anchorpoint.textselectors import TextPositionSetFactory, TextSequence
 from pydantic import BaseModel, HttpUrl, field_validator
 
 from justopinion.citations import CAPCitation
@@ -128,7 +128,7 @@ class Opinion(BaseModel):
         factory = TextPositionSetFactory(self.text)
         return factory.from_selection(selection)
 
-    def select_text(self, selector: TextQuoteSelector) -> Optional[str]:
+    def select_text(self, selector: TextQuoteSelector) -> TextSequence:
         r"""
         Get text using a :class:`.TextQuoteSelector`.
 
