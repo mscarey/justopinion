@@ -1,6 +1,6 @@
 git+https://github.com/mscarey/anchorpoint.git@v0.8.1#egg=anchorpoint
 eyecite~=2.5.2
-requests
+requests~=2.31.0
 pydantic>=2.4.2
 python-dotenv
 python-ranges~=1.2.2
