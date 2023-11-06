@@ -9,31 +9,25 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - python-requests/2.25.1
+      - python-requests/2.31.0
     method: GET
     uri: https://api.case.law/v1/cases/?cite=9+F.+Cas.+50
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAC/+2VTW/jNhCG/4ogYIEWtSV+iRJ1S70JsMg2l2QPRbEwKImMWSuSQVJJgyD/vUPJ
-        duwgWSOLHnuII3He4Qxnho+e4rofOh+XZBZ36h946Ia2ncUbq+5NP7jdu1VuaD28/vUUmyYuMea0
-        4JTN4sG2cRmvvN+4Mk3lxiS1dCpp5UN6j9Pw7NKdOo0hirxT4HDx5fL8OrpPot/Pr26+nv+5tSxl
-        VYXQ0pu+CzKzVm6Uqc636hFkjaqNA+uykT7shAtSzFEWLH29Vn7ZDXeVsmBZQPDoqk8iNsuLTIJC
-        G+v8ciNvg2OGYKWVrxZq48fg01n94yZYeq1NbWQ72cOKiC6SCAIkEXg9f5/F9307hJM9najIpHMp
-        JYgxlLGMZzznoTKT5SV9AWuVtHXfhIDH+vg59GTTWx+kp2LulC4VjIRQGpq63HVCNcrKNhxGObCF
-        9oIMAsBoWH9691HmUmnXczdslJ3Xfo7Tdxp6ZtdJdB1kUD6fgMq1wy0Yjt13eWBK9iMzepneRosQ
-        MOp15FcqulHWGt/bx7AAu8vOSRfK8/dgjWtMPQWexjYM7JhV23e3UzaT/tQcH242HjU9yhxeHlYw
-        GK1xXkEcbwe1zzscOSQUJsctfQ+DBfOibd951TXL48BB9BJZz+ExFWmGju7Q3nfT6B/6g/3FcbxL
-        nwi6T+Bne59m8Cjg7yKshXGGfxmCn1/Ctfo1gQ3iLQ3Uw5S47GT76IwLNX3obbPcEqQQUJGVJBmH
-        dCpUM1ToglWNUkLxutZVVWmOMnhpMFGcZRiRilWIyKJCKMvyQhSNrkSekzz0v68tbN1p06iuhjqi
-        hFEOVVxJuwuZMQQL0jYGcjL+MS5zDEmYu5V0q4CGktJMCCUIo0RoRFHow3jlh03AB7QqJojgOWJz
-        zG9wUWJUZnkiCoby/DeEShRcDpknyEeYJ8gR875efrm6jpSPZJuMVPt6trj84+zqXfq1a9NN/Gtl
-        vb6T3ZsAzPkc8TlFpxjITyOQ/iwCZ3vlRgJOWnWgxDTk7+uVhjzY/7wceVnXzRzmu3uPlItkkXyG
-        AoPkAJM7r11gIvL9fH3roNxNdA3dg4/mwth6MH5LSw3cDLj8DISywLFAy7C1AqTVg38XmOIYmEch
-        PkjNwR1Ac3Cvmall616g+S25/s+gOV3Cn4AmOG6v4B6b22v4NjfDKqaTbJz2T+MQTjjN+YdwSjgh
-        h0DNBWdFg/IaKybyTFKqtc4JFQ2wqhacSqwzjVCVIYobRgokcaEyTauCN7x4G6g5OQYqZkJAxwMM
-        rOzWISf45tbwrTDt6JFzIjhnhAC8gawwe1bCQUiCaYExRgzMGcNMzVH+/IrNHBXHcK6QRLqhotJF
-        IWmGfwBngm4wL3FWUpIUVECaOzh/f/4XZxZ7UsQKAAA=
+      string: '{"count":2,"next":null,"previous":null,"results":[{"id":11638634,"url":"https://api.case.law/v1/cases/11638634/","name":"FIKES
+        v. BENTLEY","name_abbreviation":"Fikes v. Bentley","decision_date":"1828-05","docket_number":"Case
+        No. 4,785a","first_page":"50","last_page":"50","citations":[{"type":"official","cite":"9
+        F. Cas. 50"}],"volume":{"url":"https://api.case.law/v1/volumes/32044054565676/","volume_number":"9","barcode":"32044054565676"},"reporter":{"url":"https://api.case.law/v1/reporters/942/","full_name":"Federal
+        Cases","id":942},"court":{"url":"https://api.case.law/v1/courts/ark-super-ct-1/","name_abbreviation":"Ark.
+        Super. Ct.","slug":"ark-super-ct-1","id":9132,"name":"Superior Court of the
+        Territory of Arkansas"},"jurisdiction":{"id":34,"name_long":"Arkansas","url":"https://api.case.law/v1/jurisdictions/ark/","slug":"ark","whitelisted":true,"name":"Ark."},"cites_to":[],"frontend_url":"https://cite.case.law/f-cas/9/50/11638634/","frontend_pdf_url":"https://cite.case.law/pdf/11638634/Fikes%20v.%20Bentley,%209%20F.%20Cas.%2050%20(1828).pdf","preview":[],"analysis":{"word_count":89,"random_bucket":41872,"sha256":"b0c408f84bdee9e6ccfbbbf6059e6d12e645102b4b02a8b00557898dfb977271","ocr_confidence":0.436,"char_count":540,"random_id":906011536,"cardinality":71,"simhash":"1:33599e924329f030"},"last_updated":"2023-07-14T15:13:19.383329+00:00","provenance":{"date_added":"2019-08-29","batch":"2018","source":"Harvard"}},{"id":11638692,"url":"https://api.case.law/v1/cases/11638692/","name":"FILKINS
+        et al. v. BLACKMAN","name_abbreviation":"Filkins v. Blackman","decision_date":"1876-06-30","docket_number":"Case
+        No. 4,786","first_page":"50","last_page":"53","citations":[{"type":"official","cite":"9
+        F. Cas. 50"},{"type":"parallel","cite":"13 Blatchf. 440"}],"volume":{"url":"https://api.case.law/v1/volumes/32044054565676/","volume_number":"9","barcode":"32044054565676"},"reporter":{"url":"https://api.case.law/v1/reporters/942/","full_name":"Federal
+        Cases","id":942},"court":{"url":"https://api.case.law/v1/courts/ccd-conn/","name_abbreviation":"C.C.D.
+        Conn.","slug":"ccd-conn","id":9297,"name":"United States Circuit Court for
+        the District of Connecticut"},"jurisdiction":{"id":39,"name_long":"United
+        States","url":"https://api.case.law/v1/jurisdictions/us/","slug":"us","whitelisted":false,"name":"U.S."},"cites_to":[],"frontend_url":"https://cite.case.law/f-cas/9/50/11638692/","frontend_pdf_url":"https://cite.case.law/pdf/11638692/Filkins%20v.%20Blackman,%209%20F.%20Cas.%2050,%2013%20Blatchf.%20440%20(1876).pdf","preview":[],"analysis":{"word_count":2622,"random_bucket":8943,"sha256":"b79648d07c1e4975a33fff7239d840c963a1f5f00b5031d4280a18e5f3b86d68","ocr_confidence":0.472,"char_count":14999,"random_id":2174755567,"pagerank":{"percentile":0.7289058165167158,"raw":1.8903104009857707e-07},"cardinality":608,"simhash":"1:b0a0fd39bf88a351"},"last_updated":"2023-07-14T15:13:19.383329+00:00","provenance":{"date_added":"2019-08-29","batch":"2018","source":"Harvard"}}]}'
     headers:
       Accept-Ranges:
       - bytes
@@ -46,23 +40,23 @@ interactions:
       CF-Cache-Status:
       - MISS
       CF-RAY:
-      - 66c025edfd2b2832-DFW
+      - 82134e18cb34e766-DFW
       Cache-Control:
       - s-maxage=86400, max-age=3600
       Connection:
       - keep-alive
       Content-Disposition:
-      - attachment; filename="CAP_2021-07-09 08:23:04.759126.json"
+      - attachment; filename="CAP_2023-11-05 07:15:21.199428.json"
       Content-Encoding:
       - gzip
       Content-Length:
-      - '1058'
+      - '1127'
       Content-Type:
       - application/json
       Date:
-      - Fri, 09 Jul 2021 08:23:04 GMT
-      Expect-CT:
-      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      - Sun, 05 Nov 2023 07:15:21 GMT
+      Last-Modified:
+      - Sun, 05 Nov 2023 07:15:21 GMT
       Referrer-Policy:
       - same-origin
       Server:

@@ -9,98 +9,172 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - python-requests/2.26.0
+      - python-requests/2.31.0
     method: GET
     uri: https://api.case.law/v1/cases/?cite=15+Ill.%2C+284&full_case=true
   response:
     body:
-      string: !!binary |
-        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
+      string: "{\"count\":1,\"next\":null,\"previous\":null,\"results\":[{\"id\":436826,\"url\":\"https://api.case.law/v1/cases/436826/\",\"name\":\"Benjamin
+        F. Marsh et al., Appellants, v. The People, Appellees\",\"name_abbreviation\":\"Marsh
+        v. People\",\"decision_date\":\"1853-12\",\"docket_number\":\"\",\"first_page\":\"284\",\"last_page\":\"288\",\"citations\":[{\"type\":\"official\",\"cite\":\"15
+        Ill. 284\"}],\"volume\":{\"url\":\"https://api.case.law/v1/volumes/32044057891616/\",\"volume_number\":\"15\",\"barcode\":\"32044057891616\"},\"reporter\":{\"url\":\"https://api.case.law/v1/reporters/528/\",\"full_name\":\"Illinois
+        Reports\",\"id\":528},\"court\":{\"url\":\"https://api.case.law/v1/courts/ill/\",\"name_abbreviation\":\"Ill.\",\"slug\":\"ill\",\"id\":8772,\"name\":\"Illinois
+        Supreme Court\"},\"jurisdiction\":{\"id\":29,\"name_long\":\"Illinois\",\"url\":\"https://api.case.law/v1/jurisdictions/ill/\",\"slug\":\"ill\",\"whitelisted\":true,\"name\":\"Ill.\"},\"cites_to\":[{\"cite\":\"20
+        Pick. 535\",\"category\":\"reporters:state\",\"reporter\":\"Pick.\",\"case_ids\":[2038890],\"opinion_id\":0}],\"frontend_url\":\"https://cite.case.law/ill/15/284/\",\"frontend_pdf_url\":\"https://cite.case.law/pdf/436826/Marsh%20v.%20People,%2015%20Ill.%20284%20(1853).pdf\",\"preview\":[],\"analysis\":{\"word_count\":1967,\"random_bucket\":29528,\"sha256\":\"415567ec5a085499c61aa3a23c88da0495fba99ead945f8b83f082635b83957e\",\"ocr_confidence\":0.622,\"char_count\":11581,\"random_id\":762671960,\"pagerank\":{\"percentile\":0.682774555582198,\"raw\":1.5951363999212521e-07},\"cardinality\":493,\"simhash\":\"1:23ef6d6062e4c080\"},\"last_updated\":\"2023-07-14T20:54:34.058491+00:00\",\"provenance\":{\"date_added\":\"2019-08-29\",\"batch\":\"2018\",\"source\":\"Harvard\"},\"casebody\":{\"status\":\"ok\",\"data\":{\"corrections\":\"\",\"parties\":[\"Benjamin
+        F. Marsh et al., Appellants, v. The People, Appellees.\"],\"attorneys\":[\"C.
+        B. Lawrence and S. T. Logan, for appellants.\",\"G. Edmunds and O. H. Browning,
+        for appellees.\"],\"opinions\":[{\"author\":\"Treat, C. J.\",\"text\":\"Treat,
+        C. J.\\nThis was an action of debt, brought in the name of the people to the
+        use of English, administrator de bonis non of Wilcox, against Marsh, Felt,
+        and Mellen, former administrators of Wilcox, and Chandler, Robinson, and Morris,
+        their sureties, upon the administration bond. The declaration set forth the
+        grant of administration to Marsh, Felt, and Mellen on the 12th of October,
+        1839, the execution of the bond in question by the defendants on the same
+        day, the revocation of the letters of administration on the 20th of May, 1846,
+        and the appointment and qualification of English as administrator de bonis
+        non on the 21st of July, 1846 ; and it averred that a large amount of property,
+        belonging to the estate of Wilcox, came to the hands of the former administrators
+        between the grant and revocation of the letters of administration ; and it
+        assigned as breaches of the condition of the bond, the failure of the administrators
+        to make an inventory of the property, the conversion of the same to their
+        own use, their neglect to collect and pay the debts due to and from the estate,
+        and their-refusal to account for and deliver to English the property and effects
+        of the estate. The declaration also alleged that Marsh and Felt sold the real
+        estate of Wilcox, under a license obtained by them from the circuit court
+        in May, 1842; and assigned as a breach of the condition of the bond, their
+        refusal to account for and pay over the proceeds to English.\\nThe defendants
+        filed several pleas, on some of which issues of fact were formed, and to others
+        demurrers were sustained. Of the latter, it will only be necessary to notice
+        the 19th and 20th pleas, which were interposed by the defendant Mellen, alone.
+        These pleas related only to the breaches assigned for acts done by Marsh and
+        Felt subsequent to the 22d of March, 1842, and they alleged in substance,
+        that Mellen executed the bond as principal, and not as security for his coadministrator;
+        that on the 22d of March, 1842, he tendered his resignation as administrator,
+        which was on that day accepted by the probate court; and that he had not since
+        intermeddled with the estate.\\nOn the trial, the plaintiff read in evidence
+        an order of the probate court, entered on the 22d of March, 1842, accepting
+        the written resignation of Mellen as one of the administrators; also an order
+        of the same court, entered on the 20th of May, 1846, revoking the letters
+        of administration as to Marsh and Felt; also the proceedings in a case of
+        the application of Marsh and. Felt for leave to sell the real estate of Wilcox,
+        commenced in 1843, \u201E and concluded in 1844, wherein an order of sale
+        was made by the circuit court, and under which order Marsh and Felt sold and
+        conveyed the real estate; and also the proceedings in several cases in the
+        circuit court, commenced by Marsh and Felt as administrators of Wilcox, after
+        the 22d of March, 1842, and in which they recovered judgments.\\nOn the foregoing
+        and other evidence, the court found the issues for the plaintiff, and assessed
+        the damages upon the breaches to $2,204.60; and judgment was rendered against
+        the defendants for the penalty of the bond, to be discharged by the payment
+        of the damages and costs.\\nFirst. Had the administrator de bonis non the
+        right to assign breaches of the condition of the bond ? It was held by this
+        court, in Rowan v. Kirkpatrick, 14 Illinois, 1, and Newhall v. Turney, Ib.
+        338, that an administrator de bonis non could not compel the personal representative
+        of a deceased administrator to account for assets already administered upon;
+        but that the creditors or distributees of the estate could alone maintain
+        such an action. We are entirely content with the decision made in those cases.
+        In both of them an administrator de bonis non had been appointed upon the
+        death of the first administrator. It is undoubtedly the law, irrespective
+        of statutory regulation, that the authority of an administrator de bonis non
+        only extends to such property and effects of the intestate as remain in specie,
+        and have not been 'administered by the former administrator. But this principle
+        is not applicable to the present case. The statute has prescribed a different
+        rule for such cases. The 75th \xA7, ch. 109, R. S., provides : \u201C and
+        in all cases where any such executor or administrator shall have his letters
+        revoked as aforesaid, he shall, nevertheless, be liable on his bond, to such
+        subsequent administrator or administrators, or to any other person or persons
+        aggrieved, for any mismanagement of the estate thus committed to his care
+        as aforesaid; and such subsequent administrator or administrators may have
+        and maintain actions of trover, debt, detinue, account, and on the case, against
+        such former executor or administrator, for all such goods, chattels, debts,
+        and credits as shall have come to the possession of him or her, and which
+        shall be withheld, or may have been wasted, embezzled, or misapplied, and
+        no satisfaction made for the same.\u201D This provision enlarges the powers
+        of an administrator de bonis non, appointed to succeed an administrator whose
+        letters have been revoked. It gives him authority to call upon the removed
+        administrator to account fully for his administration of the estate. It expressly
+        authorizes him to maintain all necessary actions for the purpose. But this
+        provision has no application to the case of the death of the former administrator.
+        It leaves such cases to be governed by the rules of the common law. Without
+        in the least questioning the propriety of the decisions to which reference
+        has been made, we hold th\xE1t where the letters of an administrator are revoked,
+        the administrator de bonis non may maintain the appropriate actions against
+        him, and compel him not only to account for all the property and. effects
+        of the intestate that has come to his hands, but to answer in damages for
+        any maladministration of the estate. English, therefore, had the right to
+        assign breaches of the bond, and enforce any liability of the former administrators,
+        incurred by their laches, fraud, or default in the administration of the estate.\\nSecond.
+        Did Mellen cease to be administrator on the acceptance of his resignation
+        ? The law in force at the time gave him no right, as a matter of course, to
+        resign his trust. Without the sanction of the probate court, his resignation
+        would have been unavailing. He would still have been one of the administrators,
+        competent to exercise the functions and subject to the responsibilities of
+        the office. But we are inclined to hold that the acceptance of his resignation
+        by the probate court, amounted to a revocation of the grant of administration
+        as to him, and from that time cast upon Marsh and Felt the burden of the administration.
+        The court had power to remove him from office, and the acceptance of his resignation
+        may be considered as an exercise of that power. The refusal of an administrator
+        to perform the duties of his trust, is a sufficient cause for revoking his
+        authority, and conferring it upon another; and the removal of one of several
+        administrators, without appointing another in his place, devolves upon the
+        others the entire management of the estate. The resignation may be regarded
+        as a declaration by Mellen that he would no longer participate in the administration
+        of the estate, and the acceptance of the resignation by the court as a revocation
+        of his authority. In the opinion of the court, Mellen ceased to be administrator
+        on the 22d of March, 1842.\\nThird. Is Mellen liable for the acts of Marsh
+        and Felt, done after he ceased to be administrator ? The three were appointed
+        joint administrators of the estate, and gave a joint bond for the performance
+        of their duties. They executed the obligation as principals, and other persons
+        became responsible as their sureties. It is clear that Mellen is liable for
+        the acts of either, done while they all continued to be administrators. They
+        had a joint interest in the property and effects of the estate, and were jointly
+        bound to discharge the duties of the trust. Mellen had as much authority over
+        the estate as either of the other administrators, and was equally answerable
+        for its management. But this common authority and liability ceased on his
+        removal from office. His control over the estate was gone, and he ceased to
+        be responsible for its future management. All the powers and duties of the
+        administration then devolved upon Marsh and Felt, who alone became responsible
+        for their exercise. Mellen ought not to- be held liable for their subsequent
+        maladministration of the estate. This question arose in the case of Brazer
+        v. Clark, 5 Pickering, 96; and it was decided that the estate of a joint executor
+        was not liable for the defaults of the surviving executor, arising after the
+        death of the former. The court said: \u201C By the tenor of their bond, the
+        executors are bound only for the joint executorship ; they may be answerable
+        for all defalcations which accrue during that trust, and their estates be
+        liable for the deficiencies, notwithstanding they have had no participation
+        in the negligence or fraud; but they are not bound in this manner for acts
+        or neglects which take place after their power has ceased. The survivor succeeds
+        to the whole authority and power, and he alone and those who are sureties
+        for him., are responsible.\u201D Again,. \u201C It has been urged, however,
+        that Clark\u2019s estate, if not answerable as principal for the default of
+        Winship after Clark\u2019s death, is at least liable on the ground of suretyship,
+        Clark being to be considered in the light of a surety; but this would be changing
+        the character of his engagement. He was principal in the bond and liable as
+        such, and when discharged from that liability, he incurred no other;\u201D
+        The case of Towne v. Ammidown, 20 Pick. 535, asserts the same doctrine.\\nThe
+        court erred in sustaining the demurrers to the nineteenth and twentieth pleas.
+        For all defaults in the administration of the estate, happening before the
+        22d of March, 1842, Mellen is jointly liable with Marsh and Felt. But for
+        those arising subsequent to that time, English must look exclusively to Marsh
+        and Felt, and the sureties on the administration bond. Mellen is not liable
+        on account of the real estate, for it was converted into assets after the
+        determination of his authority.\\nThe judgment must be reversed, and the cause
+        remanded.\\nJudgment reversed.\",\"type\":\"majority\"}],\"judges\":[],\"head_matter\":\"Benjamin
+        F. Marsh et al., Appellants, v. The People, Appellees.\\nAPPEAL PROM HANCOCK.\\nAn
+        administrator de bonis non, appointed to succeed an administrator whose letters
+        have been revoked, has authority to call upon the removed administrator to
+        account fully for his administration of the estate; and may maintain all necessary
+        actions for the purpose, and may moreover make him answer in damages, for
+        any maladministration of the estate. Miter, where the former administrator
+        dies.\\nThe acceptance of the probate court of the resignation of an administrator,
+        amounts to a revocation of his letters; and if there are other administrators,
+        the burden of administration is cast upon them.\\nThe refusal of an administrator
+        to perform the duties of his trust, is a sufficient cause for revoking his
+        authority. '\\nOne of several administrators, is liable for the acts done
+        by either, while they all continue in office. This liability ceases to attach
+        to such of them as are removed from office, for all acts done after the removal.\\nThis
+        cause was heard before O. C. Skinner, Judge, at October term, 1853, of the
+        Hancock Circuit Court.\\nC. B. Lawrence and S. T. Logan, for appellants.\\nG.
+        Edmunds and O. H. Browning, for appellees.\"}}}]}"
     headers:
       Accept-Ranges:
       - bytes
@@ -113,23 +187,23 @@ interactions:
       CF-Cache-Status:
       - MISS
       CF-RAY:
-      - 6795b1f49b4d0e66-DFW
+      - 82134e1aed87461d-DFW
       Cache-Control:
       - s-maxage=0, max-age=0
       Connection:
       - keep-alive
       Content-Disposition:
-      - attachment; filename="CAP_2021-08-04 06:23:07.254406.json"
+      - attachment; filename="CAP_2023-11-05 07:15:21.680978.json"
       Content-Encoding:
       - gzip
       Content-Length:
-      - '4886'
+      - '4902'
       Content-Type:
       - application/json
       Date:
-      - Wed, 04 Aug 2021 06:23:07 GMT
-      Expect-CT:
-      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      - Sun, 05 Nov 2023 07:15:21 GMT
+      Last-Modified:
+      - Sun, 05 Nov 2023 07:15:21 GMT
       Referrer-Policy:
       - same-origin
       Server:

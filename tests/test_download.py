@@ -149,9 +149,11 @@ class TestDownloads:
     @pytest.mark.vcr("TestDownloads.test_read_case_from_citation.yaml")
     def test_read_cited_case_from_id_using_client(self):
         case = self.client.read(query=3675682, full_case=False)
+        assert case.citations[0].cite == '552 U.S. 85'
         assert case.name_abbreviation == "Kimbrough v. United States"
-        cited_case = self.client.read_cite(cite=case.cites_to[0])
+        cited_case = self.client.read_cite(cite=case.cites_to[6])
         assert cited_case.name_abbreviation == "United States v. Castillo"
+        assert cited_case.citations[0].cite == '460 F.3d 337'
 
     @pytest.mark.vcr
     def test_read_case_list_from_eyecite_case_citation(self):
