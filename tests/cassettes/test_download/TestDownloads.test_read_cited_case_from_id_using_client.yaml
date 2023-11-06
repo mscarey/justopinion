@@ -227,13 +227,13 @@ interactions:
       CF-Cache-Status:
       - MISS
       CF-RAY:
-      - 821355269d5e467e-DFW
+      - 821a84983ccc144c-DFW
       Cache-Control:
       - s-maxage=86400, max-age=3600
       Connection:
       - keep-alive
       Content-Disposition:
-      - attachment; filename="CAP_2023-11-05 07:20:10.159743.json"
+      - attachment; filename="CAP_2023-11-06 04:15:53.763225.json"
       Content-Encoding:
       - gzip
       Content-Length:
@@ -241,73 +241,15 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Sun, 05 Nov 2023 07:20:10 GMT
+      - Mon, 06 Nov 2023 04:15:53 GMT
       Last-Modified:
-      - Sun, 05 Nov 2023 07:20:10 GMT
+      - Mon, 06 Nov 2023 04:15:53 GMT
       Referrer-Policy:
       - same-origin
       Server:
       - cloudflare
       Strict-Transport-Security:
       - max-age=15768000
-      Vary:
-      - Accept, Cookie, Accept-Encoding
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - DENY
-    status:
-      code: 200
-      message: OK
-- request:
-    body: null
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      User-Agent:
-      - python-requests/2.31.0
-    method: GET
-    uri: https://api.case.law/v1/cases/?cite=18+U.+S.+C.+%C2%A7+3742
-  response:
-    body:
-      string: '{"count":0,"next":null,"previous":null,"results":[]}'
-    headers:
-      Access-Control-Allow-Headers:
-      - Authorization
-      Access-Control-Allow-Origin:
-      - '*'
-      Allow:
-      - GET, HEAD, OPTIONS
-      CF-Cache-Status:
-      - MISS
-      CF-RAY:
-      - 82135528eb963473-DFW
-      Cache-Control:
-      - s-maxage=86400, max-age=3600
-      Connection:
-      - keep-alive
-      Content-Disposition:
-      - attachment; filename="CAP_2023-11-05 07:20:10.502576.json"
-      Content-Encoding:
-      - gzip
-      Content-Type:
-      - application/json
-      Date:
-      - Sun, 05 Nov 2023 07:20:10 GMT
-      Last-Modified:
-      - Sun, 05 Nov 2023 07:20:10 GMT
-      Referrer-Policy:
-      - same-origin
-      Server:
-      - cloudflare
-      Strict-Transport-Security:
-      - max-age=15768000
-      Transfer-Encoding:
-      - chunked
       Vary:
       - Accept, Cookie, Accept-Encoding
       X-Content-Type-Options:
