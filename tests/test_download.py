@@ -9,6 +9,7 @@ from justopinion.citations import CAPCitation
 from justopinion.decisions import Decision, Opinion, DecisionError
 from justopinion.download import (
     CAPClient,
+    CourtListenerClient,
     CaseAccessProjectAPIError,
     normalize_case_cite,
 )
@@ -149,11 +150,11 @@ class TestDownloads:
     @pytest.mark.vcr("TestDownloads.test_read_case_from_citation.yaml")
     def test_read_cited_case_from_id_using_client(self):
         case = self.client.read(query=3675682, full_case=False)
-        assert case.citations[0].cite == '552 U.S. 85'
+        assert case.citations[0].cite == "552 U.S. 85"
         assert case.name_abbreviation == "Kimbrough v. United States"
         cited_case = self.client.read_cite(cite=case.cites_to[6])
         assert cited_case.name_abbreviation == "United States v. Castillo"
-        assert cited_case.citations[0].cite == '460 F.3d 337'
+        assert cited_case.citations[0].cite == "460 F.3d 337"
 
     @pytest.mark.vcr
     def test_read_case_list_from_eyecite_case_citation(self):
@@ -165,6 +166,16 @@ class TestDownloads:
     def test_fail_to_read_id_cite(self):
         with pytest.raises(ValueError, match="was type IdCitation, not CaseCitation"):
             self.client.read_decision_list_by_cite(cite="id. at 37")
+
+
+class TestCourtListenerClient:
+    client = CourtListenerClient(api_token=os.getenv("CL_API_KEY"))
+
+    @pytest.mark.vcr
+    def test_download_case_by_id(self):
+        case = self.client.fetch(260804).json()
+        assert case["case_name"] == "Oracle America, Inc. v. Google Inc."
+        assert case["id"] == 260804
 
 
 class TestTextSelection:

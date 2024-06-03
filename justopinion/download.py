@@ -10,6 +10,54 @@ from justopinion.citations import CaseCitation, normalize_case_cite
 from justopinion.decisions import CAPCitation, Decision
 
 
+class CourtListenerClient:
+    """Downloads judicial decisions from CourtListener API."""
+
+    def __init__(self, api_token: str):
+        self.endpoint = "https://www.courtlistener.com/api/rest/v3/"
+        if api_token and api_token.startswith("Token "):
+            api_token = api_token.split("Token ")[1]
+        self.api_token = api_token
+
+    def get_api_headers(self, full_case: bool = False) -> Dict[str, str]:
+        """Get API headers based on whether the full case text is requested."""
+        api_dict = {}
+        if full_case:
+            api_dict["Authorization"] = f"Token {self.api_token}"
+        return api_dict
+
+    def fetch(
+        self, query: Union[int, str, CaseCitation], full_case: bool = False
+    ) -> requests.models.Response:
+        """Query by CourtListener id or citation, and download Docket from CourtListener API."""
+        if isinstance(query, int) or (isinstance(query, str) and query.isdigit()):
+            return self.fetch_id(int(query), full_case=full_case)
+        return self.fetch_cite(query, full_case=full_case)
+
+    def fetch_id(self, id: int, full_case: bool = False) -> requests.models.Response:
+        """
+        Download a decision from CourtListener API.
+
+        :param id:
+            an identifier for a docket in the
+            `CourtListener database <https://www.courtlistener.com/api/rest/v3/>`_,
+            e.g. 260804 for
+            `Oracle America, Inc. v. Google Inc. <https://www.courtlistener.com/api/rest/v3/dockets/260804/>`_.
+        :param full_case:
+            whether to request the full text of the opinion from the
+            `Caselaw Access Project API <https://api.case.law/v1/cases/>`_.
+            If this is ``True``, the CAPClient must have the `api_token` attribute.
+        :returns:
+            the first case in the "results" list for this queried citation.
+        """
+        url = self.endpoint + f"dockets/{id}/"
+        headers = self.get_api_headers(full_case=full_case)
+        response = requests.get(url, headers=headers)
+        if response.status_code == 404:
+            raise CourtListenerAPIError(f"API returned no cases with id {id}")
+        return response
+
+
 class CAPClient:
     """Downloads judicial decisions from Case Access Project API."""
 
@@ -215,5 +263,11 @@ class CAPClient:
 
 class CaseAccessProjectAPIError(Exception):
     """Error for failed attempts to use the Case Access Project API."""
+
+    pass
+
+
+class CourtListenerAPIError(Exception):
+    """Error for failed attempts to use the CourtListener API."""
 
     pass
