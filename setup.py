@@ -25,7 +25,7 @@ setuptools.setup(
     install_requires=[
         "requests~=2.31.0",
         "anchorpoint>=0.8.1",
-        "eyecite~=2.5.2",
+        "eyecite~=2.6.3",
         "pydantic>=2.4.2",
         "python-ranges>=1.2.2",
     ],
