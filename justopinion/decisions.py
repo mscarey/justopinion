@@ -3,13 +3,14 @@
 from __future__ import annotations
 
 import datetime
+from enum import Enum
 from typing import List, Optional, Sequence, Union
 
 from anchorpoint import TextPositionSelector, TextQuoteSelector, TextPositionSet
 from anchorpoint.textselectors import TextPositionSetFactory, TextSequence
 from pydantic import BaseModel, HttpUrl, field_validator
 
-from justopinion.citations import CAPCitation
+from justopinion.citations import CAPCitation, ReporterCitation
 
 
 class ReporterVolume(BaseModel):
@@ -143,6 +144,40 @@ class Opinion(BaseModel):
         return text_locations.as_text_sequence(self.text)
 
 
+class PrecedentialStatus(Enum):
+    PUBLISHED = "Published"
+    UNPUBLISHED = "Unpublished"
+
+
+class OpinionCluster(BaseModel):
+    """
+    A group of opinions that are related to each other, from the CourtListener API.
+
+    https://www.courtlistener.com/api/rest/v3/clusters/
+    """
+
+    resource_uri: HttpUrl
+    id: int
+    absolute_url: str
+    docket_id: int
+    docket: HttpUrl
+    citations: List[ReporterCitation]
+    sub_opinions: List[HttpUrl]
+    date_created: datetime.datetime
+    date_modified: datetime.datetime
+    judges: str
+    date_filed: datetime.date
+    date_filed_is_approximate: bool
+    slug: str
+    case_name_short: str = ""
+    case_name: str
+    case_name_full: str = ""
+    attorneys: str = ""
+    precedential_status: PrecedentialStatus = PrecedentialStatus.PUBLISHED
+    blocked: bool = False
+    headmatter: str = ""
+
+
 class CaseData(BaseModel):
     """The content of a Decision, including Opinions."""
 
@@ -184,6 +219,28 @@ class DecisionError(Exception):
     """Error for failed attempts to assign Opinions to Decisions."""
 
     pass
+
+
+class DecisionCL(BaseModel):
+    opinion_clusters: List[OpinionCluster] = []
+    resource_uri: HttpUrl
+    id: int
+    court: HttpUrl
+    court_id: str
+    clusters: List[str]
+    absolute_url: str
+    date_created: datetime.datetime
+    date_modified: datetime.datetime
+    source: int | None = None
+    appeal_from_str: str = ""
+    assigned_to_str: str = ""
+    referred_to_str: str = ""
+    panel_str: str = ""
+    case_name: str = ""
+    case_name_full: str = ""
+    slug: str
+    docket_number: str
+    blocked: bool = False
 
 
 class Decision(BaseModel):
@@ -270,7 +327,9 @@ class Decision(BaseModel):
         return f"{name}, {citation} ({self.decision_date})"
 
     @field_validator("decision_date", mode="before")
-    def decision_date_must_include_day(cls, v: datetime.date | str) -> datetime.date | str:
+    def decision_date_must_include_day(
+        cls, v: datetime.date | str
+    ) -> datetime.date | str:
         """Add a day of "01" if a string format is missing it."""
         if isinstance(v, str) and len(v) == 7:
             return v + "-01"

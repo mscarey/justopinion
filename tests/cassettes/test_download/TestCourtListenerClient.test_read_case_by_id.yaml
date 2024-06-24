@@ -1,0 +1,252 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://www.courtlistener.com/api/rest/v3/dockets/260804/
+  response:
+    body:
+      string: '{"resource_uri":"https://www.courtlistener.com/api/rest/v3/dockets/260804/","id":260804,"court":"https://www.courtlistener.com/api/rest/v3/courts/cafc/","court_id":"cafc","original_court_info":null,"idb_data":null,"clusters":["https://www.courtlistener.com/api/rest/v3/clusters/2673149/"],"audio_files":[],"assigned_to":null,"referred_to":null,"absolute_url":"/docket/260804/oracle-america-inc-v-google-inc/","date_created":"2014-10-30T00:59:29.076291-07:00","date_modified":"2023-08-31T00:18:49.383005-07:00","source":16,"appeal_from_str":"","assigned_to_str":"","referred_to_str":"","panel_str":"","date_last_index":null,"date_cert_granted":null,"date_cert_denied":null,"date_argued":null,"date_reargued":null,"date_reargument_denied":null,"date_filed":null,"date_terminated":null,"date_last_filing":null,"case_name_short":"","case_name":"Oracle
+        America, Inc. v. Google Inc.","case_name_full":"","slug":"oracle-america-inc-v-google-inc","docket_number":"2013-1021,
+        2013-1022","docket_number_core":"","pacer_case_id":"","cause":"","nature_of_suit":"","jury_demand":"","jurisdiction_type":"","appellate_fee_status":"","appellate_case_type_information":"","mdl_status":"","filepath_ia":"","filepath_ia_json":"","ia_upload_failure_count":null,"ia_needs_upload":null,"ia_date_first_change":null,"date_blocked":null,"blocked":false,"appeal_from":null,"tags":[],"panel":[]}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 24 Jun 2024 05:20:41 GMT
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      - Accept, origin, Cookie
+      Via:
+      - 1.1 7744bfa103b832e34136c7b2eb438bd8.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - 4DVZHVFYqC6-dpV3EfK3Za9ivAPTnmO9VxyMEGDb8fQ60tuRy8d3Gg==
+      X-Amz-Cf-Pop:
+      - IAH50-C3
+      X-Cache:
+      - Miss from cloudfront
+      allow:
+      - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+      content-security-policy:
+      - img-src 'self' https://storage.courtlistener.com/ https://portraits.free.law/
+        data:; frame-src 'self' https://storage.courtlistener.com/ https://hcaptcha.com/
+        https://*.hcaptcha.com/; media-src 'self' https://storage.courtlistener.com/
+        data:; connect-src 'self' https://storage.courtlistener.com/ https://hcaptcha.com/
+        https://*.hcaptcha.com/ https://plausible.io/; default-src 'self' https://storage.courtlistener.com/;
+        style-src 'self' 'report-sample' https://storage.courtlistener.com/ https://hcaptcha.com/
+        https://*.hcaptcha.com/ 'unsafe-inline'; font-src 'self' https://storage.courtlistener.com/
+        data:; script-src 'self' 'report-sample' https://storage.courtlistener.com/
+        https://hcaptcha.com/ https://*.hcaptcha.com/ https://plausible.io/; upgrade-insecure-requests;
+        object-src 'self' https://storage.courtlistener.com/; base-uri 'self'
+      cross-origin-opener-policy:
+      - same-origin
+      permissions-policy:
+      - browsing-topics=()
+      referrer-policy:
+      - same-origin
+      server:
+      - uvicorn
+      strict-transport-security:
+      - max-age=63072000; includeSubDomains; preload
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://www.courtlistener.com/api/rest/v3/clusters/2673149/
+  response:
+    body:
+      string: "{\"resource_uri\":\"https://www.courtlistener.com/api/rest/v3/clusters/2673149/\",\"id\":2673149,\"absolute_url\":\"/opinion/2673149/oracle-america-inc-v-google-inc/\",\"panel\":[],\"non_participating_judges\":[],\"docket_id\":260804,\"docket\":\"https://www.courtlistener.com/api/rest/v3/dockets/260804/\",\"sub_opinions\":[\"https://www.courtlistener.com/api/rest/v3/opinions/2673149/\"],\"citations\":[{\"volume\":750,\"reporter\":\"F.3d\",\"page\":\"1339\",\"type\":1}],\"date_created\":\"2015-12-02T08:49:17.791662-08:00\",\"date_modified\":\"2023-08-31T00:18:49.384672-07:00\",\"judges\":\"O'Malley,
+        Plager, Taranto\",\"date_filed\":\"2014-05-09\",\"date_filed_is_approximate\":false,\"slug\":\"oracle-america-inc-v-google-inc\",\"case_name_short\":\"\",\"case_name\":\"Oracle
+        America, Inc. v. Google Inc.\",\"case_name_full\":\"ORACLE AMERICA, INC.,
+        Plaintiff-Appellant, v. GOOGLE INC., Defendant-Cross-Appellant\",\"scdb_id\":\"\",\"scdb_decision_direction\":null,\"scdb_votes_majority\":null,\"scdb_votes_minority\":null,\"source\":\"CU\",\"procedural_history\":\"\",\"attorneys\":\"E.
+        Joshua Rosenkranz, Orrick, Herring-ton & Sutcliffe LLP, of New York, New York,
+        argued for plaintiff-appellant. With him on the brief were Mark S. Davies,
+        Andrew D. Silverman, Kelly M. Daley; and Annette L. Hurst, Gabriel M. Ramsey,
+        and Elizabeth C. McBride, of San Francisco, CA. Of counsel on the brief were
+        Dorian E. Daley, Deborah K. Miller, Matthew Sarboraria, and Andrew C. Temkin,
+        Oracle America, Inc., of Redwood Shores, CA; and Dale M. Cendali, Diana M.
+        Torres, Sean B. Fernandes, and Joshua L. Simmons, Kirkland & Ellis LLP, of
+        New York, NY. Of counsel were Susan M. Davies, Kirkland & Ellis LLP, of New
+        York, NY; Michael A. Jacobs, Morrison & Foerster LLP, of San Francisco, CA;
+        and Kenneth A. Kuwayti, of Palo Alto, CA., Robert A. Van Nest, Keker & Van
+        Nest LLP, of San Francisco, CA, argued for defendant-cross-appellant. With
+        him on the brief were Christa M. Anderson, Steven A. Hirsch, Michael S. Kwun,
+        and Daniel E. Jackson. Of counsel on the brief were Ian C. Ballon and Heather
+        Meeker, Greenberg Traurig, LLP, of East Palo Alto, CA; Renny Hwang, Google
+        Inc., of Mountain View, CA; and Daryl L. Joseffer and Bruce W. Baber, King
+        & Spalding LLP, of Washington, DC., Marcia B. Paul, Davis Wright Tremaine
+        LLP, of New York, NY, for amicus curiae Ralph Oman. With her on the brief
+        were Lacy H. Koonce, III and Deborah A. Adler., William A. Rudy, Lathrop &
+        Gage LLP, of Kansas City, MO, for amici curiae Picture Archive Council of
+        America, Inc., et al. With him on the brief were Carole E. Handler and Brianna
+        E. Dahlberg, of Los Angeles, CA., Gregory G. Garre, Latham & Watkins, LLP,
+        of Washington, DC, for amici curiae Microsoft Corporation, et al. With him
+        on the brief was Lori Alvino McGill. Of counsel on the brief were Paul T.
+        Dacier, Krishnendu Gupta, EMC Corporation, of Hopkinton, MA; and Douglas Luftman,
+        Netapp, Inc., of Sunnyvale, CA., Jared Bobrow, Weil, Gotshal & Manges LLP,
+        of Redwood Shores, CA, for amici curiae Eugene H. Spafford, Ph.D., et al.
+        With him on the brief was Aaron Y. Huang., Matthew S. Heilman, Jenner & Block
+        LLP, of Washington, DC, for amicus curiae BSA/The Software Alliance. With
+        him on the brief was Paul M. Smith., Steven T. Cottreau, Clifford Chance U.S.
+        LLP, of Washington, DC, for amici curiae, Scott McNealy, et al., Meredith
+        Jacob, Program on Information Justice and Intellectual Property, American
+        University, Washington College of Law, of Washington, DC, for amici curiae
+        Intellectual Property Law Professors., Julie P. Samuels, Electronic Frontier
+        Foundation, of San Francisco, CA, for amici curiae Computer Scientists. With
+        her on the brief was Michael Barclay. Of counsel on the brief was Jason M.
+        Schultz, NYU Technology Law and Policy Clinic, NYU School of Law, of New York,
+        NY., Jonathan Band, Jonathan Band PLLC, of Washington, DC, filed a brief for
+        amicus curiae Computer & Communications Industry Association. With him on
+        the brief was Matthew Schruers, Computer & Communications Industry Association,
+        of Washington, DC., Chad Ruback, The Ruback Law Firm, of Dallas, TX, filed
+        a brief for amici curiae Rackspace US, Inc., et al., Jennifer M. Urban, Samuelson
+        Law, Technology and Public Policy Clinic, U.C. Berkeley School of Law, of
+        Berkeley, CA for amici curiae Software Innovators, et al.\",\"nature_of_suit\":\"\",\"posture\":\"\",\"syllabus\":\"\",\"headnotes\":\"\",\"summary\":\"\",\"disposition\":\"\",\"history\":\"\",\"other_dates\":\"\",\"cross_reference\":\"\",\"correction\":\"\",\"citation_count\":26,\"precedential_status\":\"Published\",\"date_blocked\":null,\"blocked\":false,\"filepath_json_harvard\":\"/storage/harvard_corpus/law.free.cap.f3d.750/1339.4066790.json\",\"arguments\":\"\",\"headmatter\":\"<parties
+        id=\\\"b1363-9\\\">\\n    ORACLE AMERICA, INC., Plaintiff-Appellant, v. GOOGLE
+        INC., Defendant-Cross-Appellant.\\n   </parties><br><docketnumber id=\\\"b1363-12\\\">\\n
+        \   Nos. 2013-1021, 2013-1022.\\n   </docketnumber><br><court id=\\\"b1363-13\\\">\\n
+        \   United States Court of Appeals, Federal Circuit.\\n   </court><br><decisiondate
+        id=\\\"b1363-14\\\">\\n    May 9, 2014.\\n   </decisiondate><br><attorneys
+        id=\\\"b1370-13\\\">\\n<span citation-index=\\\"1\\\" class=\\\"star-pagination\\\"
+        label=\\\"1346\\\"> \\n     *1346\\n     </span>\\n    E. Joshua Rosenkranz,
+        Orrick, Herring-ton &amp; Sutcliffe LLP, of New York, New York, argued for
+        plaintiff-appellant. With him on the brief were Mark S. Davies, Andrew D.
+        Silverman, Kelly M. Daley; and Annette L. Hurst, Gabriel M. Ramsey, and Elizabeth
+        C. McBride, of San Francisco, CA. Of counsel on the brief were Dorian E. Daley,
+        Deborah K. Miller, Matthew Sarboraria, and Andrew C. Temkin, Oracle America,
+        Inc., of Redwood Shores, CA; and Dale M. Cendali, Diana M. Torres, Sean B.
+        Fernandes, and Joshua L. Simmons, Kirkland &amp; Ellis LLP, of New York, NY.
+        Of counsel were Susan M. Davies, Kirkland &amp; Ellis LLP, of New York, NY;
+        Michael A. Jacobs, Morrison &amp; Foerster LLP, of San Francisco, CA; and
+        Kenneth A. Kuwayti, of Palo Alto, CA.\\n   </attorneys><br><attorneys id=\\\"b1370-15\\\">\\n
+        \   Robert A. Van Nest, Keker &amp; Van Nest LLP, of San Francisco, CA, argued
+        for defendant-cross-appellant. With him on the brief were Christa M. Anderson,
+        Steven A. Hirsch, Michael S. Kwun, and Daniel E. Jackson. Of counsel on the
+        brief were Ian C. Ballon and Heather Meeker, Greenberg Traurig, LLP, of East
+        Palo Alto, CA; Renny Hwang, Google Inc., of Mountain View, CA; and Daryl L.
+        Joseffer and Bruce W. Baber, King &amp; Spalding LLP, of Washington, DC.\\n
+        \  </attorneys><br><attorneys id=\\\"b1370-16\\\">\\n    Marcia B. Paul, Davis
+        Wright Tremaine LLP, of New York, NY, for amicus curiae Ralph Oman. With her
+        on the brief were Lacy H. Koonce, III and Deborah A. Adler.\\n   </attorneys><br><attorneys
+        id=\\\"b1370-17\\\">\\n    William A. Rudy, Lathrop &amp; Gage LLP, of Kansas
+        City, MO, for amici curiae Picture Archive Council of America, Inc., et al.
+        With him on the brief were Carole E. Handler and Brianna E. Dahlberg, of Los
+        Angeles, CA.\\n   </attorneys><br><attorneys id=\\\"b1370-18\\\">\\n    Gregory
+        G. Garre, Latham &amp; Watkins, LLP, of Washington, DC, for amici curiae Microsoft
+        Corporation, et al. With him on the brief was Lori Alvino McGill. Of counsel
+        on the brief were Paul T. Dacier, Krishnendu Gupta, EMC Corporation, of Hopkinton,
+        MA; and Douglas Luftman, Netapp, Inc., of Sunnyvale, CA.\\n   </attorneys><br><attorneys
+        id=\\\"b1370-19\\\">\\n    Jared Bobrow, Weil, Gotshal &amp; Manges LLP, of
+        Redwood Shores, CA, for amici curiae Eugene H. Spafford, Ph.D., et al.\\n
+        \   <span citation-index=\\\"1\\\" class=\\\"star-pagination\\\" label=\\\"1347\\\">
+        \\n     *1347\\n     </span>\\n    With him on the brief was Aaron Y. Huang.\\n
+        \  </attorneys><br><attorneys id=\\\"b1371-5\\\">\\n    Matthew S. Heilman,
+        Jenner &amp; Block LLP, of Washington, DC, for amicus curiae BSA/The Software
+        Alliance. With him on the brief was Paul M. Smith.\\n   </attorneys><br><attorneys
+        id=\\\"b1371-6\\\">\\n    Steven T. Cottreau, Clifford Chance U.S. LLP, of
+        Washington, DC, for amici curiae, Scott McNealy, et al.\\n   </attorneys><br><attorneys
+        id=\\\"b1371-7\\\">\\n    Meredith Jacob, Program on Information Justice and
+        Intellectual Property, American University, Washington College of Law, of
+        Washington, DC, for amici curiae Intellectual Property Law Professors.\\n
+        \  </attorneys><br><attorneys id=\\\"b1371-8\\\">\\n    Julie P. Samuels,
+        Electronic Frontier Foundation, of San Francisco, CA, for amici curiae Computer
+        Scientists. With her on the brief was Michael Barclay. Of counsel on the brief
+        was Jason M. Schultz, NYU Technology Law and Policy Clinic, NYU School of
+        Law, of New York, NY.\\n   </attorneys><br><attorneys id=\\\"b1371-9\\\">\\n
+        \   Jonathan Band, Jonathan Band PLLC, of Washington, DC, filed a brief for
+        amicus curiae Computer &amp; Communications Industry Association. With him
+        on the brief was Matthew Schruers, Computer &amp; Communications Industry
+        Association, of Washington, DC.\\n   </attorneys><br><attorneys id=\\\"b1371-10\\\">\\n
+        \   Chad Ruback, The Ruback Law Firm, of Dallas, TX, filed a brief for amici
+        curiae Rackspace US, Inc., et al.\\n   </attorneys><br><attorneys id=\\\"b1371-11\\\">\\n
+        \   Jennifer M. Urban, Samuelson Law, Technology and Public Policy Clinic,
+        U.C. Berkeley School of Law, of Berkeley, CA for amici curiae Software Innovators,
+        et al.\\n   </attorneys><br><judges id=\\\"b1371-12\\\">\\n    Before O\u2019MALLEY,
+        PLAGER, and TARANTO, Circuit Judges.\\n   </judges>\"}"
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 24 Jun 2024 05:20:42 GMT
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      - Accept, origin, Cookie
+      Via:
+      - 1.1 581cc9e04648d59db86524cbae4e46b4.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - R3xdKemTh17uKdR1RzFUSxDIJcceK-KIn4anEWHlIcW0fUR4B0QiMA==
+      X-Amz-Cf-Pop:
+      - IAH50-C3
+      X-Cache:
+      - Miss from cloudfront
+      allow:
+      - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+      content-security-policy:
+      - media-src 'self' https://storage.courtlistener.com/ data:; img-src 'self'
+        https://storage.courtlistener.com/ https://portraits.free.law/ data:; object-src
+        'self' https://storage.courtlistener.com/; upgrade-insecure-requests; font-src
+        'self' https://storage.courtlistener.com/ data:; script-src 'self' 'report-sample'
+        https://storage.courtlistener.com/ https://hcaptcha.com/ https://*.hcaptcha.com/
+        https://plausible.io/; default-src 'self' https://storage.courtlistener.com/;
+        connect-src 'self' https://storage.courtlistener.com/ https://hcaptcha.com/
+        https://*.hcaptcha.com/ https://plausible.io/; base-uri 'self'; frame-src
+        'self' https://storage.courtlistener.com/ https://hcaptcha.com/ https://*.hcaptcha.com/;
+        style-src 'self' 'report-sample' https://storage.courtlistener.com/ https://hcaptcha.com/
+        https://*.hcaptcha.com/ 'unsafe-inline'
+      cross-origin-opener-policy:
+      - same-origin
+      permissions-policy:
+      - browsing-topics=()
+      referrer-policy:
+      - same-origin
+      server:
+      - uvicorn
+      strict-transport-security:
+      - max-age=63072000; includeSubDomains; preload
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    status:
+      code: 200
+      message: OK
+version: 1

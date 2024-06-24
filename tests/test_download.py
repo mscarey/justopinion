@@ -177,6 +177,17 @@ class TestCourtListenerClient:
         assert case["case_name"] == "Oracle America, Inc. v. Google Inc."
         assert case["id"] == 260804
 
+    @pytest.mark.vcr
+    # @pytest.mark.default_cassette(
+    #    "TestCourtListenerClient.test_download_case_by_id.yaml"
+    # )
+    def test_read_case_by_id(self):
+        case = self.client.read_id(260804)
+        assert case.case_name == "Oracle America, Inc. v. Google Inc."
+        assert case.id == 260804
+        name = "Oracle America, Inc. v. Google Inc., 750 F.3d 1339 (2014-05-09)"
+        assert str(case) == name
+
 
 class TestTextSelection:
     client = CAPClient(api_token=os.getenv("CAP_API_KEY"))

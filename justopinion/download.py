@@ -7,7 +7,7 @@ from typing import Dict, List, Optional, Union
 import requests
 
 from justopinion.citations import CaseCitation, normalize_case_cite
-from justopinion.decisions import CAPCitation, Decision
+from justopinion.decisions import CAPCitation, Decision, DecisionCL, OpinionCluster
 
 
 class CourtListenerClient:
@@ -44,9 +44,7 @@ class CourtListenerClient:
             e.g. 260804 for
             `Oracle America, Inc. v. Google Inc. <https://www.courtlistener.com/api/rest/v3/dockets/260804/>`_.
         :param full_case:
-            whether to request the full text of the opinion from the
-            `Caselaw Access Project API <https://api.case.law/v1/cases/>`_.
-            If this is ``True``, the CAPClient must have the `api_token` attribute.
+            whether to request the full text of the opinion (unused in CourtListener API).
         :returns:
             the first case in the "results" list for this queried citation.
         """
@@ -56,6 +54,32 @@ class CourtListenerClient:
         if response.status_code == 404:
             raise CourtListenerAPIError(f"API returned no cases with id {id}")
         return response
+
+    def read_id(self, id: int, full_case: bool = False) -> Decision:
+        """
+        Download a decision from Caselaw Access Project API.
+
+        :param cap_id:
+            an identifier for an opinion in the
+            `Caselaw Access Project database <https://case.law/api/>`_,
+            e.g. 4066790 for
+            `Oracle America, Inc. v. Google Inc. <https://api.case.law/v1/cases/4066790/>`_.
+        :param full_case:
+            whether to request the full text of the opinion from the
+            `Caselaw Access Project API <https://api.case.law/v1/cases/>`_.
+            If this is ``True``, the CAPClient must have the `api_token` attribute.
+        :returns:
+            a Decision created from the first case in the "results" list for
+            this queried citation.
+        """
+        result = self.fetch_id(id=id, full_case=full_case)
+
+        decision = DecisionCL(**result.json())
+        if decision.clusters:
+            headers = self.get_api_headers(full_case=full_case)
+            response = requests.get(decision.clusters[0], headers=headers)
+            decision.opinion_clusters = [OpinionCluster(**response.json())]
+        return decision
 
 
 class CAPClient:
