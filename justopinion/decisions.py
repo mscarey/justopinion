@@ -242,6 +242,12 @@ class DecisionCL(BaseModel):
     docket_number: str
     blocked: bool = False
 
+    def __str__(self):
+        cluster = self.opinion_clusters[0] if self.opinion_clusters else None
+        decision_date = f" ({cluster.date_filed.isoformat()})" if cluster else ""
+        citation = cluster.citations[0] if cluster else ""
+        return f"{self.case_name}, {str(citation)}{decision_date}"
+
 
 class Decision(BaseModel):
     r"""

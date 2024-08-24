@@ -47,7 +47,7 @@ class ReporterCitation(BaseModel):
     page: str
 
     def __str__(self) -> str:
-        return f"{self.reporter} {self.volume} {self.page}"
+        return f"{self.volume} {self.reporter} {self.page}"
 
 
 def normalize_case_cite(cite: Union[str, CaseCitation, CAPCitation]) -> str:
