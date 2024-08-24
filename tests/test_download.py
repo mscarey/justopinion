@@ -188,6 +188,18 @@ class TestCourtListenerClient:
         name = "Oracle America, Inc. v. Google Inc., 750 F.3d 1339 (2014-05-09)"
         assert str(case) == name
 
+    @pytest.mark.vcr
+    def test_download_case_by_string_id(self):
+        case = self.client.fetch("260804")
+        assert case.json()["case_name"] == "Oracle America, Inc. v. Google Inc."
+
+    @pytest.mark.vcr
+    def test_full_case_by_cite(self):
+        response = self.client.fetch("49 F.3d 807", full_case=True)
+        lotus = response.json()["results"][0]
+        assert lotus["decision_date"] == "1995-03-09"
+        assert lotus["casebody"]["data"]["opinions"][0]["author"].startswith("STAHL")
+
 
 class TestTextSelection:
     client = CAPClient(api_token=os.getenv("CAP_API_KEY"))

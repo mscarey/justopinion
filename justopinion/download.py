@@ -34,6 +34,41 @@ class CourtListenerClient:
             return self.fetch_id(int(query), full_case=full_case)
         return self.fetch_cite(query, full_case=full_case)
 
+    def fetch_cite(
+        self, cite: Union[str, CaseCitation], full_case: bool = False
+    ) -> requests.models.Response:
+        """
+        Get the API list response for a queried citation from the CAP API.
+
+        :param cite:
+            a citation linked to an opinion in the
+            `Caselaw Access Project database <https://case.law/api/>`_.
+            Usually these will be in the traditional format
+            ``[Volume Number] [Reporter Name Abbreviation] [Page Number]``, e.g.
+            `750 F.3d 1339 <https://case.law/search/#/cases?page=1&cite=%22750%20F.3d%201339%22>`_
+            for Oracle America, Inc. v. Google Inc.
+        :param full_case:
+            whether to request the full text of the opinion from the
+            `Caselaw Access Project API <https://api.case.law/v1/cases/>`_.
+            If this is ``True``, the CAPClient must have the `api_token` attribute.
+        :returns:
+            the "results" list for this queried citation.
+        """
+
+        normalized_cite = normalize_case_cite(cite)
+
+        params = {"cite": normalized_cite}
+
+        headers = self.get_api_headers(full_case=full_case)
+
+        if full_case:
+            params["full_case"] = "true"
+        response = requests.get(self.endpoint, params=params, headers=headers)
+        if response.status_code == 401:
+            detail = response.json()["detail"]
+            raise CourtListenerAPIError(f"{detail}")
+        return response
+
     def fetch_id(self, id: int, full_case: bool = False) -> requests.models.Response:
         """
         Download a decision from CourtListener API.

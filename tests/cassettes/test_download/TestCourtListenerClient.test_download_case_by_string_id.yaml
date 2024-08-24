@@ -1,0 +1,75 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://www.courtlistener.com/api/rest/v3/dockets/260804/
+  response:
+    body:
+      string: '{"resource_uri":"https://www.courtlistener.com/api/rest/v3/dockets/260804/","id":260804,"court":"https://www.courtlistener.com/api/rest/v3/courts/cafc/","court_id":"cafc","original_court_info":null,"idb_data":null,"clusters":["https://www.courtlistener.com/api/rest/v3/clusters/2673149/"],"audio_files":[],"assigned_to":null,"referred_to":null,"absolute_url":"/docket/260804/oracle-america-inc-v-google-inc/","date_created":"2014-10-30T00:59:29.076291-07:00","date_modified":"2023-08-31T00:18:49.383005-07:00","source":16,"appeal_from_str":"","assigned_to_str":"","referred_to_str":"","panel_str":"","date_last_index":null,"date_cert_granted":null,"date_cert_denied":null,"date_argued":null,"date_reargued":null,"date_reargument_denied":null,"date_filed":null,"date_terminated":null,"date_last_filing":null,"case_name_short":"","case_name":"Oracle
+        America, Inc. v. Google Inc.","case_name_full":"","slug":"oracle-america-inc-v-google-inc","docket_number":"2013-1021,
+        2013-1022","docket_number_core":"","federal_dn_office_code":"","federal_dn_case_type":"","federal_dn_judge_initials_assigned":"","federal_dn_judge_initials_referred":"","federal_defendant_number":null,"pacer_case_id":"","cause":"","nature_of_suit":"","jury_demand":"","jurisdiction_type":"","appellate_fee_status":"","appellate_case_type_information":"","mdl_status":"","filepath_ia":"","filepath_ia_json":"","ia_upload_failure_count":null,"ia_needs_upload":null,"ia_date_first_change":null,"date_blocked":null,"blocked":false,"appeal_from":null,"parent_docket":null,"tags":[],"panel":[]}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 24 Aug 2024 08:17:05 GMT
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      - Accept, origin, Cookie
+      Via:
+      - 1.1 6d22f808ca7913389d497e76f02c0ffc.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - oDdFG3kxLo1XkP6A2wZHA53mRxFy9G9Q4feAdckwdHSgEisURxLBLA==
+      X-Amz-Cf-Pop:
+      - PHX52-P2
+      X-Cache:
+      - Miss from cloudfront
+      allow:
+      - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+      content-security-policy:
+      - font-src 'self' https://storage.courtlistener.com/ data:; style-src 'self'
+        'report-sample' https://storage.courtlistener.com/ https://hcaptcha.com/ https://*.hcaptcha.com/
+        'unsafe-inline'; object-src 'self' https://storage.courtlistener.com/; upgrade-insecure-requests;
+        frame-src 'self' https://storage.courtlistener.com/ https://hcaptcha.com/
+        https://*.hcaptcha.com/; default-src 'self' https://storage.courtlistener.com/;
+        media-src 'self' https://storage.courtlistener.com/ data:; connect-src 'self'
+        https://storage.courtlistener.com/ https://hcaptcha.com/ https://*.hcaptcha.com/
+        https://plausible.io/; img-src 'self' https://storage.courtlistener.com/ https://portraits.free.law/
+        https://seals.free.law/ data:; script-src 'self' 'report-sample' https://storage.courtlistener.com/
+        https://hcaptcha.com/ https://*.hcaptcha.com/ https://plausible.io/; base-uri
+        'self'
+      cross-origin-opener-policy:
+      - same-origin
+      permissions-policy:
+      - browsing-topics=()
+      referrer-policy:
+      - same-origin
+      server:
+      - uvicorn
+      strict-transport-security:
+      - max-age=63072000; includeSubDomains; preload
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+    status:
+      code: 200
+      message: OK
+version: 1
