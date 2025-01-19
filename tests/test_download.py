@@ -189,6 +189,16 @@ class TestCourtListenerClient:
         assert str(case) == name
 
     @pytest.mark.vcr
+    @pytest.mark.default_cassette("TestCourtListenerClient.test_read_case_by_id.yaml")
+    def test_get_opinions_by_id(self):
+        case = self.client.read_id(260804)
+        assert case.case_name == "Oracle America, Inc. v. Google Inc."
+        assert case.id == 260804
+        cluster = case.opinion_clusters[0]
+        opinions = self.client.read_cluster_opinions(cluster)
+        assert opinions[0].author == "O'Malley"
+
+    @pytest.mark.vcr
     def test_download_case_by_string_id(self):
         case = self.client.fetch("260804")
         assert case.json()["case_name"] == "Oracle America, Inc. v. Google Inc."

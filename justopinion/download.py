@@ -7,7 +7,13 @@ from typing import Dict, List, Optional, Union
 import requests
 
 from justopinion.citations import CaseCitation, normalize_case_cite
-from justopinion.decisions import CAPCitation, Decision, DecisionCL, OpinionCluster
+from justopinion.decisions import (
+    CAPCitation,
+    CLOpinion,
+    Decision,
+    DecisionCL,
+    OpinionCluster,
+)
 
 
 class CourtListenerClient:
@@ -74,33 +80,33 @@ class CourtListenerClient:
 
         :param id:
             an identifier for a docket in the
-            `CourtListener database <https://www.courtlistener.com/api/rest/v3/>`_,
+            `CourtListener database <https://www.courtlistener.com/api/rest/v4/>`_,
             e.g. 260804 for
-            `Oracle America, Inc. v. Google Inc. <https://www.courtlistener.com/api/rest/v3/dockets/260804/>`_.
+            `Oracle America, Inc. v. Google Inc. <https://www.courtlistener.com/api/rest/v4/dockets/260804/>`_.
         :param full_case:
             whether to request the full text of the opinion (unused in CourtListener API).
         :returns:
             the first case in the "results" list for this queried citation.
         """
         url = self.endpoint + f"dockets/{id}/"
-        headers = self.get_api_headers(full_case=full_case)
+        headers = self.get_api_headers(full_case=True)
         response = requests.get(url, headers=headers)
         if response.status_code == 404:
             raise CourtListenerAPIError(f"API returned no cases with id {id}")
         return response
 
-    def read_id(self, id: int, full_case: bool = False) -> Decision:
+    def read_id(self, id: int, full_case: bool = False) -> DecisionCL:
         """
         Download a decision from Caselaw Access Project API.
 
         :param cap_id:
-            an identifier for an opinion in the
-            `Caselaw Access Project database <https://case.law/api/>`_,
-            e.g. 4066790 for
-            `Oracle America, Inc. v. Google Inc. <https://api.case.law/v1/cases/4066790/>`_.
+            an identifier for a docket in the
+            `CourtListener <https://www.courtlistener.com/>`_ database,
+            e.g. 260804 for
+            `Oracle America, Inc. v. Google Inc. <https://www.courtlistener.com/api/rest/v4/dockets/260804/>`_.
         :param full_case:
             whether to request the full text of the opinion from the
-            `Caselaw Access Project API <https://api.case.law/v1/cases/>`_.
+            `CourtListener API <https://www.courtlistener.com/api/rest/v4/>`_.
             If this is ``True``, the CourtListenerClient must have the `api_token` attribute.
         :returns:
             a Decision created from the first case in the "results" list for
@@ -114,6 +120,16 @@ class CourtListenerClient:
             response = requests.get(decision.clusters[0], headers=headers)
             decision.opinion_clusters = [OpinionCluster(**response.json())]
         return decision
+
+    def read_cluster_opinions(self, cluster: OpinionCluster) -> List[CLOpinion]:
+        """Download and deserialize all opinions in a cluster."""
+        headers = self.get_api_headers(full_case=True)
+        return [
+            CLOpinion(**response.json())
+            for response in [
+                requests.get(str(url), headers=headers) for url in cluster.sub_opinions
+            ]
+        ]
 
 
 class CAPClient:

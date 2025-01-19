@@ -8,7 +8,7 @@ from typing import List, Optional, Sequence, Union
 
 from anchorpoint import TextPositionSelector, TextQuoteSelector, TextPositionSet
 from anchorpoint.textselectors import TextPositionSetFactory, TextSequence
-from pydantic import BaseModel, HttpUrl, field_validator
+from pydantic import BaseModel, Field, HttpUrl, field_validator
 
 from justopinion.citations import CAPCitation, ReporterCitation
 
@@ -97,7 +97,7 @@ class Opinion(BaseModel):
 
     type: str = "majority"
     author: str = ""
-    text: str = ""
+    text: str = Field(default="")
 
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}(type="{self.type}", author="{self.author}")'
@@ -144,6 +144,36 @@ class Opinion(BaseModel):
         return text_locations.as_text_sequence(self.text)
 
 
+class CLOpinion(Opinion):
+    """A judicial opinion from the CourtListener API."""
+
+    resource_uri: HttpUrl
+    id: int
+    absolute_url: str
+    cluster_id: int
+    author_id: int | None
+    author: str = Field(alias="author_str", default="")
+    per_curiam: bool = False
+    joined_by: list[str] = []
+    joined_by_str: str = ""
+    date_created: datetime.datetime
+    date_modified: datetime.datetime
+    judges: str = ""
+    sha1: str = ""
+    page_count: int | None = None
+    download_url: HttpUrl | None = None
+    local_path: str | None = None
+    text: str = Field(alias="plain_text", default="")
+    html: str = ""
+    html_lawbox: str = ""
+    html_columbia: str = ""
+    html_anon_2020: str = ""
+    xml_harvard: str = ""
+    html_with_citations: str = ""
+    extracted_by_ocr: bool = False
+    opinions_cited: list[HttpUrl] = []
+
+
 class PrecedentialStatus(Enum):
     PUBLISHED = "Published"
     UNPUBLISHED = "Unpublished"
@@ -153,7 +183,7 @@ class OpinionCluster(BaseModel):
     """
     A group of opinions that are related to each other, from the CourtListener API.
 
-    https://www.courtlistener.com/api/rest/v3/clusters/
+    https://www.courtlistener.com/api/rest/v4/clusters/
     """
 
     resource_uri: HttpUrl
