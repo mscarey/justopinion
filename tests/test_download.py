@@ -196,9 +196,10 @@ class TestCourtListenerClient:
     @pytest.mark.vcr
     def test_full_case_by_cite(self):
         response = self.client.fetch("49 F.3d 807", full_case=True)
-        lotus = response.json()["results"][0]
-        assert lotus["decision_date"] == "1995-03-09"
-        assert lotus["casebody"]["data"]["opinions"][0]["author"].startswith("STAHL")
+        lotus = response.json()[0]
+        cluster = lotus["clusters"][0]
+        assert cluster["date_filed"] == "1995-03-09"
+        assert cluster["judges"] == "Torruella, Boudin, Stahl"
 
 
 class TestTextSelection:

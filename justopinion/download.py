@@ -14,7 +14,7 @@ class CourtListenerClient:
     """Downloads judicial decisions from CourtListener API."""
 
     def __init__(self, api_token: str):
-        self.endpoint = "https://www.courtlistener.com/api/rest/v3/"
+        self.endpoint = "https://www.courtlistener.com/api/rest/v4/"
         if api_token and api_token.startswith("Token "):
             api_token = api_token.split("Token ")[1]
         self.api_token = api_token
@@ -32,38 +32,37 @@ class CourtListenerClient:
         """Query by CourtListener id or citation, and download Docket from CourtListener API."""
         if isinstance(query, int) or (isinstance(query, str) and query.isdigit()):
             return self.fetch_id(int(query), full_case=full_case)
-        return self.fetch_cite(query, full_case=full_case)
+        return self.fetch_cite(query)
 
-    def fetch_cite(
-        self, cite: Union[str, CaseCitation], full_case: bool = False
-    ) -> requests.models.Response:
+    def fetch_cite(self, cite: Union[str, CaseCitation]) -> requests.models.Response:
         """
-        Get the API list response for a queried citation from the CAP API.
+        Get the API list response for a queried citation from the CourtListener API.
+
+        This will require a query to the `citation-lookup endpoint <https://www.courtlistener.com/api/rest/v4/citation-lookup/>`,
+        so the CourtListenerClient will need to have the `api_token` attribute.
 
         :param cite:
             a citation linked to an opinion in the
-            `Caselaw Access Project database <https://case.law/api/>`_.
+            `CourtListener database <https://www.courtlistener.com/help/api/rest/>`_.
             Usually these will be in the traditional format
             ``[Volume Number] [Reporter Name Abbreviation] [Page Number]``, e.g.
-            `750 F.3d 1339 <https://case.law/search/#/cases?page=1&cite=%22750%20F.3d%201339%22>`_
+            `750 F.3d 1339`
             for Oracle America, Inc. v. Google Inc.
         :param full_case:
             whether to request the full text of the opinion from the
-            `Caselaw Access Project API <https://api.case.law/v1/cases/>`_.
-            If this is ``True``, the CAPClient must have the `api_token` attribute.
+            `API's Opinions endpoint <https://www.courtlistener.com/api/rest/v4/opinions/>`_.
         :returns:
             the "results" list for this queried citation.
         """
 
         normalized_cite = normalize_case_cite(cite)
+        volume, reporter, page = normalized_cite.split(" ")
 
-        params = {"cite": normalized_cite}
-
-        headers = self.get_api_headers(full_case=full_case)
-
-        if full_case:
-            params["full_case"] = "true"
-        response = requests.get(self.endpoint, params=params, headers=headers)
+        # CourtListener requires an API key for a cite lookup
+        headers = self.get_api_headers(full_case=True)
+        lookup_endpoint = self.endpoint + "citation-lookup/"
+        params = {"reporter": reporter, "volume": volume, "page": page}
+        response = requests.get(lookup_endpoint, data=params, headers=headers)
         if response.status_code == 401:
             detail = response.json()["detail"]
             raise CourtListenerAPIError(f"{detail}")
@@ -102,7 +101,7 @@ class CourtListenerClient:
         :param full_case:
             whether to request the full text of the opinion from the
             `Caselaw Access Project API <https://api.case.law/v1/cases/>`_.
-            If this is ``True``, the CAPClient must have the `api_token` attribute.
+            If this is ``True``, the CourtListenerClient must have the `api_token` attribute.
         :returns:
             a Decision created from the first case in the "results" list for
             this queried citation.
