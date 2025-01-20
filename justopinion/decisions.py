@@ -251,6 +251,25 @@ class DecisionError(Exception):
     pass
 
 
+class CitationResponse(BaseModel):
+    """
+    A response from the CourtListener API for a citation query.
+
+    :param results:
+        The list of citations found in the query.
+    :param next:
+        The URL of the next page of results, if any.
+    """
+
+    citation: str
+    normalized_citations: list[str]
+    start_index: int
+    end_index: int
+    status: int
+    error_message: str
+    clusters: list[OpinionCluster] = []
+
+
 class DecisionCL(BaseModel):
     opinion_clusters: List[OpinionCluster] = []
     resource_uri: HttpUrl

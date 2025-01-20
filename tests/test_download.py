@@ -3,12 +3,20 @@ import os
 
 from dotenv import load_dotenv
 import eyecite
+from pydantic import HttpUrl
 import pytest
 
 from justopinion.citations import CAPCitation
-from justopinion.decisions import Decision, Opinion, DecisionError
+from justopinion.decisions import (
+    CLOpinion,
+    Decision,
+    Opinion,
+    DecisionError,
+    OpinionCluster,
+)
 from justopinion.download import (
     CAPClient,
+    CitationResponse,
     CourtListenerClient,
     CaseAccessProjectAPIError,
     normalize_case_cite,
@@ -197,6 +205,16 @@ class TestCourtListenerClient:
         cluster = case.opinion_clusters[0]
         opinions = self.client.read_cluster_opinions(cluster)
         assert opinions[0].author == "O'Malley"
+
+    @pytest.mark.vcr
+    def test_read_case_for_cite(self):
+        case: CitationResponse = self.client.read_cite(cite="750 F.3d 1339")
+        cluster: OpinionCluster = case.clusters[0]
+        opinion: CLOpinion = self.client.read_cluster_opinions(cluster)[0]
+        assert (
+            str(opinion.opinions_cited[0])
+            == "https://www.courtlistener.com/api/rest/v4/opinions/101754/"
+        )
 
     @pytest.mark.vcr
     def test_download_case_by_string_id(self):
