@@ -3,12 +3,21 @@ import os
 
 from dotenv import load_dotenv
 import eyecite
+from pydantic import HttpUrl
 import pytest
 
 from justopinion.citations import CAPCitation
-from justopinion.decisions import Decision, Opinion, DecisionError
+from justopinion.decisions import (
+    CLOpinion,
+    Decision,
+    Opinion,
+    DecisionError,
+    OpinionCluster,
+)
 from justopinion.download import (
     CAPClient,
+    CitationResponse,
+    CourtListenerClient,
     CaseAccessProjectAPIError,
     normalize_case_cite,
 )
@@ -149,11 +158,11 @@ class TestDownloads:
     @pytest.mark.vcr("TestDownloads.test_read_case_from_citation.yaml")
     def test_read_cited_case_from_id_using_client(self):
         case = self.client.read(query=3675682, full_case=False)
-        assert case.citations[0].cite == '552 U.S. 85'
+        assert case.citations[0].cite == "552 U.S. 85"
         assert case.name_abbreviation == "Kimbrough v. United States"
         cited_case = self.client.read_cite(cite=case.cites_to[6])
         assert cited_case.name_abbreviation == "United States v. Castillo"
-        assert cited_case.citations[0].cite == '460 F.3d 337'
+        assert cited_case.citations[0].cite == "460 F.3d 337"
 
     @pytest.mark.vcr
     def test_read_case_list_from_eyecite_case_citation(self):
@@ -165,6 +174,60 @@ class TestDownloads:
     def test_fail_to_read_id_cite(self):
         with pytest.raises(ValueError, match="was type IdCitation, not CaseCitation"):
             self.client.read_decision_list_by_cite(cite="id. at 37")
+
+
+class TestCourtListenerClient:
+    client = CourtListenerClient(api_token=os.getenv("CL_API_KEY"))
+
+    @pytest.mark.vcr
+    def test_download_case_by_id(self):
+        case = self.client.fetch(260804).json()
+        assert case["case_name"] == "Oracle America, Inc. v. Google Inc."
+        assert case["id"] == 260804
+
+    @pytest.mark.vcr
+    # @pytest.mark.default_cassette(
+    #    "TestCourtListenerClient.test_download_case_by_id.yaml"
+    # )
+    def test_read_case_by_id(self):
+        case = self.client.read_id(260804)
+        assert case.case_name == "Oracle America, Inc. v. Google Inc."
+        assert case.id == 260804
+        name = "Oracle America, Inc. v. Google Inc., 750 F.3d 1339 (2014-05-09)"
+        assert str(case) == name
+
+    @pytest.mark.vcr
+    @pytest.mark.default_cassette("TestCourtListenerClient.test_read_case_by_id.yaml")
+    def test_get_opinions_by_id(self):
+        case = self.client.read_id(260804)
+        assert case.case_name == "Oracle America, Inc. v. Google Inc."
+        assert case.id == 260804
+        cluster = case.opinion_clusters[0]
+        opinions = self.client.read_cluster_opinions(cluster)
+        assert opinions[0].author == "O'Malley"
+
+    @pytest.mark.vcr
+    def test_read_case_for_cite(self):
+        case: CitationResponse = self.client.read_cite(cite="750 F.3d 1339")
+        cluster: OpinionCluster = case.clusters[0]
+        opinion: CLOpinion = self.client.read_cluster_opinions(cluster)[0]
+        assert (
+            str(opinion.opinions_cited[0])
+            == "https://www.courtlistener.com/api/rest/v4/opinions/101754/"
+        )
+
+    @pytest.mark.vcr
+    def test_download_case_by_string_id(self):
+        case = self.client.fetch("260804")
+        assert case.json()["case_name"] == "Oracle America, Inc. v. Google Inc."
+
+    @pytest.mark.vcr
+    def test_full_case_by_cite(self):
+        response = self.client.fetch("49 F.3d 807", full_case=True)
+        lotus = response.json()[0]
+        cluster = lotus["clusters"][0]
+        assert cluster["date_filed"] == "1995-03-09"
+        assert cluster["judges"] == "Torruella, Boudin, Stahl"
 
 
 class TestTextSelection:

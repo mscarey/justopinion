@@ -35,6 +35,21 @@ class CAPCitation(BaseModel):
         return f"Citation to {self.cite}"
 
 
+class ReporterCitation(BaseModel):
+    """
+    The volume, reporter, and initial page number of a case in a reporter.
+
+    Based on the CourtListener API's Cluster endpoint's citation object.
+    """
+
+    volume: int
+    reporter: str
+    page: str
+
+    def __str__(self) -> str:
+        return f"{self.volume} {self.reporter} {self.page}"
+
+
 def normalize_case_cite(cite: Union[str, CaseCitation, CAPCitation]) -> str:
     """Get just the text that identifies a citation."""
     if isinstance(cite, CAPCitation):

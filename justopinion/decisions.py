@@ -3,13 +3,14 @@
 from __future__ import annotations
 
 import datetime
+from enum import Enum
 from typing import List, Optional, Sequence, Union
 
 from anchorpoint import TextPositionSelector, TextQuoteSelector, TextPositionSet
 from anchorpoint.textselectors import TextPositionSetFactory, TextSequence
-from pydantic import BaseModel, HttpUrl, field_validator
+from pydantic import BaseModel, Field, HttpUrl, field_validator
 
-from justopinion.citations import CAPCitation
+from justopinion.citations import CAPCitation, ReporterCitation
 
 
 class ReporterVolume(BaseModel):
@@ -96,7 +97,7 @@ class Opinion(BaseModel):
 
     type: str = "majority"
     author: str = ""
-    text: str = ""
+    text: str = Field(default="")
 
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}(type="{self.type}", author="{self.author}")'
@@ -143,6 +144,70 @@ class Opinion(BaseModel):
         return text_locations.as_text_sequence(self.text)
 
 
+class CLOpinion(Opinion):
+    """A judicial opinion from the CourtListener API."""
+
+    resource_uri: HttpUrl
+    id: int
+    absolute_url: str
+    cluster_id: int
+    author_id: int | None
+    author: str = Field(alias="author_str", default="")
+    per_curiam: bool = False
+    joined_by: list[str] = []
+    joined_by_str: str = ""
+    date_created: datetime.datetime
+    date_modified: datetime.datetime
+    judges: str = ""
+    sha1: str = ""
+    page_count: int | None = None
+    download_url: HttpUrl | None = None
+    local_path: str | None = None
+    text: str = Field(alias="plain_text", default="")
+    html: str = ""
+    html_lawbox: str = ""
+    html_columbia: str = ""
+    html_anon_2020: str = ""
+    xml_harvard: str = ""
+    html_with_citations: str = ""
+    extracted_by_ocr: bool = False
+    opinions_cited: list[HttpUrl] = []
+
+
+class PrecedentialStatus(Enum):
+    PUBLISHED = "Published"
+    UNPUBLISHED = "Unpublished"
+
+
+class OpinionCluster(BaseModel):
+    """
+    A group of opinions that are related to each other, from the CourtListener API.
+
+    https://www.courtlistener.com/api/rest/v4/clusters/
+    """
+
+    resource_uri: HttpUrl
+    id: int
+    absolute_url: str
+    docket_id: int
+    docket: HttpUrl
+    citations: List[ReporterCitation]
+    sub_opinions: List[HttpUrl]
+    date_created: datetime.datetime
+    date_modified: datetime.datetime
+    judges: str
+    date_filed: datetime.date
+    date_filed_is_approximate: bool
+    slug: str
+    case_name_short: str = ""
+    case_name: str
+    case_name_full: str = ""
+    attorneys: str = ""
+    precedential_status: PrecedentialStatus = PrecedentialStatus.PUBLISHED
+    blocked: bool = False
+    headmatter: str = ""
+
+
 class CaseData(BaseModel):
     """The content of a Decision, including Opinions."""
 
@@ -184,6 +249,53 @@ class DecisionError(Exception):
     """Error for failed attempts to assign Opinions to Decisions."""
 
     pass
+
+
+class CitationResponse(BaseModel):
+    """
+    A response from the CourtListener API for a citation query.
+
+    :param results:
+        The list of citations found in the query.
+    :param next:
+        The URL of the next page of results, if any.
+    """
+
+    citation: str
+    normalized_citations: list[str]
+    start_index: int
+    end_index: int
+    status: int
+    error_message: str
+    clusters: list[OpinionCluster] = []
+
+
+class DecisionCL(BaseModel):
+    opinion_clusters: List[OpinionCluster] = []
+    resource_uri: HttpUrl
+    id: int
+    court: HttpUrl
+    court_id: str
+    clusters: List[str]
+    absolute_url: str
+    date_created: datetime.datetime
+    date_modified: datetime.datetime
+    source: int | None = None
+    appeal_from_str: str = ""
+    assigned_to_str: str = ""
+    referred_to_str: str = ""
+    panel_str: str = ""
+    case_name: str = ""
+    case_name_full: str = ""
+    slug: str
+    docket_number: str
+    blocked: bool = False
+
+    def __str__(self):
+        cluster = self.opinion_clusters[0] if self.opinion_clusters else None
+        decision_date = f" ({cluster.date_filed.isoformat()})" if cluster else ""
+        citation = cluster.citations[0] if cluster else ""
+        return f"{self.case_name}, {str(citation)}{decision_date}"
 
 
 class Decision(BaseModel):
@@ -270,7 +382,9 @@ class Decision(BaseModel):
         return f"{name}, {citation} ({self.decision_date})"
 
     @field_validator("decision_date", mode="before")
-    def decision_date_must_include_day(cls, v: datetime.date | str) -> datetime.date | str:
+    def decision_date_must_include_day(
+        cls, v: datetime.date | str
+    ) -> datetime.date | str:
         """Add a day of "01" if a string format is missing it."""
         if isinstance(v, str) and len(v) == 7:
             return v + "-01"

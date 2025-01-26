@@ -2,7 +2,8 @@ Justopinion
 ===========
 
 A Python library for downloading and researching legal opinions
-using the `Caselaw Access Project API`_.
+using the `Caselaw Access Project API`_. Note that new CAP accounts
+are no longer available and the CAP API was sunset on September 1, 2024.
 
 .. image:: https://img.shields.io/badge/open-ethical-%234baaaa
     :target: https://ethicalsource.dev/licenses/
