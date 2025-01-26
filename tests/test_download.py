@@ -8,7 +8,7 @@ import pytest
 
 from justopinion.citations import CAPCitation
 from justopinion.decisions import (
-    CLOpinion,
+    OpinionCL,
     Decision,
     Opinion,
     DecisionError,
@@ -210,7 +210,7 @@ class TestCourtListenerClient:
     def test_read_case_for_cite(self):
         case: CitationResponse = self.client.read_cite(cite="750 F.3d 1339")
         cluster: OpinionCluster = case.clusters[0]
-        opinion: CLOpinion = self.client.read_cluster_opinions(cluster)[0]
+        opinion: OpinionCL = self.client.read_cluster_opinions(cluster)[0]
         assert (
             str(opinion.opinions_cited[0])
             == "https://www.courtlistener.com/api/rest/v4/opinions/101754/"

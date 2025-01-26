@@ -10,7 +10,7 @@ from justopinion.citations import CaseCitation, normalize_case_cite
 from justopinion.decisions import (
     CAPCitation,
     CitationResponse,
-    CLOpinion,
+    OpinionCL,
     Decision,
     DecisionCL,
     OpinionCluster,
@@ -177,11 +177,11 @@ class CourtListenerClient:
         response = self.fetch_cite(cite=cite)
         return self.read_citation_response(response=response)
 
-    def read_cluster_opinions(self, cluster: OpinionCluster) -> List[CLOpinion]:
+    def read_cluster_opinions(self, cluster: OpinionCluster) -> List[OpinionCL]:
         """Download and deserialize all opinions in a cluster."""
         headers = self.get_api_headers(full_case=True)
         return [
-            CLOpinion(**response.json())
+            OpinionCL(**response.json())
             for response in [
                 requests.get(str(url), headers=headers) for url in cluster.sub_opinions
             ]

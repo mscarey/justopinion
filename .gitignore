@@ -14,4 +14,4 @@ docs/_static
 docs/_templates
 poetry.lock
 venv
-venvjust
+venv*

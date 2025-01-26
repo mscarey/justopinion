@@ -144,7 +144,7 @@ class Opinion(BaseModel):
         return text_locations.as_text_sequence(self.text)
 
 
-class CLOpinion(Opinion):
+class OpinionCL(Opinion):
     """A judicial opinion from the CourtListener API."""
 
     resource_uri: HttpUrl
