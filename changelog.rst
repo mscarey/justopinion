@@ -1,5 +1,16 @@
 Changelog
 =========
+0.4.0 (2025-01-25)
+------------------
+* add CourtListener API interface to replace Case Access Project
+* add CitationResponse model
+* add OpinionCL model
+* add DecisionCL model
+* add OpinionCluster model
+* bump eyecite, requests and vcrpy versions
+* remove support for Python 3.9
+* support Python 3.13
+* use field_validator from Pydantic v2
 
 0.3.0 (2022-06-22)
 ------------------
