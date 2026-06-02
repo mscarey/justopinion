@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import datetime
 from enum import Enum
-from typing import List, Optional, Sequence, Union
+from typing import List, Optional, Sequence
 
 from anchorpoint import TextPositionSelector, TextQuoteSelector, TextPositionSet
 from anchorpoint.textselectors import TextPositionSetFactory, TextSequence
@@ -117,19 +117,24 @@ class Opinion(BaseModel):
 
     def locate_text(
         self,
-        selection: Union[
-            bool,
-            str,
-            TextPositionSelector,
-            TextQuoteSelector,
-            Sequence[Union[str, TextQuoteSelector, TextPositionSelector]],
-        ],
+        selection: bool
+        | str
+        | TextPositionSelector
+        | TextQuoteSelector
+        | Sequence[str | TextQuoteSelector | TextPositionSelector],
     ) -> TextPositionSet:
         """Get set of position selectors for text in Opinion."""
         factory = TextPositionSetFactory(self.text)
         return factory.from_selection(selection)
 
-    def select_text(self, selector: TextQuoteSelector) -> TextSequence:
+    def select_text(
+        self,
+        selector: bool
+        | str
+        | TextPositionSelector
+        | TextQuoteSelector
+        | Sequence[str | TextQuoteSelector | TextPositionSelector],
+    ) -> TextSequence:
         r"""
         Get text using a :class:`.TextQuoteSelector`.
 

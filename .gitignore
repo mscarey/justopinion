@@ -8,6 +8,7 @@
 .mypy_cache
 .pytest_cache
 .vscode
+build/
 dist/
 docs/_build
 docs/_static
