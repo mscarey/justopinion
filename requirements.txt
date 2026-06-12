@@ -1,6 +1,6 @@
 anchorpoint~=0.8.2
-eyecite~=2.6.3
-requests~=2.31.0
+eyecite>=2.7.6
+requests>=2.34.2
 pydantic>=2.4.2
-python-dotenv
+python-dotenv>=1.2.2
 python-ranges~=1.2.2
