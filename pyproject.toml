@@ -15,8 +15,9 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "pytest-recording>=0.13.4",
+    "coveralls==4.1.0",
     "pytest>=9.0.3",
+    "pytest-recording>=0.13.4",
 ]
 docs = [
     "Sphinx",
