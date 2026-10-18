@@ -2,7 +2,7 @@ Justopinion
 ===========
 
 A Python library for downloading and researching legal opinions
-using the `Caselaw Access Project API`_. Note that new CAP accounts
+using the `CourtListener API`_ and the `Caselaw Access Project API`_. Note that new CAP accounts
 are no longer available and the CAP API was sunset on September 1, 2024.
 
 .. image:: https://img.shields.io/badge/open-ethical-%234baaaa
@@ -57,3 +57,4 @@ And you can use Justopinion to follow citations in an opinion and download the c
     'Marsh v. People, 15 Ill. 284 (1853-12-01)'
 
 .. _Caselaw Access Project API: https://api.case.law/v1/
+.. _CourtListener API: https://wiki.free.law/c/courtlistener/help/api/rest/v4/rest-api-v47
