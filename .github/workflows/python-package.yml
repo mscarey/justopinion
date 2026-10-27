@@ -27,4 +27,6 @@ jobs:
         run: uv sync --locked --all-extras --dev
 
       - name: Test with python ${{ matrix.python-version }}
-        run: uv run --frozen pytest
+        env:
+          CAP_API_KEY: "fakekey"
+        run: uv run --frozen pytest --record-mode=none
