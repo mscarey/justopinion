@@ -8,6 +8,7 @@ Changelog
 * .readthedocs.yaml uses uv
 * remove listed support for Python 3.11 and 3.12
 * remove requirements files, using pyproject instead
+* remove setup.py
 * support Python 3.15
 
 0.4.0 (2025-01-25)
