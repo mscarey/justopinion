@@ -1,5 +1,15 @@
 Changelog
 =========
+0.5.0 (2026-10-26)
+------------------
+* add "build" block to .readthedocs.yml
+* add ruff workflow
+* bump anchorpoint version to 0.9.0
+* .readthedocs.yaml uses uv
+* remove listed support for Python 3.11 and 3.12
+* remove requirements files, using pyproject instead
+* support Python 3.15
+
 0.4.0 (2025-01-25)
 ------------------
 * add CourtListener API interface to replace Case Access Project

@@ -1,9 +1,0 @@
-anchorpoint>=0.7.0
-eyecite>=2.2.0
-requests
-pydantic
-python-dotenv
-python-ranges~=0.2.1
-Sphinx
-sphinx-autodoc-typehints
-sphinx-rtd-theme
