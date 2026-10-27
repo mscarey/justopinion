@@ -3,10 +3,10 @@
 from __future__ import annotations
 
 import datetime
+from collections.abc import Sequence
 from enum import Enum
-from typing import List, Optional, Sequence
 
-from anchorpoint import TextPositionSelector, TextQuoteSelector, TextPositionSet
+from anchorpoint import TextPositionSelector, TextPositionSet, TextQuoteSelector
 from anchorpoint.textselectors import TextPositionSetFactory, TextSequence
 from pydantic import BaseModel, Field, HttpUrl, field_validator
 
@@ -196,8 +196,8 @@ class OpinionCluster(BaseModel):
     absolute_url: str
     docket_id: int
     docket: HttpUrl
-    citations: List[ReporterCitation]
-    sub_opinions: List[HttpUrl]
+    citations: list[ReporterCitation]
+    sub_opinions: list[HttpUrl]
     date_created: datetime.datetime
     date_modified: datetime.datetime
     judges: str
@@ -216,12 +216,12 @@ class OpinionCluster(BaseModel):
 class CaseData(BaseModel):
     """The content of a Decision, including Opinions."""
 
-    head_matter: Optional[str] = None
-    corrections: Optional[str] = None
-    parties: List[str] = []
-    attorneys: List[str] = []
-    opinions: List[Opinion] = []
-    judges: List[str] = []
+    head_matter: str | None = None
+    corrections: str | None = None
+    parties: list[str] = []
+    attorneys: list[str] = []
+    opinions: list[Opinion] = []
+    judges: list[str] = []
 
 
 class PageRank(BaseModel):
@@ -243,9 +243,9 @@ class DecisionAnalysis(BaseModel):
 
     word_count: int
     sha256: str
-    orc_confidence: Optional[float] = None
+    orc_confidence: float | None = None
     char_count: int
-    pagerank: Optional[PageRank] = None
+    pagerank: PageRank | None = None
     cardinality: int
     simhash: str
 
@@ -253,7 +253,6 @@ class DecisionAnalysis(BaseModel):
 class DecisionError(Exception):
     """Error for failed attempts to assign Opinions to Decisions."""
 
-    pass
 
 
 class CitationResponse(BaseModel):
@@ -276,12 +275,12 @@ class CitationResponse(BaseModel):
 
 
 class DecisionCL(BaseModel):
-    opinion_clusters: List[OpinionCluster] = []
+    opinion_clusters: list[OpinionCluster] = []
     resource_uri: HttpUrl
     id: int
     court: HttpUrl
     court_id: str
-    clusters: List[str]
+    clusters: list[str]
     absolute_url: str
     date_created: datetime.datetime
     date_modified: datetime.datetime
@@ -300,7 +299,7 @@ class DecisionCL(BaseModel):
         cluster = self.opinion_clusters[0] if self.opinion_clusters else None
         decision_date = f" ({cluster.date_filed.isoformat()})" if cluster else ""
         citation = cluster.citations[0] if cluster else ""
-        return f"{self.case_name}, {str(citation)}{decision_date}"
+        return f"{self.case_name}, {citation!s}{decision_date}"
 
 
 class Decision(BaseModel):
@@ -364,22 +363,22 @@ class Decision(BaseModel):
     """
 
     decision_date: datetime.date
-    name: Optional[str] = None
-    name_abbreviation: Optional[str] = None
-    docket_num: Optional[str] = None
-    citations: Optional[Sequence[CAPCitation]] = None
-    parties: List[str] = []
-    attorneys: List[str] = []
-    first_page: Optional[int] = None
-    last_page: Optional[int] = None
-    court: Optional[Court] = None
-    casebody: Optional[CaseBody] = None
-    jurisdiction: Optional[Jurisdiction] = None
-    cites_to: Optional[Sequence[CAPCitation]] = None
-    id: Optional[int] = None
-    last_updated: Optional[datetime.datetime] = None
-    frontend_url: Optional[HttpUrl] = None
-    analysis: Optional[DecisionAnalysis] = None
+    name: str | None = None
+    name_abbreviation: str | None = None
+    docket_num: str | None = None
+    citations: Sequence[CAPCitation] | None = None
+    parties: list[str] = []
+    attorneys: list[str] = []
+    first_page: int | None = None
+    last_page: int | None = None
+    court: Court | None = None
+    casebody: CaseBody | None = None
+    jurisdiction: Jurisdiction | None = None
+    cites_to: Sequence[CAPCitation] | None = None
+    id: int | None = None
+    last_updated: datetime.datetime | None = None
+    frontend_url: HttpUrl | None = None
+    analysis: DecisionAnalysis | None = None
 
     def __str__(self):
         citation = self.citations[0].cite if self.citations else ""
@@ -396,12 +395,12 @@ class Decision(BaseModel):
         return v
 
     @property
-    def opinions(self) -> List[Opinion]:
+    def opinions(self) -> list[Opinion]:
         """Get all Opinions published with this Decision."""
         return self.casebody.data.opinions if self.casebody else []
 
     @property
-    def majority(self) -> Optional[Opinion]:
+    def majority(self) -> Opinion | None:
         """Get a majority opinion, if any."""
         for opinion in self.opinions:
             if opinion.type == "majority":
@@ -412,7 +411,7 @@ class Decision(BaseModel):
         self,
         opinion_type: str = "",
         opinion_author: str = "",
-    ) -> Optional[Opinion]:
+    ) -> Opinion | None:
         """Get Opinion matching the given attributes."""
         if not opinion_type and not opinion_author:
             if len(self.opinions) >= 1:

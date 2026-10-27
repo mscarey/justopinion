@@ -1,6 +1,5 @@
 """Citations used for cross-referencing caselaw."""
 
-from typing import List, Optional, Union
 
 from eyecite import get_citations
 from eyecite.models import CaseCitation
@@ -26,10 +25,10 @@ class CAPCitation(BaseModel):
     """
 
     cite: str
-    reporter: Optional[str] = None
-    category: Optional[str] = None
-    case_ids: List[int] = []
-    type: Optional[str] = None
+    reporter: str | None = None
+    category: str | None = None
+    case_ids: list[int] = []
+    type: str | None = None
 
     def __str__(self) -> str:
         return f"Citation to {self.cite}"
@@ -50,7 +49,7 @@ class ReporterCitation(BaseModel):
         return f"{self.volume} {self.reporter} {self.page}"
 
 
-def normalize_case_cite(cite: Union[str, CaseCitation, CAPCitation]) -> str:
+def normalize_case_cite(cite: str | CaseCitation | CAPCitation) -> str:
     """Get just the text that identifies a citation."""
     if isinstance(cite, CAPCitation):
         return cite.cite

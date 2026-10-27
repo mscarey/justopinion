@@ -1,4 +1,3 @@
-import pytest
 
 from justopinion.download import normalize_case_cite
 

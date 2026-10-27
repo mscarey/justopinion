@@ -2,17 +2,15 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional, Union
-
 import requests
 
 from justopinion.citations import CaseCitation, normalize_case_cite
 from justopinion.decisions import (
     CAPCitation,
     CitationResponse,
-    OpinionCL,
     Decision,
     DecisionCL,
+    OpinionCL,
     OpinionCluster,
 )
 
@@ -26,7 +24,7 @@ class CourtListenerClient:
             api_token = api_token.split("Token ")[1]
         self.api_token = api_token
 
-    def get_api_headers(self, full_case: bool = False) -> Dict[str, str]:
+    def get_api_headers(self, full_case: bool = False) -> dict[str, str]:
         """Get API headers based on whether the full case text is requested."""
         api_dict = {}
         if full_case:
@@ -34,14 +32,14 @@ class CourtListenerClient:
         return api_dict
 
     def fetch(
-        self, query: Union[int, str, CaseCitation], full_case: bool = False
+        self, query: int | str | CaseCitation, full_case: bool = False
     ) -> requests.models.Response:
         """Query by CourtListener id or citation, and download Docket from CourtListener API."""
         if isinstance(query, int) or (isinstance(query, str) and query.isdigit()):
             return self.fetch_id(int(query), full_case=full_case)
         return self.fetch_cite(query)
 
-    def fetch_cite(self, cite: Union[str, CaseCitation]) -> requests.models.Response:
+    def fetch_cite(self, cite: str | CaseCitation) -> requests.models.Response:
         """
         Get the API list response for a queried citation from the CourtListener API.
 
@@ -157,7 +155,7 @@ class CourtListenerClient:
         citation_response = response.json()[0]
         return CitationResponse(**citation_response)
 
-    def read_cite(self, cite: Union[str, CaseCitation]) -> CitationResponse:
+    def read_cite(self, cite: str | CaseCitation) -> CitationResponse:
         """
         Download a decision from Caselaw Access Project API.
 
@@ -177,7 +175,7 @@ class CourtListenerClient:
         response = self.fetch_cite(cite=cite)
         return self.read_citation_response(response=response)
 
-    def read_cluster_opinions(self, cluster: OpinionCluster) -> List[OpinionCL]:
+    def read_cluster_opinions(self, cluster: OpinionCluster) -> list[OpinionCL]:
         """Download and deserialize all opinions in a cluster."""
         headers = self.get_api_headers(full_case=True)
         return [
@@ -191,7 +189,7 @@ class CourtListenerClient:
 class CAPClient:
     """Downloads judicial decisions from Case Access Project API."""
 
-    def __init__(self, api_token: Optional[str] = ""):
+    def __init__(self, api_token: str | None = ""):
         """Create download client with an API token and an API address."""
         self.endpoint = "https://api.case.law/v1/cases/"
         if api_token and api_token.startswith("Token "):
@@ -204,7 +202,7 @@ class CAPClient:
         )
 
     def fetch(
-        self, query: Union[int, str, CaseCitation, CAPCitation], full_case: bool = False
+        self, query: int | str | CaseCitation | CAPCitation, full_case: bool = False
     ) -> requests.models.Response:
         """Query by CAP id or citation, and download Decision from CAP API."""
         if isinstance(query, int) or (isinstance(query, str) and query.isdigit()):
@@ -212,14 +210,14 @@ class CAPClient:
         return self.fetch_cite(query, full_case=full_case)
 
     def read(
-        self, query: Union[int, str, CaseCitation, CAPCitation], full_case: bool = False
+        self, query: int | str | CaseCitation | CAPCitation, full_case: bool = False
     ) -> Decision:
         """Query by CAP id or citation, download, and load Decision from CAP API."""
         if isinstance(query, int) or (isinstance(query, str) and query.isdigit()):
             return self.read_id(int(query), full_case=full_case)
         return self.read_cite(query, full_case=full_case)
 
-    def get_api_headers(self, full_case: bool = False) -> Dict[str, str]:
+    def get_api_headers(self, full_case: bool = False) -> dict[str, str]:
         """Get API headers based on whether the full case text is requested."""
         api_dict = {}
         if full_case:
@@ -229,7 +227,7 @@ class CAPClient:
         return api_dict
 
     def fetch_cite(
-        self, cite: Union[str, CaseCitation, CAPCitation], full_case: bool = False
+        self, cite: str | CaseCitation | CAPCitation, full_case: bool = False
     ) -> requests.models.Response:
         """
         Get the API list response for a queried citation from the CAP API.
@@ -264,8 +262,8 @@ class CAPClient:
         return response
 
     def read_decision_list_by_cite(
-        self, cite: Union[str, CaseCitation, CAPCitation], full_case: bool = False
-    ) -> List[Decision]:
+        self, cite: str | CaseCitation | CAPCitation, full_case: bool = False
+    ) -> list[Decision]:
         """
         Download and deserialize the "results" list for a queried citation from the CAP API.
 
@@ -288,7 +286,7 @@ class CAPClient:
 
     def read_decisions_from_response(
         self, response: requests.models.Response
-    ) -> List[Decision]:
+    ) -> list[Decision]:
         """
         Deserialize a list of cases from the "results" list of a response from the CAP API.
 
@@ -319,7 +317,7 @@ class CAPClient:
         return Decision(**decision)
 
     def read_cite(
-        self, cite: Union[str, CaseCitation, CAPCitation], full_case: bool = False
+        self, cite: str | CaseCitation | CAPCitation, full_case: bool = False
     ) -> Decision:
         """
         Download and deserialize a Decision from Caselaw Access Project API.
@@ -394,10 +392,8 @@ class CAPClient:
 class CaseAccessProjectAPIError(Exception):
     """Error for failed attempts to use the Case Access Project API."""
 
-    pass
 
 
 class CourtListenerAPIError(Exception):
     """Error for failed attempts to use the CourtListener API."""
 
-    pass

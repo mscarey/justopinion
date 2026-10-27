@@ -1,27 +1,25 @@
 import datetime
 import os
 
-from dotenv import load_dotenv
 import eyecite
-from pydantic import HttpUrl
 import pytest
+from dotenv import load_dotenv
 
 from justopinion.citations import CAPCitation
 from justopinion.decisions import (
-    OpinionCL,
     Decision,
-    Opinion,
     DecisionError,
+    Opinion,
+    OpinionCL,
     OpinionCluster,
 )
 from justopinion.download import (
     CAPClient,
+    CaseAccessProjectAPIError,
     CitationResponse,
     CourtListenerClient,
-    CaseAccessProjectAPIError,
     normalize_case_cite,
 )
-
 
 load_dotenv()
 
